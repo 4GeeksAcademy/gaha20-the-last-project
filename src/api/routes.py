@@ -18,6 +18,7 @@ def create_user():
     last_name = body.get("last_name", None)
     email = body.get("email", None)
     password = request.json.get("password", None)
+    user_type = body.get("user_type", None)
     if user_name is None or first_name is None or last_name is None or email is None or password is None:
         return jsonify({
             "message": "Something is missing"
@@ -36,7 +37,8 @@ def create_user():
         last_name = last_name,
         email = email, 
         password = password_hash,
-        salt = salt
+        salt = salt,
+        user_type = user_type
         )
     try:
         db.session.add(user)

@@ -10,7 +10,8 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), unique=False, nullable=False)
     salt = db.Column(db.String(120), unique=True, nullable=False)
-    is_admin = db.Column(db.Boolean(), unique=False, nullable=True)
+    # is_admin = db.Column(db.Boolean(), unique=False, nullable=True)
+    user_type = db.Column(db.String(20), unique=False, nullable=False)
 
     def __repr__(self):
         return f'<User {self.email}>'
@@ -22,5 +23,6 @@ class User(db.Model):
             "first_name": self.first_name,
             "last_name": self.last_name,
             "email": self.email,
+            "user_type": self.user_type,
             # do not serialize the password, its a security breach
         }

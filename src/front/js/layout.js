@@ -15,6 +15,8 @@ import { Contact } from "./pages/contact";
 import { UserPage } from "./pages/userPage";
 import { SuperAdminPage } from "./pages/superAdminPage";
 import { Adminpage } from "./pages/adminPage";
+import LoginPage from "./pages/loginPage";
+import SignupPage from "./pages/signupPage";
 
 //create your first component
 const Layout = () => {
@@ -39,6 +41,8 @@ const Layout = () => {
             <Route element={<SuperAdminPage />} path="/superadminpage" />
             <Route element={<Demo />} path="/demo" />
             <Route element={<Single />} path="/single/:theid" />
+            <Route element={<LoginPage />} path="/login" />
+            <Route element={<SignupPage />} path="/signupPage" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

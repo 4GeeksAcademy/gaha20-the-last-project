@@ -7,9 +7,12 @@ import { classNames } from "primereact/utils";
 import logoNavar from "../../img/logoNavar.jpeg";
 
 const SignupPage = () => {
-  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-
+  const [password, setPassword] = useState("");
+  
   const containerClassName = classNames(
     "surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden",
     { "p-input-filled": "filled" === "filled" }
@@ -27,11 +30,6 @@ const SignupPage = () => {
   return (
     <div className={containerClassName}>
       <div className="flex flex-column align-items-center justify-content-center">
-        {/* <img
-          src={logoNavar}
-          alt="Sakai logo"
-          className="mb-5 w-6rem flex-shrink-0"
-        /> */}
         <div
           style={{
             borderRadius: "56px",
@@ -46,20 +44,68 @@ const SignupPage = () => {
           >
             <div className="text-center mb-5">
               <img
-                src="https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692659589/Sports_Zone_Logo_Sin_Fondo_ywnt9k.png"
+                src="https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png"
                 alt="Image"
-                height="150"
+                height="200"
                 className="mb-3"
               />
               <div className="text-900 text-3xl font-medium mb-3">
-                <h1>signupPage</h1> Bienvenido, a la APP Sport Zone Manager!
+                <h1>Welcome to SportsZone Manager!</h1> Create a User
               </div>
               <span className="text-600 font-medium">
-                Inicie secion para continuar
+                All inputs are needed
               </span>
             </div>
 
             <div>
+            <label
+                htmlFor="user_name1"
+                className="block text-900 text-xl font-medium mb-2"
+              >
+                User Name
+              </label>
+              <InputText
+                inputid="user_name1"
+                type="text"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                placeholder="User Name"
+                className="w-full md:w-40rem mb-5"
+                style={{ padding: "1rem" }}
+              />
+
+              <label
+                htmlFor="first_name1"
+                className="block text-900 text-xl font-medium mb-2"
+              >
+                First Name
+              </label>
+              <InputText
+                inputid="first_name1"
+                type="text"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="First Name"
+                className="w-full md:w-40rem mb-5"
+                style={{ padding: "1rem" }}
+              />
+
+              <label
+                htmlFor="last_name1"
+                className="block text-900 text-xl font-medium mb-2"
+              >
+                Last Name
+              </label>
+              <InputText
+                inputid="last_name1"
+                type="text"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="First Name"
+                className="w-full md:w-40rem mb-5"
+                style={{ padding: "1rem" }}
+              />
+
               <label
                 htmlFor="email1"
                 className="block text-900 text-xl font-medium mb-2"
@@ -72,7 +118,7 @@ const SignupPage = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email address"
-                className="w-full md:w-30rem mb-5"
+                className="w-full md:w-40rem mb-5"
                 style={{ padding: "1rem" }}
               />
 
@@ -89,7 +135,7 @@ const SignupPage = () => {
                 placeholder="Password"
                 toggleMask
                 className="w-full mb-5"
-                inputClassName="w-full p-3 md:w-30rem"
+                inputClassName="w-full p-3 md:w-40rem"
               ></Password>
 
               <div className="flex align-items-center justify-content-between mb-5 gap-5">
@@ -100,11 +146,11 @@ const SignupPage = () => {
                   className="font-medium no-underline ml-2 text-right cursor-pointer"
                   style={{ color: "var(--primary-color)" }}
                 >
-                  Olvido Password?
+                  Already have an account?
                 </a>
               </div>
               <Button
-                label="Ingresar"
+                label="Sign Up"
                 className="w-full p-3 text-xl"
                 onClick={() => handleLogin()}
               ></Button>

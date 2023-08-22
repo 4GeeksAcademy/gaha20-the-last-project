@@ -48,9 +48,9 @@ const LoginPage = () => {
           >
             <div className="text-center mb-5">
               <img
-                src="https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692659589/Sports_Zone_Logo_Sin_Fondo_ywnt9k.png"
+                src="https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png"
                 alt="Image"
-                height="150"
+                height="200"
                 className="mb-3"
               />
               <div className="text-900 text-3xl font-medium mb-3">

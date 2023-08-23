@@ -5,7 +5,7 @@ import { Menubar } from "primereact/menubar";
 import { Toolbar } from "primereact/toolbar";
 import logoNavar from "../../img/logoNavar.jpeg";
 export const Navbar = () => {
-  const isAuthenticated = false; // Simulación de autenticación
+  const isAuthenticated = true; // Simulación de autenticación
   const userRole = "superadmin"; // Simulación de rol de usuario
 
   const items = [
@@ -18,18 +18,21 @@ export const Navbar = () => {
       to: "userpage",
       permissions: ["user", "superadmin"],
     },
+
     {
       label: "Admin Page",
       icon: "pi pi-fw pi-cog",
       to: "adminpage",
       permissions: ["admin", "superadmin"],
     },
+
     {
       label: "SuperAdmin Page",
       icon: "pi pi-fw pi-cog",
       to: "superadminpage",
       permissions: ["superadmin"],
     },
+    
   ];
 
   const filteredItems = items.filter(

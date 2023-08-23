@@ -14,6 +14,8 @@ const LoginPage = () => {
     "surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden",
     { "p-input-filled": "filled" === "filled" }
   );
+
+  
   const handleLogin = async () => {
     try {
       const loginVerificado = await loginUser(email, password);
@@ -24,6 +26,8 @@ const LoginPage = () => {
       console.log(error.code);
     }
   };
+
+
   return (
     <div className={containerClassName}>
       <div

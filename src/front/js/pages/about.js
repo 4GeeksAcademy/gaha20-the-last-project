@@ -19,7 +19,7 @@ export const About = () => {
       <div className="row">
         <div className="col-lg-6">
           <div className="about-content">
-            <h2 className="about-heading">Acerca de Sport Zone Manager</h2>
+            <h2 className="about-heading">Acerca de SportsZone Manager</h2>
             <p className="about-description">
               Somos <span className="emphasis">apasionados por el deporte</span>{" "}
               y comprometidos con brindar soluciones{" "}
@@ -69,7 +69,7 @@ export const About = () => {
               Misión y Visión de Sport Zone Manager
             </h2>
             <p className="about-description">
-              En <span className="emphasis">Sport Zone Manager</span>,
+              En <span className="emphasis">SportsZone Manager</span>,
               fusionamos el poder del deporte con tecnología avanzada. Nuestra{" "}
               <span className="emphasis emphasis-blue">misión:</span>{" "}
               simplificar la gestión de complejos deportivos y optimizar la
@@ -85,7 +85,7 @@ export const About = () => {
         <div className="col-lg-6">
           <div className="about-content">
             <h2 className="about-heading">
-              La Plataforma Sport Zone Manager: La Tecnología al Servicio del
+              La Plataforma SportsZone Manager: La Tecnología al Servicio del
               Deporte
             </h2>
             <p className="about-description">
@@ -132,7 +132,7 @@ export const About = () => {
               Nuestro Equipo: Pasión por el Deporte y la Innovación Tecnológica
             </h2>
             <p className="about-description">
-              Detrás de <span className="emphasis">Sport Zone Manager</span> hay
+              Detrás de <span className="emphasis">SportsZone Manager</span> hay
               un equipo apasionado y diverso de expertos en tecnología, deporte
               y atención al cliente. Creemos en comprender las necesidades
               únicas tanto de los deportistas como de los complejos deportivos.
@@ -165,7 +165,7 @@ export const About = () => {
               Ya seas un deportista apasionado en busca de la mejor instalación
               para entrenar o un complejo deportivo que busca optimizar sus
               operaciones, en{" "}
-              <span className="emphasis">Sport Zone Manager</span> estamos aquí
+              <span className="emphasis">SportsZone Manager</span> estamos aquí
               para acompañarte en tu trayecto. Nuestra plataforma te brinda las
               herramientas y la tecnología necesarias para lograr tus objetivos
               deportivos y empresariales.

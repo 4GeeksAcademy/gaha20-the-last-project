@@ -33,11 +33,11 @@ const LoginPage = () => {
       <div
         className={"flex flex-column align-items-center justify-content-center"}
       >
-        <img
+        {/* <img
           src={logoNavar}
           alt="Sakai logo"
           className="mb-5 w-6rem flex-shrink-0"
-        />
+        /> */}
         <div
           style={{
             borderRadius: "56px",
@@ -47,11 +47,16 @@ const LoginPage = () => {
           }}
         >
           <div
-            className="w-full surface-card py-8 px-5 sm:px-8"
+            className="w-full surface-card pb-8 px-5 sm:px-8"
             style={{ borderRadius: "53px" }}
           >
             <div className="text-center mb-5">
-              <img src={logoNavar} alt="Image" height="50" className="mb-3" />
+              <img
+                src="https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png"
+                alt="Image"
+                height="200"
+                className="mb-3"
+              />
               <div className="text-900 text-3xl font-medium mb-3">
                 Bienvenido, a la APP Sport Zone Manager!
               </div>

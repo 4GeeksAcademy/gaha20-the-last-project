@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Sport_center, Center_schedule
+from api.models import db, User, Sport_center
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
@@ -122,9 +122,9 @@ def create_sport_center():
     name = body.get("name", None)
     address = body.get("address", None)
     phone_number = body.get("phone_number", None)
-    sport = body.get("sport", None)
     user_id = body.get("user_id", None)
-    if name is None or address is None or phone_number is None or sport is None or user_id is None:
+    url_img = body.get("url_img", None)
+    if name is None or address is None or phone_number is None or user_id is None or url_img is None:
         return jsonify({
             "message": "Something is missing"
         }), 400
@@ -137,8 +137,8 @@ def create_sport_center():
         name = name,
         address = address,
         phone_number = phone_number,
-        sport = sport,
-        user_id = user_id
+        user_id = user_id,
+        url_img = url_img
         )
     try:
         db.session.add(sport_center)

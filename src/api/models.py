@@ -14,7 +14,7 @@ class User(db.Model):
     sport_center = db.relationship('Sport_center', back_populates='user')
 
     def __repr__(self):
-        return f'<User {self.email}>'
+        return f'<User {self.user_name}>'
 
     def serialize(self):
         sport_center = [center.serialize() for center in self.sport_center]
@@ -28,16 +28,16 @@ class User(db.Model):
             "sport_center": sport_center
             # do not serialize the password, its a security breach
         }
-    
+
 class Sport_center(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     address = db.Column(db.String(800), unique=False, nullable=False)
     phone_number = db.Column(db.String(24), unique=False, nullable=False)
-    sport = db.Column(db.String(120), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    user = db.relationship("User", back_populates="sport_center")
-    center_schedule = db.relationship('Center_schedule', back_populates='sport_center')
+    url_img = db.Column(db.String(120), unique=False, nullable=False)
+    user = db.relationship('User', back_populates='sport_center')
+    court = db.relationship('Court', back_populates='sport_center')
 
     def serialize(self):
         return{
@@ -45,21 +45,37 @@ class Sport_center(db.Model):
             "name": self.name,
             "address": self.address,
             "phone_number": self.phone_number,
-            "sport": self.sport,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "url_img": self.url_img
         }
-    
-class Center_schedule(db.Model):
+
+
+class Court(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    center_id = db.Column(db.Integer, db.ForeignKey('sport_center.id'))
+    name = db.Column(db.String(120), unique=False, nullable=False)
+    sport = db.Column(db.String(120), unique=False, nullable=False)
+    sport_center_id = db.Column(db.Integer, db.ForeignKey('sport_center.id'))
+    date = db.Column(db.DateTime, unique=False, nullable=False)
     hour_block = db.Column(db.String(120), unique=False, nullable=False)
-    sport_center = db.relationship("Sport_center", back_populates="center_schedule")
+    sport_center = db.relationship('Sport_center', back_populates='court')
 
     def serialize(self):
         return{
-            "id": self.id , 
-            "center_id": self.center_id,
-            "hour_block": self.hour_block,
-            "sport_center": self.sport_center
+            "id": self.id,
+            "name": self.name,
+            "sport": self.sport,
+            "sport_center_id": self.sport_center_id,
+            "date": self.date,
+            "hour_block": self.hour_block
         }
+
+
+# class Court_schedule(db.Model):
+
+
+
+
+
+
+
 

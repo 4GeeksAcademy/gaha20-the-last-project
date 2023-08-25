@@ -17,6 +17,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       userLogged: JSON.parse(localStorage.getItem("userLogged")) || null,
     },
     actions: {
+
       // Use getActions to call a function within a fuction
 
       getLoginVerificar: async (email, password) => {

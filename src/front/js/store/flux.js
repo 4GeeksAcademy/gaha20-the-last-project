@@ -55,6 +55,33 @@ const getState = ({ getStore, getActions, setStore }) => {
         //reset the global store
         setStore({ demo: demo });
       },
+
+
+      login: async (email, password) =>{
+        const user ={
+          "email" : email,
+          "password": password
+        }
+        try {
+          const requestConfig = {
+            method: 'POST',
+            headers:{
+              'Content-Type': 'application/json'
+            }, 
+            body: JSON.stringify(user)
+          }
+          const response = await fetch (process.env.BACKEND_URL + "/api/login", requestConfig);
+          const data = await response.json();
+          setStore({userLogged: data});
+          return data;
+          
+        }
+
+        catch (error) {
+          console.log("usuario no es valido", error);
+        }
+        
+      }
     },
   };
 };

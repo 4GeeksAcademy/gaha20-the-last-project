@@ -1,14 +1,21 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { InputText } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
 import logoNavar from "../../img/logoNavar.jpeg";
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
+import { Toast } from "primereact/toast";
+
 
 const LoginPage = () => {
+  const { store, actions } = useContext(Context);
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const toast = useRef(null);
+  const navigate = useNavigate();
 
   const containerClassName = classNames(
     "surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden",
@@ -18,18 +25,29 @@ const LoginPage = () => {
   
   const handleLogin = async () => {
     try {
-      const loginVerificado = await loginUser(email, password);
-      if (loginVerificado) {
-        ("aqui lo redireccionas a la pagina que quieras");
+      const loginVerificado = await actions.login(email, password);
+      console.log(loginVerificado);
+      if (loginVerificado.token) {
+        console.log("hola");
+        navigate("/");
+      } else {
+        toast.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: loginVerificado.message,
+          life: 3000,
+        });
       }
     } catch (error) {
-      console.log(error.code);
+      console.log(error);
     }
   };
+  console.log(store.userLogged)
 
 
   return (
     <div className={containerClassName}>
+      <Toast ref={toast} />
       <div
         className={"flex flex-column align-items-center justify-content-center"}
       >

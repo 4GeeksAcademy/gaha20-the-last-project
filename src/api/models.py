@@ -60,7 +60,7 @@ class Court(db.Model):
             "id": self.id,
             "name": self.name,
             "sport": self.sport,
-            "center_id": self.center_id
+            "sport_center_id": self.sport_center_id
         }
 
 

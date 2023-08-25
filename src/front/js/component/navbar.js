@@ -1,38 +1,50 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "primereact/button";
 import { Menubar } from "primereact/menubar";
 import { Toolbar } from "primereact/toolbar";
 import logoNavar from "../../img/logoNavar.jpeg";
+import {
+  MdOutlineHome,
+  MdOutlineInfo,
+  MdContactPhone,
+  MdSupervisedUserCircle,
+  MdVerifiedUser,
+  MdVerified,
+  MdLogin,
+  MdLogout,
+  MdOutlineAppRegistration,
+} from "react-icons/md";
+import { Context } from "../store/appContext";
 export const Navbar = () => {
-  const isAuthenticated = true; // Simulación de autenticación
-  const userRole = "superadmin"; // Simulación de rol de usuario
-
+  const { store, actions } = useContext(Context);
+  // const { user_type } =  || null;
+  const isAuthenticated = store.userLogged;
+  const userRole = store.userLogged?.user_type.toLowerCase();
   const items = [
-    { label: "Home", icon: "pi pi-fw pi-home", to: "/" },
-    { label: "About", icon: "pi pi-fw pi-home", to: "/about" },
-    { label: "Contact", icon: "pi pi-fw pi-home", to: "/contact" },
+    { label: "Home", icon: MdOutlineHome, to: "/" },
+    { label: "About", icon: MdOutlineInfo, to: "/about" },
+    { label: "Contact", icon: MdContactPhone, to: "/contact" },
     {
       label: "User Page",
-      icon: "pi pi-fw pi-cog",
+      icon: MdVerifiedUser,
       to: "userpage",
       permissions: ["user", "superadmin"],
     },
 
     {
       label: "Admin Page",
-      icon: "pi pi-fw pi-cog",
+      icon: MdVerified,
       to: "adminpage",
       permissions: ["admin", "superadmin"],
     },
 
     {
       label: "SuperAdmin Page",
-      icon: "pi pi-fw pi-cog",
+      icon: MdSupervisedUserCircle,
       to: "superadminpage",
       permissions: ["superadmin"],
     },
-    
   ];
 
   const filteredItems = items.filter(
@@ -43,10 +55,11 @@ export const Navbar = () => {
 
   const menuModel = filteredItems.map((item) => {
     if (item.to) {
+      const IconComponent = item.icon;
       return {
         label: (
           <Link to={item.to} className="p-menuitem-link">
-            <i className={item.icon}></i>
+            <IconComponent className="m-1" />
             <span>{item.label}</span>
           </Link>
         ),
@@ -54,29 +67,33 @@ export const Navbar = () => {
     }
     return null;
   });
-
+  const logout = () => {
+    window.localStorage.removeItem("userLogged");
+  };
   const end = (
     <React.Fragment>
       {!isAuthenticated && (
         <>
-          <Button
-            label="Login"
-            icon="pi pi-user"
-            className="p-button-success p-mr-2"
-          />
-          <Button
-            label="Register"
-            icon="pi pi-user-plus"
-            className="p-button-secondary"
-          />
+          <Link to="/login">
+            <Button className="p-button-success p-mr-2">
+              <MdLogin className="m-1" />
+              <span className="p-ml-2">Login</span>
+            </Button>
+          </Link>
+          <Button className="p-button-secondary">
+            <MdOutlineAppRegistration className="m-1" />
+            <span className="p-ml-2">Register</span>
+          </Button>
         </>
       )}
       {isAuthenticated && (
         <Button
-          label="logout"
-          icon="pi pi-user"
           className="p-button-danger p-mr-2"
-        />
+          onClick={() => actions.logout()}
+        >
+          <MdLogout className="m-1" />
+          <span className="p-ml-2">Logout</span>
+        </Button>
       )}
     </React.Fragment>
   );

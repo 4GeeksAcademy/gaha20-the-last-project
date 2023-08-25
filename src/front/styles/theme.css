@@ -1,3 +1,14 @@
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--surface-ground);
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 :root {
   --surface-a: #2a323d;
   --surface-b: #20262e;
@@ -35,7 +46,7 @@
   --content-padding: 1.25rem;
   --inline-spacing: 0.5rem;
   --border-radius: 4px;
-  --surface-ground: #20262e;
+  --surface-ground: #6b7874;
   --surface-section: #20262e;
   --surface-card: #2a323d;
   --surface-overlay: #2a323d;

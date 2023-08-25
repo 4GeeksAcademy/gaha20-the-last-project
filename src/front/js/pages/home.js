@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 
 import "../../styles/home.css";
+import { ComplejoCardHome } from "../component/complejoCardHome";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -9,6 +10,8 @@ export const Home = () => {
   return (
     <div className="text-center mt-5">
       <h1>HOME</h1>
+
+      <ComplejoCardHome />
     </div>
   );
 };

@@ -5,3 +5,62 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+.cardAPPS:hover {
+  box-shadow: 5px 10px 20px 1px rgba(255, 255, 255, 0.273) !important;
+  transition: all 0.7s linear;
+}
+.card {
+  background: var(--surface-card);
+  /* border: 1px solid var(--surface-border);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--card-shadow);
+    border-radius: 12px; */
+}
+.card .cardImagenAdorno:before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: inherit;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(transparent),
+    to(rgba(0, 0, 0, 0.5))
+  );
+  background-image: -webkit-linear-gradient(
+    top,
+    transparent,
+    rgba(0, 0, 0, 0.5)
+  );
+  background-image: linear-gradient(179deg, transparent, rgb(81 159 40 / 49%));
+}
+.cardAPPS {
+  animation: fadeInRight 3s ease-out;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

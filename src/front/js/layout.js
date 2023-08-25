@@ -38,10 +38,10 @@ const Layout = () => {
 
   function LayoutNavar() {
     return (
-      <>
+      <div style={{ minHeight: "93vh" }}>
         <Navbar />
         <Outlet />
-      </>
+      </div>
     );
   }
 

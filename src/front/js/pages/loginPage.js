@@ -6,9 +6,9 @@ import { InputText } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
 import logoNavar from "../../img/logoNavar.jpeg";
 import { Context } from "../store/appContext";
+
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
-
 
 const LoginPage = () => {
   const { store, actions } = useContext(Context);
@@ -22,19 +22,21 @@ const LoginPage = () => {
     { "p-input-filled": "filled" === "filled" }
   );
 
-  
   const handleLogin = async () => {
     try {
       const loginVerificado = await actions.login(email, password);
       console.log(loginVerificado);
       if (loginVerificado.token) {
         console.log("hola");
+
         navigate("/");
       } else {
         toast.current.show({
           severity: "error",
           summary: "Error",
+
           detail: loginVerificado.message,
+
           life: 3000,
         });
       }
@@ -42,8 +44,7 @@ const LoginPage = () => {
       console.log(error);
     }
   };
-  console.log(store.userLogged)
-
+  console.log(store.userLogged);
 
   return (
     <div className={containerClassName}>

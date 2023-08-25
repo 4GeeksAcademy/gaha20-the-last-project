@@ -35,6 +35,7 @@ class Sport_center(db.Model):
     address = db.Column(db.String(800), unique=False, nullable=False)
     phone_number = db.Column(db.String(24), unique=False, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    url_img = db.Column(db.String(120), unique=False, nullable=False)
     user = db.relationship('User', back_populates='sport_center')
     court = db.relationship('Court', back_populates='sport_center')
 
@@ -44,7 +45,8 @@ class Sport_center(db.Model):
             "name": self.name,
             "address": self.address,
             "phone_number": self.phone_number,
-            "user_id": self.user_id
+            "user_id": self.user_id,
+            "url_img": self.url_img
         }
 
 
@@ -53,6 +55,8 @@ class Court(db.Model):
     name = db.Column(db.String(120), unique=False, nullable=False)
     sport = db.Column(db.String(120), unique=False, nullable=False)
     sport_center_id = db.Column(db.Integer, db.ForeignKey('sport_center.id'))
+    date = db.Column(db.DateTime, unique=False, nullable=False)
+    hour_block = db.Column(db.String(120), unique=False, nullable=False)
     sport_center = db.relationship('Sport_center', back_populates='court')
 
     def serialize(self):
@@ -60,7 +64,9 @@ class Court(db.Model):
             "id": self.id,
             "name": self.name,
             "sport": self.sport,
-            "sport_center_id": self.sport_center_id
+            "sport_center_id": self.sport_center_id,
+            "date": self.date,
+            "hour_block": self.hour_block
         }
 
 

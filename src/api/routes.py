@@ -54,7 +54,7 @@ def create_user():
             "message": "internal error",
             "error": error.args
         }), 500
-    return jsonify({}), 201
+    return jsonify({"message": "User created"}), 201
 
 @api.route("/user/<int:id>", methods=["GET"])
 def get_user(id):
@@ -110,19 +110,21 @@ def login():
             "message": "Invalid credetials"
         }), 400
     return jsonify({
-        "token" : create_access_token(identity=email),
+        "token" : create_access_token(identity=user_data.id),
         "user_type" : user_data.user_type
     }), 201
 
 ## SPORT_CENTER ENDPOINTS
 
 @api.route("/sport_center", methods=["POST"])
+##@jwt_required()
 def create_sport_center():
     body = request.json
     name = body.get("name", None)
     address = body.get("address", None)
     phone_number = body.get("phone_number", None)
     user_id = body.get("user_id", None)
+    ##user_identity = get_jwt_identity()
     url_img = body.get("url_img", None)
     if name is None or address is None or phone_number is None or user_id is None or url_img is None:
         return jsonify({

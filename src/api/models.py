@@ -71,11 +71,3 @@ class Court(db.Model):
 
 
 # class Court_schedule(db.Model):
-
-
-
-
-
-
-
-

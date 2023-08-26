@@ -17,7 +17,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       userLogged: JSON.parse(localStorage.getItem("userLogged")) || null,
     },
     actions: {
-
       // Use getActions to call a function within a fuction
 
       getLoginVerificar: async (email, password) => {
@@ -109,7 +108,35 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ userLogged: data });
           return data;
         } catch (error) {
-          console.log("usuario no es valido", error);
+          console.log("Invalid User", error);
+        }
+      },
+      signUp: async (userName, firstName, lastName, email, password) => {
+        const user = {
+          user_name: userName,
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          password: password,
+          user_type: "user",
+        };
+        console.log(user);
+        try {
+          const requestConfig = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/user",
+            requestConfig
+          );
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
         }
       },
     },

@@ -1,34 +1,54 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 
 import { Button } from "primereact/button";
 import { Password } from "primereact/password";
 import { InputText } from "primereact/inputtext";
 import { classNames } from "primereact/utils";
 import logoNavar from "../../img/logoNavar.jpeg";
+import { useNavigate } from "react-router-dom";
+import { Toast } from "primereact/toast";
+import { Context } from "../store/appContext";
 
 const SignupPage = () => {
+  const { store, actions } = useContext(Context);
   const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+  const toast = useRef(null);
+  const navigate = useNavigate();
+
   const containerClassName = classNames(
     "surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden",
     { "p-input-filled": "filled" === "filled" }
   );
-  const handleLogin = async () => {
+  const handleSignUp = async () => {
     try {
-      const loginVerificado = await loginUser(email, password);
-      if (loginVerificado) {
-        ("aqui lo redireccionas a la pagina que quieras");
+      const signUpOk = await actions.signUp(
+        userName,
+        firstName,
+        lastName,
+        email,
+        password
+      );
+      if (signUpOk) {
+        navigate("/login");
+      } else {
+        toast.current.show({
+          severity: "error",
+          summary: "Error",
+          detail: "Verify your inputs",
+          life: 3000,
+        });
       }
     } catch (error) {
-      console.log(error.code);
+      console.log(error);
     }
   };
   return (
     <div className={containerClassName}>
+      <Toast ref={toast} />
       <div className="flex flex-column align-items-center justify-content-center">
         <div
           style={{
@@ -58,7 +78,7 @@ const SignupPage = () => {
             </div>
 
             <div>
-            <label
+              <label
                 htmlFor="user_name1"
                 className="block text-900 text-xl font-medium mb-2"
               >
@@ -152,7 +172,7 @@ const SignupPage = () => {
               <Button
                 label="Sign Up"
                 className="w-full p-3 text-xl"
-                onClick={() => handleLogin()}
+                onClick={() => handleSignUp()}
               ></Button>
             </div>
           </div>

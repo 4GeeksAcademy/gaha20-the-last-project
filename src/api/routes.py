@@ -164,6 +164,35 @@ def get_center(id):
          return jsonify(""), 404
     return jsonify(center.serialize()), 200
 
+@api.route("/sport_center/<int:id>", methods=["PUT"])
+def put_center(id):
+    if id is None: 
+        return jsonify({
+            "message": "id is required"
+        }), 400
+    center = Sport_center.query.get(id)
+    if center is None:
+       return jsonify({
+                "message": "Sport center not found"
+            }), 404
+    # return jsonify(center.serialize()), 200
+    new_data = request.json
+    center.name = new_data.get('name', center.name)
+    center.address = new_data.get('address', center.address)
+    center.phone_number = new_data.get('phone_number', center.phone_number)
+    center.user_id = new_data.get('user_id', center.user_id)
+    center.url_img = new_data.get('url_img', center.url_img)
+    db.session.commit()   
+    return jsonify({
+            "message": "Sport center updated successfully"
+        }), 200
+ 
+@api.route("/sport_center/", methods=["GET"])
+def get_centers():
+    all_centers = Sport_center.query.all()      
+    serialized_centers = [center.serialize() for center in all_centers]
+    return jsonify(serialized_centers), 200
+ 
 @api.route("/sport_center/<int:id>", methods=["DELETE"])
 def delete_sport_center(id):
     center = Sport_center.query.get(id)

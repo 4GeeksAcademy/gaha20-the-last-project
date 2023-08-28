@@ -2,6 +2,8 @@ body {
   font-family: var(--font-family);
   color: var(--text-color);
   background-color: var(--surface-ground);
+  background-image: url("https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png");
+  background-size: cover;
   margin: 0;
   padding: 0;
   min-height: 100%;
@@ -46,7 +48,7 @@ body {
   --content-padding: 1.25rem;
   --inline-spacing: 0.5rem;
   --border-radius: 4px;
-  --surface-ground: #6b7874;
+  --surface-ground: #000000;
   --surface-section: #20262e;
   --surface-card: #2a323d;
   --surface-overlay: #2a323d;

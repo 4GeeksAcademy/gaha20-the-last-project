@@ -15,6 +15,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
       ],
       userLogged: JSON.parse(localStorage.getItem("userLogged")) || null,
+      allSportCenter: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -134,6 +135,45 @@ const getState = ({ getStore, getActions, setStore }) => {
             requestConfig
           );
           const data = await response.json();
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
+      createSportCenter: async (sportCenterData) => {
+        try {
+          const requestConfig = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(sportCenterData),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/sport_center",
+            requestConfig
+          );
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
+      allSportCenterGet: async () => {
+        try {
+          const requestConfig = {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/sport_center",
+            requestConfig
+          );
+          const data = await response.json();
+          setStore({ allSportCenter: data });
           return data;
         } catch (error) {
           console.log("Verify your inputs", error);

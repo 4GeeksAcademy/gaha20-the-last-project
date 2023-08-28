@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 
 import "../../styles/adminPage.css";
+import ComplejoAdminList from "../component/complejoAdminList";
 
 export const Adminpage = () => {
   const { store, actions } = useContext(Context);
@@ -9,6 +10,8 @@ export const Adminpage = () => {
   return (
     <div className="text-center mt-5">
       <h1>ADMINPAGE</h1>
+
+      <ComplejoAdminList />
     </div>
   );
 };

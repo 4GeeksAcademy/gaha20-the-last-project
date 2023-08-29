@@ -39,7 +39,7 @@ const ComplejoAdminList = () => {
             onClick={() => setIsVisible(true)}
           >
             <MdAdd />
-            <span className="p-button-text p-ml-2">Nuevo Sport Center</span>
+            <span className="p-button-text p-ml-2">New Sport Center</span>
           </Button>
         </div>
       </React.Fragment>
@@ -69,7 +69,7 @@ const ComplejoAdminList = () => {
         onClick={() => setDeleteComplejoAdminListDialog(false)}
       />
       <Button
-        label="Si"
+        label="Yes"
         icon="pi pi-check"
         className="p-button-text"
         onClick={() => eliminarComplejoAdminList()}
@@ -106,13 +106,13 @@ const ComplejoAdminList = () => {
 
   const header = (
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-      <h5 className="m-0">ComplejoAdminList</h5>
+      <h5 className="m-0">SportCenterAdminList</h5>
       <span className="block mt-2 md:mt-0 p-input-icon-left">
         <i className="pi pi-search" />
         <InputText
           type="search"
           onInput={(e) => setGlobalFilter(e.target.value)}
-          placeholder="Buscar..."
+          placeholder="Search..."
         />
       </span>
     </div>
@@ -155,11 +155,11 @@ const ComplejoAdminList = () => {
         className="datatable-responsive"
         selectionMode="single"
         paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-        currentPageReportTemplate="Muestra {first} a {last} de {totalRecords} SportCenter"
+        currentPageReportTemplate="View {first} a {last} de {totalRecords} SportCenter"
         globalFilter={globalFilter}
-        emptyMessage="No hay ComplejoAdminList."
+        emptyMessage="No SportCenterAdminList."
         header={header}
-        sortField="ComplejoAdminListCreado"
+        sortField="SportCenterAdminListCreated"
         sortOrder={-1}
         loading={loading}
         responsiveLayout="scroll"
@@ -195,7 +195,7 @@ const ComplejoAdminList = () => {
           />
           {complejoAdminList && (
             <span>
-              Esta seguro que quiere eliminar la ComplejoAdminList{" "}
+              Are you sure about delete SportCenterAdminList?{" "}
               <b>{complejoAdminList.nombreComplejoAdminList}</b>?
             </span>
           )}

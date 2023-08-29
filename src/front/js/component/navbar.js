@@ -111,7 +111,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container">
-        <div className=" w-100">
+        <div className="w-100">
           <Toolbar start={startContent} end={endContent} />
         </div>
       </div>

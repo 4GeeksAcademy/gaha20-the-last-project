@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Sport_center
+from api.models import db, User, Sport_center, Court, Court_schedule
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
@@ -153,6 +153,14 @@ def create_sport_center():
         }), 500
     return jsonify({}), 201
 
+@api.route("/sport_center/", methods=["GET"])
+def get_centers():
+    all_centers = Sport_center.query.all()      
+    serialized_centers = [center.serialize() for center in all_centers]
+    return jsonify(serialized_centers), 200
+    ## SI tenemos tiempo, verificar existencia del TOKEN
+
+
 @api.route("/sport_center/<int:id>", methods=["GET"])
 def get_center(id):
     if id is None: 
@@ -187,12 +195,6 @@ def put_center(id):
             "message": "Sport center updated successfully"
         }), 200
  
-@api.route("/sport_center/", methods=["GET"])
-def get_centers():
-    all_centers = Sport_center.query.all()      
-    serialized_centers = [center.serialize() for center in all_centers]
-    return jsonify(serialized_centers), 200
- 
 @api.route("/sport_center/<int:id>", methods=["DELETE"])
 def delete_sport_center(id):
     center = Sport_center.query.get(id)
@@ -212,5 +214,185 @@ def delete_sport_center(id):
         }), 500
     return jsonify({}), 201
 
+## COURT ENDPOINTS
+
+@api.route("/court", methods=["POST"])
+##@jwt_required()
+def create_court():
+    body = request.json
+    name = body.get("name", None)
+    sport = body.get("sport", None)
+    sport_center_id = body.get("sport_center_id", None)
+    if name is None or sport is None or sport_center_id is None:
+        return jsonify({
+            "message": "Something is missing"
+        }), 400
+    court_exist = Court.query.filter_by(name=name).one_or_none()
+    if court_exist is not None:
+        return jsonify({
+            "message": "Court already exists"
+        }), 400
+    court = Court(
+        name = name,
+        sport = sport,
+        sport_center_id = sport_center_id
+        )
+    try:
+        db.session.add(court)
+        db.session.commit()
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({
+            "message": "internal error",
+            "error": error.args
+        }), 500
+    return jsonify({}), 201
+
+@api.route("/court/", methods=["GET"])
+def get_courts():
+    all_courts = Court.query.all()      
+    serialized_court = [court.serialize() for court in all_courts]
+    return jsonify(serialized_court), 200
+    ## SI tenemos tiempo, verificar existencia del TOKEN
+
+@api.route("/court/<int:id>", methods=["GET"])
+def get_court(id):
+    if id is None: 
+        return jsonify({
+            "message": "id is required"
+        }), 400
+    court = Court.query.get(id)
+    if court is None:
+        return jsonify(""), 404
+    return jsonify(court.serialize()), 200
+
+@api.route("/court/<int:id>", methods=["PUT"])
+def put_court(id):
+    if id is None: 
+        return jsonify({
+            "message": "id is required"
+        }), 400
+    court = Court.query.get(id)
+    if court is None:
+        return jsonify({
+                "message": "Sport center not found"
+            })
+    # return jsonify(center.serialize()), 200
+    new_data = request.json
+    court.name = new_data.get('name', court.name)
+    court.sport = new_data.get('sport', court.sport)
+    court.sport_center_id = new_data.get('sport_center_id', court.sport_center_id)
+    db.session.commit()   
+    return jsonify({
+            "message": "Sport center updated successfully"
+        }), 200
+
+@api.route("/court/<int:id>", methods=["DELETE"])
+def delete_court(id):
+    court = Court.query.get(id)
+    if court is None:
+        return jsonify({
+            "message": "center does not exist"
+        }), 400
+    court = Court.query.filter_by(id = Court.id).first()
+    try:
+        db.session.delete(court)
+        db.session.commit()
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({
+            "message": "internal error",
+            "error": error.args
+        }), 500
+    return jsonify({}), 201
+
+## COURT_SCHEDULE ENDPOINTS
+
+@api.route("/court_schedule", methods=["POST"])
+##@jwt_required()
+def create_schedule():
+    body = request.json
+    court_id = body.get("court_id", None)
+    start_date = body.get("start_date", None)
+    end_date = body.get("end_date", None)
+    status = body.get("status", None)
+    if court_id is None or start_date is None or end_date is None or status is None:
+        return jsonify({
+            "message": "Something is missing"
+        }), 400
+    schedule = Court_schedule(
+        court_id = court_id,
+        start_date = start_date,
+        end_date = end_date,
+        status = status
+        )
+    try:
+        db.session.add(schedule)
+        db.session.commit()
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({
+            "message": "internal error",
+            "error": error.args
+        }), 500
+    return jsonify({}), 201
+
+@api.route("/court_schedule/", methods=["GET"])
+def get_schedules():
+    all_schedules = Court_schedule.query.all()      
+    serialized_schedule = [schedule.serialize() for schedule in all_schedules]
+    return jsonify(serialized_schedule), 200
+    ## SI tenemos tiempo, verificar existencia del TOKEN
+
+@api.route("/court_schedule/<int:id>", methods=["GET"])
+def get_schedule(id):
+    if id is None: 
+        return jsonify({
+            "message": "id is required"
+        }), 400
+    court = Court_schedule.query.get(id)
+    if court is None:
+        return jsonify(""), 404
+    return jsonify(court.serialize()), 200
+
+@api.route("/court_schedule/<int:id>", methods=["PUT"])
+def put_schedule(id):
+    if id is None: 
+        return jsonify({
+            "message": "id is required"
+        }), 400
+    schedule = Court_schedule.query.get(id)
+    if schedule is None:
+        return jsonify({
+                "message": "Schedule not found"
+            })
+    # return jsonify(center.serialize()), 200
+    new_data = request.json
+    schedule.court_id = new_data.get('court_id', schedule.court_id)
+    schedule.start_date = new_data.get('start_date', schedule.start_date)
+    schedule.end_date = new_data.get('end_date', schedule.end_date)
+    db.session.commit()   
+    return jsonify({
+            "message": "Schedule updated successfully"
+        }), 200
+
+@api.route("/court_schedule/<int:id>", methods=["DELETE"])
+def delete_schedule(id):
+    schedule = Court_schedule.query.get(id)
+    if schedule is None:
+        return jsonify({
+            "message": "schedule does not exist"
+        }), 400
+    schedule = Court_schedule.query.filter_by(id = Court_schedule.id).first()
+    try:
+        db.session.delete(schedule)
+        db.session.commit()
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({
+            "message": "internal error",
+            "error": error.args
+        }), 500
+    return jsonify({}), 201
 
 

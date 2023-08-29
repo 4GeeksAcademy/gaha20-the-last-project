@@ -5,7 +5,7 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { InputNumber } from "primereact/inputnumber";
-import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
+import CloudinaryUploadWidget from "./cloudinaryUploadWidget";
 import { Context } from "../store/appContext";
 
 const ComplejoAdminForm = (props) => {
@@ -39,7 +39,7 @@ const ComplejoAdminForm = (props) => {
     });
   };
 
-  const saveSoportCenter = () => {
+  const saveSportCenter = () => {
     if (!editSportCenter) {
       actions.createSportCenter({
         ...sportCenterData,
@@ -58,14 +58,14 @@ const ComplejoAdminForm = (props) => {
   const dialogFooter = (
     <div className="ui-dialog-buttonpane p-clearfix">
       <Button
-        label="Cancelar"
+        label="Cancel"
         icon="pi pi-times"
         onClick={() => clearSelected()}
       />
       <Button
-        label="Guardar"
+        label="Save"
         icon="pi pi-check"
-        onClick={() => saveSoportCenter()}
+        onClick={() => saveSportCenter()}
       />
     </div>
   );
@@ -115,12 +115,12 @@ const ComplejoAdminForm = (props) => {
           </div>
           <div>
             <div>
-              <h2>Subir imagen a del complejo</h2>
+              <h2>Upload Sport Center Image</h2>
               <CloudinaryUploadWidget setImage={setImage} />
 
               {image && (
                 <div>
-                  <h3>Imagen subida:</h3>
+                  <h3>Uploaded Image:</h3>
                   <img src={image} alt="Uploaded" />
                 </div>
               )}

@@ -55,19 +55,31 @@ class Court(db.Model):
     name = db.Column(db.String(120), unique=False, nullable=False)
     sport = db.Column(db.String(120), unique=False, nullable=False)
     sport_center_id = db.Column(db.Integer, db.ForeignKey('sport_center.id'))
-    date = db.Column(db.DateTime, unique=False, nullable=False)
-    hour_block = db.Column(db.String(120), unique=False, nullable=False)
     sport_center = db.relationship('Sport_center', back_populates='court')
-
+    court_schedule = db.relationship('Court_schedule', back_populates='court')
     def serialize(self):
+        court_schedule = [schedule.serialize() for schedule in self.court_schedule]
         return{
             "id": self.id,
             "name": self.name,
             "sport": self.sport,
             "sport_center_id": self.sport_center_id,
-            "date": self.date,
-            "hour_block": self.hour_block
+            "court_schedule": court_schedule
         }
 
-
-# class Court_schedule(db.Model):
+class Court_schedule(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    court_id = db.Column(db.Integer, db.ForeignKey('court.id'))
+    start_date = db.Column(db.DateTime, unique=False, nullable=False)
+    end_date = db.Column(db.DateTime, unique=False, nullable=False)
+    status = db.Column(db.String(120), unique=False, nullable=False)
+    court = db.relationship('Court', back_populates='court_schedule')
+    def serialize(self):
+        return{
+            "id": self.id,
+            "court_id": self.court_id,
+            "start_date": self.start_date,
+            "end_date": self.end_date,
+            "status": self.status
+        }
+    

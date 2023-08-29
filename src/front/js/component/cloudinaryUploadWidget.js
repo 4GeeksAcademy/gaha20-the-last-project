@@ -1,5 +1,5 @@
-import { Button } from "primereact/button";
 import React, { Component, useEffect, useState } from "react";
+import { Button } from "primereact/button";
 
 const CloudinaryUploadWidget = ({ setImage }) => {
   const cloudName = "dlt3eax5v"; // Reemplaza con tu cloud name

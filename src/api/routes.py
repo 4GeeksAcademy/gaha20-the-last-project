@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Sport_center, Court, Court_schedule
+from api.models import db, User, Sport_center, Court, Court_schedule, Contact
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import create_access_token
@@ -395,4 +395,33 @@ def delete_schedule(id):
         }), 500
     return jsonify({}), 201
 
+##CONTACT ENDPOINTS
 
+@api.route("/contact", methods=["POST"])
+##@jwt_required()
+def create_contact():
+    body = request.json
+    name = body.get("name", None)
+    email = body.get("email", None)
+    subject = body.get("subject", None)
+    message = body.get("message", None)
+    if name is None or email is None or subject is None or message is None:
+        return jsonify({
+            "message": "Something is missing"
+        }), 400
+    contact = Contact(
+        name = name,
+        email = email,
+        subject = subject,
+        message = message
+        )
+    try:
+        db.session.add(contact)
+        db.session.commit()
+    except Exception as error:
+        db.session.rollback()
+        return jsonify({
+            "message": "internal error",
+            "error": error.args
+        }), 500
+    return jsonify({}), 201

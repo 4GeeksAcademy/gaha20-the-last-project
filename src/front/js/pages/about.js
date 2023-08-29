@@ -7,19 +7,55 @@ export const About = () => {
   const { store, actions } = useContext(Context);
 
   const images = [
-    "about0.jpeg",
-    "about1.jpeg",
-    "about2.jpeg",
-    "about3.jpeg",
-    "about4.jpeg",
+    "Logo_Sin_Fondo_1.png",
+    "Logo_Sin_Fondo_2.png",
+    "Logo_Sin_Fondo_3.png",
+    "Logo_Sin_Fondo_4.png",
+    "Logo_Sin_Fondo_5.png",
   ];
 
   return (
-    <section id="about" className="about-section container-fluid">
+    <section
+      id="about"
+      className="about-section container-fluid p-0 text-center"
+    >
       <div className="row">
         <div className="col-lg-6">
-          <div className="about-content">
-            <h2 className="about-heading">Acerca de SportsZone Manager</h2>
+          <img
+            src={require(`../../img/${images[0]}`).default}
+            alt={`Imagen ${images[0]}`}
+            className="img-fluid about-image rounded"
+          />
+        </div>
+        <div className="col-lg-6">
+          <div className="about-content" style={{ padding: "200px" }}>
+            <h2 className="about-heading">
+              Tecnologías usadas en SportsZone Manager
+            </h2>
+            <p className="about-description">
+              En <span className="emphasis">SportsZone Manager</span>,
+              utilizamos los siguientes lenguajes:
+              <ul className="text-start mx-auto" style={{ width: "350px" }}>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Bootstrap</li>
+                <li>Javascript</li>
+                <li>React</li>
+                <li>Python</li>
+                <li>PostgreSQL</li>
+                <li>Flask</li>
+                <ul>
+                  <li>SQL Alchemy</li>
+                </ul>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-6">
+          <div className="about-content" style={{ padding: "200px" }}>
+            <h2 className="about-heading">Acerca de SZM</h2>
             <p className="about-description">
               Somos <span className="emphasis">apasionados por el deporte</span>{" "}
               y comprometidos con brindar soluciones{" "}
@@ -49,8 +85,8 @@ export const About = () => {
         </div>
         <div className="col-lg-6">
           <img
-            src={require(`../../img/${images[0]}`).default}
-            alt={`Imagen ${images[0]}`}
+            src={require(`../../img/${images[1]}`).default}
+            alt={`Imagen ${images[1]}`}
             className="img-fluid about-image rounded"
           />
         </div>
@@ -64,29 +100,32 @@ export const About = () => {
           />
         </div>
         <div className="col-lg-6">
-          <div className="about-content">
-            <h2 className="about-heading">
-              Misión y Visión de Sport Zone Manager
-            </h2>
+          <div className="about-content" style={{ padding: "200px" }}>
+            <h2 className="about-heading">Misión y Visión de SZM</h2>
             <p className="about-description">
               En <span className="emphasis">SportsZone Manager</span>,
-              fusionamos el poder del deporte con tecnología avanzada. Nuestra{" "}
-              <span className="emphasis emphasis-blue">misión:</span>{" "}
-              simplificar la gestión de complejos deportivos y optimizar la
-              experiencia.{" "}
-              <span className="emphasis emphasis-blue">Visión:</span> construir
-              un mundo donde la reserva sea intuitiva, los pagos seguros y los
-              deportistas disfruten sin complicaciones.
+              fusionamos el poder del deporte con tecnología avanzada.
+              <ul>
+                <li>
+                  <span className="emphasis emphasis-blue">Misión:</span>{" "}
+                  simplificar la gestión de complejos deportivos y optimizar la
+                  experiencia.
+                </li>
+                <li>
+                  <span className="emphasis emphasis-blue">Visión:</span>{" "}
+                  construir un mundo donde la reserva sea intuitiva, los pagos
+                  seguros y los deportistas disfruten sin complicaciones.
+                </li>
+              </ul>
             </p>
           </div>
         </div>
       </div>
       <div className="row">
         <div className="col-lg-6">
-          <div className="about-content">
+          <div className="about-content" style={{ padding: "200px" }}>
             <h2 className="about-heading">
-              La Plataforma SportsZone Manager: La Tecnología al Servicio del
-              Deporte
+              La Plataforma SZM: La Tecnología al Servicio del Deporte
             </h2>
             <p className="about-description">
               Nuestra{" "}
@@ -127,9 +166,9 @@ export const About = () => {
           />
         </div>
         <div className="col-lg-6">
-          <div className="about-content">
+          <div className="about-content" style={{ padding: "200px" }}>
             <h2 className="about-heading">
-              Nuestro Equipo: Pasión por el Deporte y la Innovación Tecnológica
+              Pasión por el Deporte y la Innovación Tecnológica
             </h2>
             <p className="about-description">
               Detrás de <span className="emphasis">SportsZone Manager</span> hay
@@ -157,9 +196,9 @@ export const About = () => {
       </div>
       <div className="row">
         <div className="col-lg-6">
-          <div className="about-content">
+          <div className="about-content" style={{ padding: "200px" }}>
             <h2 className="about-heading">
-              En Sport Zone Manager, Te Acompañamos en Tu Trayecto Deportivo
+              En SZM, Te Acompañamos en Tu Trayecto Deportivo
             </h2>
             <p className="about-description">
               Ya seas un deportista apasionado en busca de la mejor instalación

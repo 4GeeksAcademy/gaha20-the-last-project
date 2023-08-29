@@ -20,7 +20,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   // const { user_type } =  || null;
   const isAuthenticated = store.userLogged;
-  const userRole = store.userLogged?.user_type.toLowerCase();
+  const userRole = store.userLogged?.user_type?.toLowerCase();
   const items = [
     { label: "Home", icon: MdOutlineHome, to: "/" },
     { label: "About", icon: MdOutlineInfo, to: "/about" },
@@ -80,10 +80,12 @@ export const Navbar = () => {
               <span className="p-ml-2">Login</span>
             </Button>
           </Link>
-          <Button className="p-button-secondary">
-            <MdOutlineAppRegistration className="m-1" />
-            <span className="p-ml-2">Register</span>
-          </Button>
+          <Link to="/signup">
+            <Button className="p-button-secondary">
+              <MdOutlineAppRegistration className="m-1" />
+              <span className="p-ml-2">Register</span>
+            </Button>
+          </Link>
         </>
       )}
       {isAuthenticated && (

@@ -3,8 +3,7 @@ import { Button } from "primereact/button";
 import { DataScroller } from "primereact/datascroller";
 import { Rating } from "primereact/rating";
 import { Tag } from "primereact/tag";
-import { FaAccessibleIcon } from "react-icons/fa";
-
+import { FaAccessibleIcon } from "react-icons/fa"
 export default function SportCenterUser() {
   const [products, setProducts] = useState([]);
   const ds = useRef(null);

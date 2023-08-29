@@ -5,7 +5,7 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { InputNumber } from "primereact/inputnumber";
-import CloudinaryUploadWidget from "./CloudinaryUploadWidget";
+import CloudinaryUploadWidget from "./cloudinaryUploadWidget";
 import { Context } from "../store/appContext";
 
 const ComplejoAdminForm = (props) => {

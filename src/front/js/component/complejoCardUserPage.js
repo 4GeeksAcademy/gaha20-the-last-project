@@ -116,7 +116,7 @@ export default function SportCenterUser() {
     <Button
       type="text"
       onClick={() => ds.current.load()}
-    ><FaAccessibleIcon/>Load</Button>
+    ><FaAccessibleIcon/></Button>
   );
 
   return (

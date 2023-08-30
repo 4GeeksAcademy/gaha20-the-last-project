@@ -23,14 +23,14 @@ import { SuperAdminPage } from "./pages/superAdminPage";
 import { Adminpage } from "./pages/adminPage";
 import LoginPage from "./pages/loginPage";
 import SignupPage from "./pages/signupPage";
+import { ProtectedRoute } from "./util/ProtectedRoute";
+import AccessDeniedPage from "./pages/accessDeniedPage";
 
-//create your first component
 const Layout = () => {
   const { store, actions } = useContext(Context);
-  console.log(store.userLogged);
-
-  //the basename is used when your project is published in a subdirectory and not in the root of the domain
-  // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+  const { userLogged } = store;
+  console.log(userLogged);
+  console.log(userLogged?.user_type);
   const basename = process.env.BASENAME || "";
 
   if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "")
@@ -52,16 +52,35 @@ const Layout = () => {
           <Routes>
             <Route path="/" element={<LayoutNavar />}>
               <Route index element={<Home />} />
+
               <Route path="about" element={<About />} />
               <Route element={<Contact />} path="/contact" />
               <Route element={<UserPage />} path="/userPage" />
-              <Route element={<Adminpage />} path="/adminpage" />
+              <Route
+                path="/adminpage"
+                element={
+                  <ProtectedRoute
+                    redirectTo="/accessdeniedpage"
+                    isAllowed={
+                      !!userLogged &&
+                      (userLogged?.user_type === "admin" ||
+                        userLogged?.user_type === "superadmin")
+                    }
+                  >
+                    <Adminpage />
+                  </ProtectedRoute>
+                }
+              />
               <Route element={<SuperAdminPage />} path="/superadminpage" />
+              <Route element={<AccessDeniedPage />} path="/accessdeniedpage" />
+
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
             </Route>
-            <Route element={<LoginPage />} path="/login" />
-            <Route element={<SignupPage />} path="/signup" />
+            <Route element={<ProtectedRoute isAllowed={!!!userLogged} />}>
+              <Route element={<LoginPage />} path="/login" />
+              <Route element={<SignupPage />} path="/signup" />
+            </Route>
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

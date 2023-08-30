@@ -20,7 +20,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   // const { user_type } =  || null;
   const isAuthenticated = store.userLogged;
-  const userRole = store.userLogged?.user_type.toLowerCase();
+  const userRole = store.userLogged?.user_type?.toLowerCase();
   const items = [
     { label: "Home", icon: MdOutlineHome, to: "/" },
     { label: "About", icon: MdOutlineInfo, to: "/about" },
@@ -75,15 +75,17 @@ export const Navbar = () => {
       {!isAuthenticated && (
         <>
           <Link to="/login">
-            <Button className="p-button-success p-mr-2">
+            <Button className="p-button-success mx-2 gap-3">
               <MdLogin className="m-1" />
               <span className="p-ml-2">Login</span>
             </Button>
           </Link>
-          <Button className="p-button-secondary">
-            <MdOutlineAppRegistration className="m-1" />
-            <span className="p-ml-2">Register</span>
-          </Button>
+          <Link to="/signup">
+            <Button className="p-button-secondary">
+              <MdOutlineAppRegistration className="m-1" />
+              <span className="p-ml-2">Register</span>
+            </Button>
+          </Link>
         </>
       )}
       {isAuthenticated && (
@@ -99,7 +101,7 @@ export const Navbar = () => {
   );
   const startContent = (
     <Link to="/">
-      <img alt="logo" src={logoNavar} height="40" className="mr-2"></img>
+      <img alt="logo" src={logoNavar} height="40" className="mr-2 rounded-circle"></img>
     </Link>
   );
 
@@ -111,7 +113,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container">
-        <div className=" w-100">
+        <div className="w-100">
           <Toolbar start={startContent} end={endContent} />
         </div>
       </div>

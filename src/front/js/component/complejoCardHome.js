@@ -64,9 +64,7 @@ export const ComplejoCardHome = () => {
   return (
     <div className=" bg-black-alpha-10 w-100">
       <div className="container py-8">
-        <h3 className="text-700 text-center mb-5">
-          Complejos Deportivos Mas Valorados
-        </h3>
+        <h3 className="text-700 text-center mb-5">More liked Sport Centers</h3>
         <div className="grid">
           {demoAleatorio.map((item, index) => {
             if (index < 3) {
@@ -122,7 +120,7 @@ export const ComplejoCardHome = () => {
                     </div>
                     <div className="card-footer bg-transparent border-0">
                       <Button
-                        label="Reservar"
+                        label="Book"
                         severity="info"
                         // text
                         raised
@@ -138,7 +136,7 @@ export const ComplejoCardHome = () => {
         </div>
       </div>
       <Button
-        label="Para mas complejos click aqui"
+        label="All Sport Centers"
         severity="info"
         // text
         raised

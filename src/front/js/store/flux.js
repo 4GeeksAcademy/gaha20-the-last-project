@@ -105,8 +105,13 @@ const getState = ({ getStore, getActions, setStore }) => {
             requestConfig
           );
           const data = await response.json();
-          localStorage.setItem("userLogged", JSON.stringify(data));
-          setStore({ userLogged: data });
+          if (data.token) {
+            localStorage.setItem("userLogged", JSON.stringify(data));
+            setStore({ userLogged: data });
+            return true;
+          }
+          // localStorage.setItem("userLogged", JSON.stringify(data));
+          // setStore({ userLogged: data });
           return data;
         } catch (error) {
           console.log("Invalid User", error);
@@ -179,6 +184,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Verify your inputs", error);
         }
       },
+      price: () => {
+        const number = 100
+				return Math.floor(Math.random() * number);
+				
+			},
     },
   };
 };

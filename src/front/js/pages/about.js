@@ -53,7 +53,7 @@ export const About = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-6 mi-5">
+        <div className="col-lg-6">
           <div className="about-content">
           <h2 className="about-heading">
               Guillermo Herrera

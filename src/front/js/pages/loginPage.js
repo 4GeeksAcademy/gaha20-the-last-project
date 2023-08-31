@@ -25,7 +25,6 @@ const LoginPage = () => {
   const handleLogin = async () => {
     try {
       const loginVerificado = await actions.login(email, password);
-      console.log(loginVerificado);
       if (loginVerificado.token) {
         console.log("hola");
 
@@ -44,7 +43,6 @@ const LoginPage = () => {
       console.log(error);
     }
   };
-  console.log(store.userLogged);
 
   return (
     <div className={containerClassName}>

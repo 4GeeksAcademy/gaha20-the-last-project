@@ -66,6 +66,31 @@ def get_user(id):
     if user is None:
          return jsonify(""), 404
     return jsonify(user.serialize()), 200
+@api.route("/user/", methods=["GET"])
+def get_users():
+    all_users = User.query.all()      
+    serialized_users = [user.serialize() for user in all_users]
+    return jsonify(serialized_users), 200
+    ## SI tenemos tiempo, verificar existencia del TOKEN
+
+@api.route("/user/<int:id>", methods=["PUT"])
+def put_user(id):
+    if id is None: 
+        return jsonify({
+            "message": "id is required"
+        }), 400
+    user = User.query.get(id)
+    if user is None:
+       return jsonify({
+                "message": "User not found"
+            }), 404
+    # return jsonify(center.serialize()), 200
+    new_data = request.json
+    user.user_type = new_data.get("user_type", None)
+    db.session.commit()   
+    return jsonify({
+            "message": "User updated successfully"
+        }), 200
 
 @api.route("/user/<int:id>", methods=["DELETE"])
 def delete_user(id):

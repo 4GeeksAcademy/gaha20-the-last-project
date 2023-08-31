@@ -16,6 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       userLogged: JSON.parse(localStorage.getItem("userLogged")) || null,
       allSportCenter: [],
+      allUser: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -117,34 +118,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Invalid User", error);
         }
       },
-      signUp: async (userName, firstName, lastName, email, password) => {
-        const user = {
-          user_name: userName,
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
-          password: password,
-          user_type: "user",
-        };
-        console.log(user);
-        try {
-          const requestConfig = {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(user),
-          };
-          const response = await fetch(
-            process.env.BACKEND_URL + "/api/user",
-            requestConfig
-          );
-          const data = await response.json();
-          return data;
-        } catch (error) {
-          console.log("Verify your inputs", error);
-        }
-      },
+
       createSportCenter: async (sportCenterData) => {
         try {
           const requestConfig = {
@@ -184,11 +158,123 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Verify your inputs", error);
         }
       },
+      allUserGet: async () => {
+        try {
+          const requestConfig = {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/user",
+            requestConfig
+          );
+          const data = await response.json();
+          // setStore({ allUser: data });
+          if (data.length > 0) {
+            setStore({ allUser: data });
+            return data;
+          } else {
+            // Execute another function and send userAdmin data
+            const userName = "superadmin";
+            const firstName = "superadmin";
+            const lastName = "superadmin";
+            const email = "superadmin@sportzonemanager.com";
+            const password = "123456";
+            const user_type = "superadmin";
+
+            getActions().signUp(userName, firstName, lastName, email, password); // Call another function and pass userAdmin data
+            return userAdmin; // Return userAdmin data
+          }
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
+      editUserPutUserType: async (idUser, userType) => {
+        console.log("id", idUser);
+        console.log("userType", userType);
+        const userTypeEdit = {
+          user_type: userType,
+        };
+        try {
+          const requestConfig = {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userTypeEdit),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/user/" + idUser,
+            requestConfig
+          );
+          const data = await response.json();
+          console.log(data);
+          // setStore({ allUser: data });
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
+      signUp: async (userName, firstName, lastName, email, password) => {
+        const user = {
+          user_name: userName,
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          password: password,
+          user_type: "user",
+        };
+        console.log(user);
+        try {
+          const requestConfig = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(user),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/user",
+            requestConfig
+          );
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
       price: () => {
-        const number = 100
-				return Math.floor(Math.random() * number);
-				
-			},
+        const number = 100;
+        return Math.floor(Math.random() * number);
+      },
+      createCourtSportCenter: async () => {
+        const courtSportCenterData = {
+          name: "Cancha 1",
+          sport: "Futbol",
+          sport_center_id: 1,
+        };
+
+        try {
+          const requestConfig = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(courtSportCenterData),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/court",
+            requestConfig
+          );
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
     },
   };
 };

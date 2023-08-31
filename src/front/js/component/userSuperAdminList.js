@@ -6,16 +6,15 @@ import { Toolbar } from "primereact/toolbar";
 import { Dialog } from "primereact/dialog";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
-import ComplejoAdminForm from "./complejoAdminForm";
+import UserSuperAdminForm from "./userSuperAdminForm";
 import { Context } from "../store/appContext";
 import { MdAdd, MdEdit, MdOutlineDeleteOutline } from "react-icons/md";
 
-const ComplejoAdminList = () => {
+const UserSuperAdminList = () => {
   const { store, actions } = useContext(Context);
-  const { userLogged, allSportCenter } = store;
-
-  const [complejoAdminList, setComplejoAdminList] = useState(allSportCenter);
-  const [deleteComplejoAdminListDialog, setDeleteComplejoAdminListDialog] =
+  const { userLogged, allUser } = store;
+  const [complejoAdminList, setUserSuperAdminList] = useState(allUser);
+  const [deleteUserSuperAdminListDialog, setDeleteUserSuperAdminListDialog] =
     useState(false);
   const [globalFilter, setGlobalFilter] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -44,41 +43,46 @@ const ComplejoAdminList = () => {
       </React.Fragment>
     );
   };
-  const saveComplejoAdminList = (id) => {
-    findComplejoAdminList(id);
+  const saveUserSuperAdminList = (id) => {
+    // findUserSuperAdminList(id);
+    console.log("id", id);
+    const userType = "superadmin";
+    const idUser = id;
+    actions.editUserPutUserType(idUser, userType);
+    actions.createCourtSportCenter();
     setIsVisible(true);
   };
-  const eliminarComplejoAdminList = () => {
-    deleteComplejoAdminList(complejoAdminList.id);
-    setDeleteComplejoAdminListDialog(false);
+  const eliminarUserSuperAdminList = () => {
+    deleteUserSuperAdminList(complejoAdminList.id);
+    setDeleteUserSuperAdminListDialog(false);
     toast.current.show({
       severity: "error",
       summary: "Eliminar",
-      detail: "ComplejoAdminList Eliminado",
+      detail: "UserSuperAdminList Eliminado",
       life: 3000,
     });
   };
 
-  const deleteComplejoAdminListDialogFooter = (
+  const deleteUserSuperAdminListDialogFooter = (
     <>
       <Button
         label="No"
         icon="pi pi-times"
         className="p-button-text"
-        onClick={() => setDeleteComplejoAdminListDialog(false)}
+        onClick={() => setDeleteUserSuperAdminListDialog(false)}
       />
       <Button
         label="Yes"
         icon="pi pi-check"
         className="p-button-text"
-        onClick={() => eliminarComplejoAdminList()}
+        onClick={() => eliminarUserSuperAdminList()}
       />
     </>
   );
 
-  const confirmDeleteComplejoAdminList = (complejoAdminLists) => {
-    setComplejoAdminList(complejoAdminLists);
-    setDeleteComplejoAdminListDialog(true);
+  const confirmDeleteUserSuperAdminList = (complejoAdminLists) => {
+    setUserSuperAdminList(complejoAdminLists);
+    setDeleteUserSuperAdminListDialog(true);
   };
 
   const actionBodyTemplate = (rowData) => {
@@ -86,7 +90,7 @@ const ComplejoAdminList = () => {
       <div className="actions">
         <Button
           className="p-button-rounded p-button-success mr-2"
-          onClick={() => saveComplejoAdminList(rowData.id)}
+          onClick={() => saveUserSuperAdminList(rowData.id)}
         >
           <MdEdit />
         </Button>
@@ -94,7 +98,7 @@ const ComplejoAdminList = () => {
         {userLogged.user_type === "SUPERADMIN" && (
           <Button
             className="p-button-rounded  p-button-danger"
-            onClick={() => confirmDeleteComplejoAdminList(rowData)}
+            onClick={() => confirmDeleteUserSuperAdminList(rowData)}
           >
             <MdOutlineDeleteOutline />
           </Button>
@@ -117,27 +121,9 @@ const ComplejoAdminList = () => {
     </div>
   );
   const clearSelected = () => {
-    setDeleteComplejoAdminListDialog(false);
+    setDeleteUserSuperAdminListDialog(false);
   };
-  const imageFinalBodyTemplate = (rowData) => {
-    return (
-      <img
-        src={
-          rowData.url_img
-            ? rowData.url_img
-            : "https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png"
-        }
-        onError={(e) =>
-          (e.target.src =
-            "https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png")
-        }
-        alt={rowData.url_img}
-        className="product-image"
-        height="100px"
-        width={"100px"}
-      />
-    );
-  };
+
   return (
     <div className="m-4 p-3 card">
       <Toast ref={toast} />
@@ -166,24 +152,21 @@ const ComplejoAdminList = () => {
         <Column body={actionBodyTemplate}></Column>
         <Column field="id" header="id" />
 
-        <Column field="name" header="name" />
-        <Column field="address" header="address" />
-        <Column field="phone_number" header="phone_number" />
-        <Column
-          field="url_img"
-          header="url_img"
-          body={imageFinalBodyTemplate}
-        />
+        <Column field="email" header="email" />
+        <Column field="first_name" header="first_name" />
+        <Column field="last_name" header="last_name" />
+        <Column field="user_name" header="user_name" />
+        <Column field="user_type" header="user_type" />
       </DataTable>
 
-      <ComplejoAdminForm isVisible={isVisible} setIsVisible={setIsVisible} />
+      <UserSuperAdminForm isVisible={isVisible} setIsVisible={setIsVisible} />
 
       <Dialog
-        visible={deleteComplejoAdminListDialog}
+        visible={deleteUserSuperAdminListDialog}
         style={{ width: "450px" }}
         header="Confirm"
         modal
-        footer={deleteComplejoAdminListDialogFooter}
+        footer={deleteUserSuperAdminListDialogFooter}
         onHide={() => clearSelected()}
       >
         <div className="flex align-items-center justify-content-center">
@@ -194,7 +177,7 @@ const ComplejoAdminList = () => {
           {complejoAdminList && (
             <span>
               Are you sure about delete SportCenterAdminList?{" "}
-              <b>{complejoAdminList.nombreComplejoAdminList}</b>?
+              <b>{complejoAdminList.nombreUserSuperAdminList}</b>?
             </span>
           )}
         </div>
@@ -203,4 +186,4 @@ const ComplejoAdminList = () => {
   );
 };
 
-export default ComplejoAdminList;
+export default UserSuperAdminList;

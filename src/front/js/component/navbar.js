@@ -75,7 +75,7 @@ export const Navbar = () => {
       {!isAuthenticated && (
         <>
           <Link to="/login">
-            <Button className="p-button-success p-mr-2">
+            <Button className="p-button-success mx-2 gap-3">
               <MdLogin className="m-1" />
               <span className="p-ml-2">Login</span>
             </Button>

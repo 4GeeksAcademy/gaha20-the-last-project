@@ -184,6 +184,11 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Verify your inputs", error);
         }
       },
+      price: () => {
+        const number = 100
+				return Math.floor(Math.random() * number);
+				
+			},
     },
   };
 };

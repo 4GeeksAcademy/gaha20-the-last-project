@@ -12,6 +12,14 @@ export const About = () => {
     "Logo_Sin_Fondo_3.png",
     "Logo_Sin_Fondo_4.png",
     "Logo_Sin_Fondo_5.png",
+    "Logo_Sin_Fondo_6.png"
+  ];
+
+  const admins = [
+    "admin1.jpeg",
+    "admin2.jpeg",
+    "admin3.jpeg",
+    "admin4.jpeg",
   ];
 
   return (
@@ -19,6 +27,106 @@ export const About = () => {
       id="about"
       className="about-section container-fluid p-0 text-center"
     >
+      <div className="row">
+        <div className="col-lg-6">
+          <img
+            src={require(`../../img/${admins[0]}`).default}
+            alt={`Imagen ${admins[0]}`}
+            className="img-fluid about-image rounded"
+            style={{maxWidth: "400px"}}
+          />
+        </div>
+        <div className="col-lg-6">
+          <div className="about-content">
+            <h2 className="about-heading">
+              Alfredo Castillo
+            </h2>
+            <p className="about-description">
+              <ul className="text-start mx-auto">
+                <li>Edad: <span className="emphasis">30</span></li>
+                <li><span className="emphasis">Lugar de nacimiento:</span> Barcelona, Estado Anzoategui.</li>
+                <li>Profesión: <span className="emphasis">Ingeniero en Sistemas.</span></li>
+                <li><span className="emphasis">Hobbie:</span> resolver problemas lógicos y de Automatizacion.</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-6 mi-5">
+          <div className="about-content">
+          <h2 className="about-heading">
+              Guillermo Herrera
+            </h2>
+            <p className="about-description">
+              <ul className="text-start mx-auto">
+                <li>Edad: <span className="emphasis">32</span></li>
+                <li><span className="emphasis">Lugar de nacimiento:</span> Caracas, Distrito Capital.</li>
+                <li>Profesión: <span className="emphasis">Administrador.</span></li>
+                <li><span className="emphasis">Hobbie:</span> jugar Tenis de Playa.</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+        <div className="col-lg-6">
+          <img
+            src={require(`../../img/${admins[1]}`).default}
+            alt={`Imagen ${admins[1]}`}
+            className="img-fluid about-image rounded"
+            style={{maxHeight: "400px"}}
+          />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-6">
+          <img
+            src={require(`../../img/${admins[2]}`).default}
+            alt={`Imagen ${admins[2]}`}
+            className="img-fluid about-image rounded"
+            style={{maxHeight: "400px"}}
+          />
+        </div>
+        <div className="col-lg-6">
+          <div className="about-content">
+          <h2 className="about-heading">
+              Jesús Barrios
+            </h2>
+            <p className="about-description">
+              <ul className="text-start mx-auto">
+                <li>Edad: <span className="emphasis">29</span></li>
+                <li><span className="emphasis">Ciudad Natal:</span> Caracas, Distrito Capital.</li>
+                <li>Profesión: <span className="emphasis">Diseñador 3D</span></li>
+                <li><span className="emphasis">Hobbie:</span> diseñar y jugar videojuegos.</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-lg-6">
+          <div className="about-content">
+          <h2 className="about-heading">
+              Miguel Gil
+            </h2>
+            <p className="about-description">
+              <ul className="text-start mx-auto">
+                <li>Edad: <span className="emphasis">37</span></li>
+                <li><span className="emphasis">Ciudad Natal:</span> Caracas, Distrito Capital.</li>
+                <li>Profesión: <span className="emphasis">Diseñador Gráfico.</span></li>
+                <li><span className="emphasis">Hobbie:</span> hacer ejercicio con peso libre y el senderismo.</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+        <div className="col-lg-6">
+          <img
+            src={require(`../../img/${admins[3]}`).default}
+            alt={`Imagen ${admins[3]}`}
+            className="img-fluid about-image rounded"
+            style={{maxHeight: "400px"}}
+          />
+        </div>
+      </div>
       <div className="row">
         <div className="col-lg-6">
           <img
@@ -94,8 +202,8 @@ export const About = () => {
       <div className="row">
         <div className="col-lg-6">
           <img
-            src={require(`../../img/${images[1]}`).default}
-            alt={`Imagen ${images[1]}`}
+            src={require(`../../img/${images[2]}`).default}
+            alt={`Imagen ${images[2]}`}
             className="img-fluid about-image rounded"
           />
         </div>
@@ -151,8 +259,8 @@ export const About = () => {
         </div>
         <div className="col-lg-6">
           <img
-            src={require(`../../img/${images[2]}`).default}
-            alt={`Imagen ${images[2]}`}
+            src={require(`../../img/${images[3]}`).default}
+            alt={`Imagen ${images[3]}`}
             className="img-fluid about-image rounded"
           />
         </div>
@@ -160,8 +268,8 @@ export const About = () => {
       <div className="row">
         <div className="col-lg-6">
           <img
-            src={require(`../../img/${images[3]}`).default}
-            alt={`Imagen ${images[3]}`}
+            src={require(`../../img/${images[4]}`).default}
+            alt={`Imagen ${images[4]}`}
             className="img-fluid about-image rounded"
           />
         </div>
@@ -219,8 +327,8 @@ export const About = () => {
         </div>
         <div className="col-lg-6">
           <img
-            src={require(`../../img/${images[4]}`).default}
-            alt={`Imagen ${images[4]}`}
+            src={require(`../../img/${images[5]}`).default}
+            alt={`Imagen ${images[5]}`}
             className="img-fluid about-image rounded"
           />
         </div>

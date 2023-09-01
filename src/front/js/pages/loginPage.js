@@ -30,7 +30,7 @@ const LoginPage = () => {
       if (loginVerificado.token) {
         console.log("hola");
 
-        navigate("/");
+        // navigate("/userPage");
       } else {
         toast.current.show({
           severity: "error",

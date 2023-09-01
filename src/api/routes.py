@@ -137,7 +137,8 @@ def login():
         }), 400
     return jsonify({
         "token" : create_access_token(identity=user_data.id),
-        "user_type" : user_data.user_type
+        "user_type" : user_data.user_type,
+        "user_id" : user_data.id
     }), 201
 
 ## SPORT_CENTER ENDPOINTS

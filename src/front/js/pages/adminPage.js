@@ -3,6 +3,9 @@ import { Context } from "../store/appContext";
 
 import "../../styles/adminPage.css";
 import ComplejoAdminList from "../component/complejoAdminList";
+import CourtAdminList from "../component/courtAdminList";
+import CourtScheduleAdminList from "../component/courtScheduleAdminList";
+import CourtScheduleAdminCalendary from "../component/courtScheduleAdminCalendary";
 
 export const Adminpage = () => {
   const { store, actions } = useContext(Context);
@@ -12,6 +15,9 @@ export const Adminpage = () => {
       <h1>ADMINPAGE</h1>
 
       <ComplejoAdminList />
+      <CourtAdminList />
+      <CourtScheduleAdminList />
+      <CourtScheduleAdminCalendary />
     </div>
   );
 };

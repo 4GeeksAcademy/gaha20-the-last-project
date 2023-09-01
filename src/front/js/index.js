@@ -8,6 +8,7 @@ import "primeicons/primeicons.css";
 import "primeflex/primeflex.css";
 //include your index.scss file into the bundle
 import "../styles/index.css";
+import "moment/locale/es";
 
 //import your own components
 import Layout from "./layout";

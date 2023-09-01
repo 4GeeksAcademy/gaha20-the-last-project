@@ -8,8 +8,8 @@ import { InputNumber } from "primereact/inputnumber";
 import CloudinaryUploadWidget from "./cloudinaryUploadWidget";
 import { Context } from "../store/appContext";
 
-const UserSuperAdminForm = (props) => {
-  const initialUserSuperAdminForm = {
+const ComplejoAdminForm = (props) => {
+  const initialComplejoAdminForm = {
     name: "",
     address: "",
     phone_number: "",
@@ -17,7 +17,7 @@ const UserSuperAdminForm = (props) => {
   const { store, actions } = useContext(Context);
   const { isVisible, setIsVisible } = props;
   const [sportCenterData, setSportCenterData] = useState(
-    initialUserSuperAdminForm
+    initialComplejoAdminForm
   );
   const [image, setImage] = useState(null);
   const [editSportCenter, setEditSportCenter] = useState(null);
@@ -45,7 +45,7 @@ const UserSuperAdminForm = (props) => {
         ...sportCenterData,
         url_img: image,
         // user_id: store.user.id,
-        user_id: 1,
+        user_id: store.userLogged?.user_id,
       });
     } else {
       updateActividadAsociada({
@@ -72,7 +72,7 @@ const UserSuperAdminForm = (props) => {
 
   const clearSelected = () => {
     setIsVisible(false);
-    setSportCenterData(initialUserSuperAdminForm);
+    setSportCenterData(initialComplejoAdminForm);
   };
 
   return (
@@ -132,4 +132,4 @@ const UserSuperAdminForm = (props) => {
   );
 };
 
-export default UserSuperAdminForm;
+export default ComplejoAdminForm;

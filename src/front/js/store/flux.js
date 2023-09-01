@@ -17,6 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
       userLogged: JSON.parse(localStorage.getItem("userLogged")) || null,
       allSportCenter: [],
       allUser: [],
+      allCourt: [],
+      allCourtSchedule: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -250,12 +252,33 @@ const getState = ({ getStore, getActions, setStore }) => {
         const number = 100;
         return Math.floor(Math.random() * number);
       },
-      createCourtSportCenter: async () => {
-        const courtSportCenterData = {
-          name: "Cancha 1",
-          sport: "Futbol",
-          sport_center_id: 1,
-        };
+      allCourtGet: async () => {
+        try {
+          const requestConfig = {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/court",
+            requestConfig
+          );
+          const data = await response.json();
+          setStore({ allCourt: data });
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
+
+      createCourtSportCenter: async (courtSportCenterData) => {
+        // const courtSportCenterData = {
+        //   name: "Cancha 1",
+        //   sport: "Futbol",
+        //   sport_center_id: 1,
+        // };
 
         try {
           const requestConfig = {
@@ -267,6 +290,45 @@ const getState = ({ getStore, getActions, setStore }) => {
           };
           const response = await fetch(
             process.env.BACKEND_URL + "/api/court",
+            requestConfig
+          );
+          const data = await response.json();
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
+      allCourtScheduleGet: async () => {
+        try {
+          const requestConfig = {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/court_schedule",
+            requestConfig
+          );
+          const data = await response.json();
+          setStore({ allCourtSchedule: data });
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
+      createCourtSchedule: async (courtScheduleData) => {
+        try {
+          const requestConfig = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(courtScheduleData),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/court_schedule",
             requestConfig
           );
           const data = await response.json();

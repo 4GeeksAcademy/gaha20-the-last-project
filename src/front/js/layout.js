@@ -78,7 +78,14 @@ const Layout = () => {
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
             </Route>
-            <Route element={<ProtectedRoute isAllowed={!!!userLogged} />}>
+            <Route
+              element={
+                <ProtectedRoute
+                  redirectTo="/UserPage"
+                  isAllowed={!!!userLogged}
+                />
+              }
+            >
               <Route element={<LoginPage />} path="/login" />
               <Route element={<SignupPage />} path="/signup" />
             </Route>

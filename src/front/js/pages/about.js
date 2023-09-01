@@ -32,11 +32,11 @@ export const About = () => {
           <img
             src={require(`../../img/${admins[0]}`).default}
             alt={`Imagen ${admins[0]}`}
-            className="img-fluid about-image rounded"
-            style={{maxWidth: "400px"}}
+            className="img-fluid about-image rounded opacity-75"
+            style={{maxWidth: "600px"}}
           />
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-6 p-6">
           <div className="about-content">
             <h2 className="about-heading">
               Alfredo Castillo
@@ -53,7 +53,7 @@ export const About = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-6">
+        <div className="col-lg-6 p-6">
           <div className="about-content">
           <h2 className="about-heading">
               Guillermo Herrera
@@ -72,8 +72,8 @@ export const About = () => {
           <img
             src={require(`../../img/${admins[1]}`).default}
             alt={`Imagen ${admins[1]}`}
-            className="img-fluid about-image rounded"
-            style={{maxHeight: "400px"}}
+            className="img-fluid about-image rounded opacity-75"
+            style={{maxHeight: "600px"}}
           />
         </div>
       </div>
@@ -82,11 +82,11 @@ export const About = () => {
           <img
             src={require(`../../img/${admins[2]}`).default}
             alt={`Imagen ${admins[2]}`}
-            className="img-fluid about-image rounded"
-            style={{maxHeight: "400px"}}
+            className="img-fluid about-image rounded opacity-75"
+            style={{maxHeight: "600px"}}
           />
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-6 p-6">
           <div className="about-content">
           <h2 className="about-heading">
               Jesús Barrios
@@ -103,7 +103,7 @@ export const About = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-lg-6">
+        <div className="col-lg-6 p-6">
           <div className="about-content">
           <h2 className="about-heading">
               Miguel Gil
@@ -122,8 +122,8 @@ export const About = () => {
           <img
             src={require(`../../img/${admins[3]}`).default}
             alt={`Imagen ${admins[3]}`}
-            className="img-fluid about-image rounded"
-            style={{maxHeight: "400px"}}
+            className="img-fluid about-image rounded opacity-75"
+            style={{maxHeight: "600px"}}
           />
         </div>
       </div>

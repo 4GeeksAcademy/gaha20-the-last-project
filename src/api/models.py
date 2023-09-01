@@ -40,7 +40,11 @@ class Sport_center(db.Model):
     user = db.relationship('User', back_populates='sport_center')
     court = db.relationship('Court', back_populates='sport_center')
 
+    def __repr__(self):
+        return f'<Sport_center {self.name}>'
+
     def serialize(self):
+        courts = [court.serialize() for court in self.courts]
         return{
             "id": self.id,
             "name": self.name,

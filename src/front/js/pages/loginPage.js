@@ -9,6 +9,7 @@ import { Context } from "../store/appContext";
 
 import { useNavigate } from "react-router-dom";
 import { Toast } from "primereact/toast";
+import { UserPage } from "./userPage";
 
 const LoginPage = () => {
   const { store, actions } = useContext(Context);
@@ -22,6 +23,7 @@ const LoginPage = () => {
     { "p-input-filled": "filled" === "filled" }
   );
 
+  
   const handleLogin = async () => {
     try {
       const loginVerificado = await actions.login(email, password);
@@ -129,7 +131,9 @@ const LoginPage = () => {
               <Button
                 label="Ingresar"
                 className="w-full p-3 text-xl"
-                onClick={() => handleLogin()}
+                onClick={() => 
+                  handleLogin()
+                 }
               ></Button>
             </div>
           </div>

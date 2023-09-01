@@ -18,9 +18,10 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { About } from "./pages/about";
 import { Contact } from "./pages/contact";
-import { UserPage } from "./pages/userPage";
+import { CourtPage } from "./pages/canchasPage";
 import { SuperAdminPage } from "./pages/superAdminPage";
 import { Adminpage } from "./pages/adminPage";
+import { UserPage }  from "./pages/userPage";
 import LoginPage from "./pages/loginPage";
 import SignupPage from "./pages/signupPage";
 import { ProtectedRoute } from "./util/ProtectedRoute";
@@ -54,17 +55,18 @@ const Layout = () => {
 
               <Route path="about" element={<About />} />
               <Route element={<Contact />} path="/contact" />
-              <Route element={<UserPage />} path="/userPage" />
+              <Route element={<CourtPage />} path="/canchas" />
+              <Route element={<UserPage />} path="/complejos" />
               <Route
                 path="/adminpage"
                 element={
                   <ProtectedRoute
-                    redirectTo="/accessdeniedpage"
-                    isAllowed={
-                      !!userLogged &&
-                      (userLogged?.user_type === "admin" ||
-                        userLogged?.user_type === "superadmin")
-                    }
+                  redirectTo="/accessdeniedpage"
+                  isAllowed={
+                    !!userLogged &&
+                    (userLogged?.user_type === "admin" ||
+                    userLogged?.user_type === "superadmin")
+                  }
                   >
                     <Adminpage />
                   </ProtectedRoute>

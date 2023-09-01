@@ -1,16 +1,15 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/userPage.css";
-import SportCenterUser from "../component/complejoCardUserPage";
+import CourtUser from "../component/canchasCardUser";
 
-export const UserPage = () => {
+export const CourtPage = () => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="text-center mt-5">
-      <h1>COMPLEJOS</h1>
-        <SportCenterUser/>
+        <h1>CANCHAS</h1>
+        <CourtUser/>
     </div>
   );
 };
-

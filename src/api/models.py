@@ -12,6 +12,7 @@ class User(db.Model):
     salt = db.Column(db.String(120), unique=True, nullable=False)
     user_type = db.Column(db.String(20), unique=False, nullable=False)
     sport_center = db.relationship('Sport_center', back_populates='user')
+    court_schedule = db.relationship('Court_schedule', back_populates='user')
 
     def __repr__(self):
         return f'<User {self.user_name}>'
@@ -69,14 +70,17 @@ class Court(db.Model):
 
 class Court_schedule(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     court_id = db.Column(db.Integer, db.ForeignKey('court.id'))
     start_date = db.Column(db.DateTime, unique=False, nullable=False)
     end_date = db.Column(db.DateTime, unique=False, nullable=False)
     status = db.Column(db.String(120), unique=False, nullable=False)
     court = db.relationship('Court', back_populates='court_schedule')
+    user = db.relationship('User', back_populates='court_schedule')
     def serialize(self):
         return{
             "id": self.id,
+            "user_id": self.user_id,
             "court_id": self.court_id,
             "start_date": self.start_date,
             "end_date": self.end_date,

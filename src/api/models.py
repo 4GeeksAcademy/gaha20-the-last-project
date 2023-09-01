@@ -51,7 +51,8 @@ class Sport_center(db.Model):
             "address": self.address,
             "phone_number": self.phone_number,
             "user_id": self.user_id,
-            "url_img": self.url_img
+            "url_img": self.url_img,
+            "courts": courts
         }
 
 

@@ -21,7 +21,7 @@ import { Contact } from "./pages/contact";
 import { CourtPage } from "./pages/canchasPage";
 import { SuperAdminPage } from "./pages/superAdminPage";
 import { Adminpage } from "./pages/adminPage";
-import { UserPage }  from "./pages/userPage";
+import { UserPage } from "./pages/userPage";
 import LoginPage from "./pages/loginPage";
 import SignupPage from "./pages/signupPage";
 import { ProtectedRoute } from "./util/ProtectedRoute";
@@ -30,6 +30,7 @@ import AccessDeniedPage from "./pages/accessDeniedPage";
 const Layout = () => {
   const { store, actions } = useContext(Context);
   const { userLogged } = store;
+  console.log("userLogged", userLogged);
 
   const basename = process.env.BASENAME || "";
 
@@ -61,12 +62,12 @@ const Layout = () => {
                 path="/adminpage"
                 element={
                   <ProtectedRoute
-                  redirectTo="/accessdeniedpage"
-                  isAllowed={
-                    !!userLogged &&
-                    (userLogged?.user_type === "admin" ||
-                    userLogged?.user_type === "superadmin")
-                  }
+                    redirectTo="/accessdeniedpage"
+                    isAllowed={
+                      !!userLogged &&
+                      (userLogged?.user_type === "admin" ||
+                        userLogged?.user_type === "superadmin")
+                    }
                   >
                     <Adminpage />
                   </ProtectedRoute>
@@ -81,7 +82,7 @@ const Layout = () => {
             <Route
               element={
                 <ProtectedRoute
-                  redirectTo="/UserPage"
+                  redirectTo="/complejos"
                   isAllowed={!!!userLogged}
                 />
               }

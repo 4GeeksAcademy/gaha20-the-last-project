@@ -15,9 +15,8 @@ import { Context } from "../store/appContext";
 
 const CourtScheduleAdminCalendary = () => {
   const { store, actions } = useContext(Context);
-  const { userLogged, allCourtSchedule, allCourt } = store;
-  console.log("allCourtSchedule", allCourtSchedule);
-  console.log("allCourt", allCourt);
+  const { userLogged, allCourtSchedule, allCourt, allUser } = store;
+  console.log("allUser", allUser);
 
   // const { dataPresupuestos } = useContext(DataPresupuestoContext);
   // const { presupuestos } = useContext(PresupuestoContext);
@@ -38,6 +37,7 @@ const CourtScheduleAdminCalendary = () => {
   //   moment.locale('he-il')
   //   schedulerData.setLocaleMoment(moment)
   let auxCronograma = [];
+  const colores = ["#0d6efd", "#08afff", "#dc3545", "#f759ab", "#797d82"];
   const resources = [];
   // eslint-disable-next-line no-unused-vars
   for (let prop1 in allCourt) {
@@ -46,30 +46,22 @@ const CourtScheduleAdminCalendary = () => {
       name: allCourt[prop1].name,
     });
     for (let prop in allCourtSchedule) {
-      console.log(allCourtSchedule[prop].court_id, allCourt[prop1].id);
-      if (
-        allCourtSchedule[prop].court_id === allCourt[prop1].id
-        // &&
-        // allCourtSchedule[prop].fechaInicioDataPresupuesto &&
-        // allCourtSchedule[prop].fechaFinalDataPresupuesto
-      ) {
+      const user = allUser.find(
+        (user) => user.id === allCourtSchedule[prop].user_id
+      );
+      console.log("user", user);
+      if (allCourtSchedule[prop].court_id === allCourt[prop1].id) {
+        const numAleatorio = Math.floor(Math.random() * 5);
+
         auxCronograma.push({
           id: allCourtSchedule[prop].id,
-          title: allCourtSchedule[prop].status,
+          // title: allCourtSchedule[prop].user_id,
+          title: user.first_name + " " + user.last_name,
           start: allCourtSchedule[prop].start_date,
           end: allCourtSchedule[prop].end_date,
           resourceId: `r${prop1}`,
           movable: false,
-          bgColor:
-            prop === "1"
-              ? "#0d6efd"
-              : prop === "2"
-              ? "#08afff"
-              : prop === "3"
-              ? "#dc3545"
-              : allCourtSchedule[prop].buqueCliente === "PDVSA PRIORIDAD"
-              ? "#f759ab"
-              : "#797d82",
+          bgColor: colores[numAleatorio],
         });
       }
     }

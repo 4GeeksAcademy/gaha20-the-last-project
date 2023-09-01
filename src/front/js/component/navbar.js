@@ -28,8 +28,8 @@ export const Navbar = () => {
     {
       label: "User Page",
       icon: MdVerifiedUser,
-      to: "userpage",
-      permissions: ["user", "superadmin"],
+      to: "complejos",
+      permissions: ["user", "admin", "superadmin"],
     },
 
     {
@@ -101,12 +101,12 @@ export const Navbar = () => {
   );
   const startContent = (
     <Link to="/">
-      <img 
-      alt="logo" 
-      src="https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png" 
-      height="40" 
-      className="mr-2 navbar-logo"
-      style={{height: "100px", width: "100px" }}
+      <img
+        alt="logo"
+        src="https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png"
+        height="40"
+        className="mr-2 navbar-logo"
+        style={{ height: "100px", width: "100px" }}
       ></img>
     </Link>
   );

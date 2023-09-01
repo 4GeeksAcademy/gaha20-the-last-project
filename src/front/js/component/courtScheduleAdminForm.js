@@ -22,7 +22,8 @@ const CourtScheduleAdminForm = (props) => {
     status: null,
   };
   const { store, actions } = useContext(Context);
-  const { allCourt } = store;
+  console.log("store", store);
+  const { allCourt, userLogged } = store;
   const { isVisible, setIsVisible, startDate, court } = props;
 
   const [courtScheduleData, setCourtScheduleData] = useState(
@@ -76,6 +77,8 @@ const CourtScheduleAdminForm = (props) => {
         ...courtScheduleData,
         start_date: reservationsSave[0].start_date,
         end_date: reservationsSave[0].end_date,
+        user_id: userLogged.user_id,
+        status: "reservation",
       };
       console.log("courtScheduleDataSave", courtScheduleDataSave);
       actions.createCourtSchedule(courtScheduleDataSave);
@@ -174,7 +177,7 @@ const CourtScheduleAdminForm = (props) => {
                   <label>Sport Center</label>
                 </span>
               </div>
-              <div className="field col-12 md:col-12 mt-3">
+              {/* <div className="field col-12 md:col-12 mt-3">
                 <span className="p-float-label ">
                   <Calendar
                     // className="p-datepicker-today"
@@ -224,7 +227,7 @@ const CourtScheduleAdminForm = (props) => {
                   />
                   <label>status</label>{" "}
                 </span>
-              </div>
+              </div> */}
             </div>
             <div className="field col-12 md:col-4 mt-4">
               <div className="field mt-3">
@@ -247,7 +250,7 @@ const CourtScheduleAdminForm = (props) => {
               </div>
             </div>
             <div className="field col-12 md:col-4 mt-4">
-              {courtSchedule ? (
+              {courtSchedule && dateInicio ? (
                 <SchedulerBlock
                   courtSchedule={courtSchedule}
                   dateInicio={dateInicio}

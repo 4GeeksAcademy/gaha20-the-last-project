@@ -44,10 +44,8 @@ const CourtAdminForm = (props) => {
   };
 
   const saveCourt = () => {
-    console.log("courtData", courtData);
-    const courtSportCenterData = courtData;
     if (!editCourt) {
-      actions.createCourtSportCenter(courtSportCenterData);
+      actions.createCourtSportCenter(courtData);
     } else {
       updateActividadAsociada({
         ...courtData,

@@ -343,6 +343,7 @@ def create_schedule():
     start_date = body.get("start_date", None)
     end_date = body.get("end_date", None)
     status = body.get("status", None)
+    user_id = body.get("user_id", None)
     if court_id is None or start_date is None or end_date is None or status is None:
         return jsonify({
             "message": "Something is missing"
@@ -351,7 +352,8 @@ def create_schedule():
         court_id = court_id,
         start_date = start_date,
         end_date = end_date,
-        status = status
+        status = status,
+        user_id = user_id
         )
     try:
         db.session.add(schedule)

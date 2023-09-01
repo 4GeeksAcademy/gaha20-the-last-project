@@ -9,8 +9,10 @@ import { Toast } from "primereact/toast";
 import CourtScheduleAdminForm from "./courtScheduleAdminForm";
 import { Context } from "../store/appContext";
 import { MdAdd, MdEdit, MdOutlineDeleteOutline } from "react-icons/md";
+import moment from "moment";
 
-const CourtScheduleAdminList = () => {
+const CourtScheduleAdminList = ({ userPage }) => {
+  console.log("userPage", userPage);
   const { store, actions } = useContext(Context);
   console.log("store", store);
   const { userLogged, allCourtSchedule } = store;
@@ -32,6 +34,14 @@ const CourtScheduleAdminList = () => {
       setLoading(false);
     }
   }, [store.allCourtSchedule]);
+  useEffect(() => {
+    if (userPage) {
+      const courtFilter = courtScheduleAdminList.filter(
+        (p) => p.user_id === userLogged.user_id
+      );
+      setCourtScheduleAdminList(courtFilter);
+    }
+  }, [userPage]);
 
   const leftToolbarTemplate = () => {
     return (
@@ -123,7 +133,14 @@ const CourtScheduleAdminList = () => {
   const clearSelected = () => {
     setDeleteCourtScheduleAdminListDialog(false);
   };
-
+  const start_date = (rowData) => {
+    const fecha = moment(rowData.start_date);
+    return fecha.format("DD/MM/YY h:mm a");
+  };
+  const end_date = (rowData) => {
+    const fecha = moment(rowData.end_date);
+    return fecha.format("DD/MM/YY h:mm a");
+  };
   return (
     <div className="m-4 p-3 card">
       <Toast ref={toast} />
@@ -153,8 +170,20 @@ const CourtScheduleAdminList = () => {
         <Column field="id" header="id" />
 
         <Column field="court_id" header="court_id" />
-        <Column field="start_date" header="start_date" />
-        <Column field="end_date" header="end_date" />
+        <Column field="user_id" header="user_id" />
+
+        <Column
+          field="start_date"
+          header="start_date"
+          body={start_date}
+          dataType="date"
+        />
+        <Column
+          field="end_date"
+          header="end_date"
+          body={end_date}
+          dataType="date"
+        />
         <Column field="status" header="status" />
       </DataTable>
 

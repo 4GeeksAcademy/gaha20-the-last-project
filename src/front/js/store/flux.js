@@ -187,7 +187,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             const password = "123456";
             const user_type = "superadmin";
 
-            getActions().signUp(userName, firstName, lastName, email, password); // Call another function and pass userAdmin data
+            getActions().signUp(
+              userName,
+              firstName,
+              lastName,
+              email,
+              password,
+              user_type
+            ); // Call another function and pass userAdmin data
             return userAdmin; // Return userAdmin data
           }
         } catch (error) {
@@ -220,14 +227,21 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Verify your inputs", error);
         }
       },
-      signUp: async (userName, firstName, lastName, email, password) => {
+      signUp: async (
+        userName,
+        firstName,
+        lastName,
+        email,
+        password,
+        user_type
+      ) => {
         const user = {
           user_name: userName,
           first_name: firstName,
           last_name: lastName,
           email: email,
           password: password,
-          user_type: "user",
+          user_type: user_type || "user",
         };
         console.log(user);
         try {
@@ -274,12 +288,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       createCourtSportCenter: async (courtSportCenterData) => {
-        // const courtSportCenterData = {
-        //   name: "Cancha 1",
-        //   sport: "Futbol",
-        //   sport_center_id: 1,
-        // };
-
         try {
           const requestConfig = {
             method: "POST",

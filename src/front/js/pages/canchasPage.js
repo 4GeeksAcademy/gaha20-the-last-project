@@ -8,7 +8,6 @@ export const CourtPage = () => {
 
   return (
     <div className="text-center mt-5">
-        <h1>CANCHAS</h1>
         <CourtUser/>
     </div>
   );

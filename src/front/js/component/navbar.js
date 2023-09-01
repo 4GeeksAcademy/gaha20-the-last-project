@@ -26,10 +26,15 @@ export const Navbar = () => {
     { label: "About", icon: MdOutlineInfo, to: "/about" },
     { label: "Contact", icon: MdContactPhone, to: "/contact" },
     {
-      label: "User Page",
+      label: "Sport Center",
       icon: MdVerifiedUser,
+<<<<<<< Updated upstream
       to: "complejos",
       permissions: ["user", "admin", "superadmin"],
+=======
+      to: "sport_center",
+      permissions: ["user", "superadmin"],
+>>>>>>> Stashed changes
     },
 
     {

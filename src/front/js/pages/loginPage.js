@@ -30,7 +30,11 @@ const LoginPage = () => {
       if (loginVerificado.token) {
         console.log("hola");
 
+<<<<<<< Updated upstream
         // navigate("/userPage");
+=======
+        navigate("/sport_center");
+>>>>>>> Stashed changes
       } else {
         toast.current.show({
           severity: "error",

@@ -56,8 +56,8 @@ const Layout = () => {
 
               <Route path="about" element={<About />} />
               <Route element={<Contact />} path="/contact" />
-              <Route element={<CourtPage />} path="/canchas" />
-              <Route element={<UserPage />} path="/complejos" />
+              <Route element={<UserPage />} path="/sport_center" />
+              <Route element={<CourtPage />} path="/court" />
               <Route
                 path="/adminpage"
                 element={
@@ -79,6 +79,7 @@ const Layout = () => {
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
             </Route>
+<<<<<<< Updated upstream
             <Route
               element={
                 <ProtectedRoute
@@ -87,6 +88,9 @@ const Layout = () => {
                 />
               }
             >
+=======
+            <Route element={<ProtectedRoute redirectTo="/sport_center" isAllowed={!!!userLogged} />}>
+>>>>>>> Stashed changes
               <Route element={<LoginPage />} path="/login" />
               <Route element={<SignupPage />} path="/signup" />
             </Route>

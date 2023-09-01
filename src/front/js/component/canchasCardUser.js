@@ -82,7 +82,7 @@ export default function CourtUser() {
             <div className="flex flex-column align-items-center lg:align-items-start gap-3">
               <div className="flex flex-column gap-1">
                 <div className="text-2xl font-bold text-900">{data.name}</div>
-                <div className="text-700">{data.address}</div>
+                <div className="text-700">{data.sport}</div>
               </div>
               <div className="flex flex-column gap-2">
                 {/* <Rating value={data.rating} readOnly cancel={false}></Rating> */}

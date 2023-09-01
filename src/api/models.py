@@ -44,7 +44,7 @@ class Sport_center(db.Model):
         return f'<Sport_center {self.name}>'
 
     def serialize(self):
-        courts = [court.serialize() for court in self.courts]
+        court = [courts.serialize() for courts in self.court]
         return{
             "id": self.id,
             "name": self.name,
@@ -52,7 +52,7 @@ class Sport_center(db.Model):
             "phone_number": self.phone_number,
             "user_id": self.user_id,
             "url_img": self.url_img,
-            "courts": courts
+            "court": court
         }
 
 

@@ -66,7 +66,8 @@ def get_user(id):
     if user is None:
          return jsonify(""), 404
     return jsonify(user.serialize()), 200
-@api.route("/user/", methods=["GET"])
+
+@api.route("/user", methods=["GET"])
 def get_users():
     all_users = User.query.all()      
     serialized_users = [user.serialize() for user in all_users]
@@ -178,7 +179,7 @@ def create_sport_center():
         }), 500
     return jsonify({}), 201
 
-@api.route("/sport_center/", methods=["GET"])
+@api.route("/sport_center", methods=["GET"])
 def get_centers():
     all_centers = Sport_center.query.all()      
     serialized_centers = [center.serialize() for center in all_centers]

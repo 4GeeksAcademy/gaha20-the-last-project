@@ -95,7 +95,7 @@ export default function SportCenterUser() {
               </div>
             </div>
             <div className="flex flex-row lg:flex-column align-items-center lg:align-items-end gap-4 lg:gap-2">
-              <span className="text-2xl font-semibold">{data.phone_number}</span>
+              <span className="text-2xl font-semibold FaWhatsapp">{data.phone_number}</span>
               {/* <Button
                 icon="pi pi-shopping-cart"
                 label="Add to Cart"

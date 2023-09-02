@@ -125,7 +125,7 @@ export const ComplejoCardHome = () => {
                         // text
                         raised
                         rounded
-                        style={{ width: "75%" }}
+                        style={{ width: "75%"}}
                       />
                     </div>
                   </div>

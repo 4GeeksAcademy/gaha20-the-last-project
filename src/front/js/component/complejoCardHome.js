@@ -122,9 +122,10 @@ export const ComplejoCardHome = () => {
                       <Button
                         label="Book"
                         severity="info"
+                        className="bg-success"
                         raised
                         rounded
-                        style={{ width: "75%", backgroundColor: "rgb(55, 183, 51)", borderColor: "rgb(55, 183, 51)" }}
+                        style={{ width: "75%", borderColor: "rgb(55, 183, 51)" }}
                       />
                     </div>
                   </div>
@@ -137,10 +138,11 @@ export const ComplejoCardHome = () => {
       <Button
         label="All Sport Centers"
         severity="info"
+        className="bg-success"
         // text
         raised
         rounded
-        style={{ width: "30%", backgroundColor: "rgb(55, 183, 51)", borderColor: "rgb(55, 183, 51)"}}
+        style={{ width: "30%", borderColor: "rgb(55, 183, 51)"}}
       />
     </div>
   );

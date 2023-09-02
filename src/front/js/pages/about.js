@@ -27,6 +27,11 @@ export const About = () => {
       id="about"
       className="about-section container-fluid p-0 text-center"
     >
+      <div className="row justify-content-center">
+        <div className="col-lg-6">
+          <h1 className="emphasis" style={{lineHeight: "200px"}}>NUESTRO EQUIPO</h1>
+        </div>
+      </div>
       <div className="row">
         <div className="col-lg-6">
           <img
@@ -133,10 +138,11 @@ export const About = () => {
             src={require(`../../img/${images[0]}`).default}
             alt={`Imagen ${images[0]}`}
             className="img-fluid about-image rounded"
+            style={{maxHeight: "500px"}}
           />
         </div>
         <div className="col-lg-6">
-          <div className="about-content" style={{ padding: "200px" }}>
+          <div className="about-content">
             <h2 className="about-heading">
               Tecnologías usadas en SportsZone Manager
             </h2>
@@ -162,7 +168,7 @@ export const About = () => {
       </div>
       <div className="row">
         <div className="col-lg-6">
-          <div className="about-content" style={{ padding: "200px" }}>
+          <div className="about-content" style={{ padding: "100px" }}>
             <h2 className="about-heading">Acerca de SZM</h2>
             <p className="about-description">
               Somos <span className="emphasis">apasionados por el deporte</span>{" "}
@@ -196,6 +202,7 @@ export const About = () => {
             src={require(`../../img/${images[1]}`).default}
             alt={`Imagen ${images[1]}`}
             className="img-fluid about-image rounded"
+            style={{maxHeight: "500px"}}
           />
         </div>
       </div>
@@ -205,10 +212,11 @@ export const About = () => {
             src={require(`../../img/${images[2]}`).default}
             alt={`Imagen ${images[2]}`}
             className="img-fluid about-image rounded"
+            style={{maxHeight: "500px"}}
           />
         </div>
         <div className="col-lg-6">
-          <div className="about-content" style={{ padding: "200px" }}>
+          <div className="about-content" style={{ padding: "100px" }}>
             <h2 className="about-heading">Misión y Visión de SZM</h2>
             <p className="about-description">
               En <span className="emphasis">SportsZone Manager</span>,
@@ -231,7 +239,7 @@ export const About = () => {
       </div>
       <div className="row">
         <div className="col-lg-6">
-          <div className="about-content" style={{ padding: "200px" }}>
+          <div className="about-content" style={{ padding: "100px" }}>
             <h2 className="about-heading">
               La Plataforma SZM: La Tecnología al Servicio del Deporte
             </h2>
@@ -262,6 +270,7 @@ export const About = () => {
             src={require(`../../img/${images[3]}`).default}
             alt={`Imagen ${images[3]}`}
             className="img-fluid about-image rounded"
+            style={{maxHeight: "500px"}}
           />
         </div>
       </div>
@@ -271,10 +280,11 @@ export const About = () => {
             src={require(`../../img/${images[4]}`).default}
             alt={`Imagen ${images[4]}`}
             className="img-fluid about-image rounded"
+            style={{maxHeight: "500px"}}
           />
         </div>
         <div className="col-lg-6">
-          <div className="about-content" style={{ padding: "200px" }}>
+          <div className="about-content" style={{ padding: "100px" }}>
             <h2 className="about-heading">
               Pasión por el Deporte y la Innovación Tecnológica
             </h2>
@@ -304,7 +314,7 @@ export const About = () => {
       </div>
       <div className="row">
         <div className="col-lg-6">
-          <div className="about-content" style={{ padding: "200px" }}>
+          <div className="about-content" style={{ padding: "100px" }}>
             <h2 className="about-heading">
               En SZM, Te Acompañamos en Tu Trayecto Deportivo
             </h2>
@@ -330,6 +340,7 @@ export const About = () => {
             src={require(`../../img/${images[5]}`).default}
             alt={`Imagen ${images[5]}`}
             className="img-fluid about-image rounded"
+            style={{maxHeight: "500px"}}
           />
         </div>
       </div>

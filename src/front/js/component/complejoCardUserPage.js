@@ -231,7 +231,7 @@ export default function SportCenterUser() {
               <div className="flex flex-column gap-2">
                 {/* <Rating value={data.rating} readOnly cancel={false}></Rating> */}
                 <span className="flex align-items-center gap-2">
-                  <i className="pi pi-tag product-category-icon"></i>
+                  {/* <i className="pi pi-tag product-category-icon"></i> */}
                   {/* <span className="font-semibold">{data.category}</span> */}
                 </span>
               </div>

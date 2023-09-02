@@ -14,7 +14,7 @@ const CourtAdminList = () => {
   const { store, actions } = useContext(Context);
   console.log("store", store);
   const { userLogged, allCourt } = store;
-
+  console.log(allCourt)
   const [courtAdminList, setCourtAdminList] = useState(allCourt);
   const [deleteCourtAdminListDialog, setDeleteCourtAdminListDialog] =
     useState(false);
@@ -147,10 +147,10 @@ const CourtAdminList = () => {
         breakpoint="960px"
       >
         <Column body={actionBodyTemplate}></Column>
-        <Column field="id" header="id" />
+        <Column field="id" header="ID" />
 
-        <Column field="name" header="name" />
-        <Column field="sport" header="sport" />
+        <Column field="name" header="NAME" />
+        <Column field="sport" header="SPORT" />
       </DataTable>
 
       <CourtAdminForm isVisible={isVisible} setIsVisible={setIsVisible} />

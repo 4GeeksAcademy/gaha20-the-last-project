@@ -164,14 +164,14 @@ const ComplejoAdminList = () => {
         breakpoint="960px"
       >
         <Column body={actionBodyTemplate}></Column>
-        <Column field="id" header="id" />
+        <Column field="id" header="ID" />
 
-        <Column field="name" header="name" />
-        <Column field="address" header="address" />
-        <Column field="phone_number" header="phone_number" />
+        <Column field="name" header="NAME" />
+        <Column field="address" header="ADDRESS" />
+        <Column field="phone_number" header="PHONE NUMBER" />
         <Column
           field="url_img"
-          header="url_img"
+          header="PHOTO"
           body={imageFinalBodyTemplate}
         />
       </DataTable>

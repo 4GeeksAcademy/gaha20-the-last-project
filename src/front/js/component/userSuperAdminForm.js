@@ -59,12 +59,12 @@ const UserSuperAdminForm = (props) => {
     <div className="ui-dialog-buttonpane p-clearfix">
       <Button
         label="Cancel"
-        icon="pi pi-times"
+        // icon="pi pi-times"
         onClick={() => clearSelected()}
       />
       <Button
         label="Save"
-        icon="pi pi-check"
+        // icon="pi pi-check"
         onClick={() => saveSportCenter()}
       />
     </div>
@@ -82,7 +82,7 @@ const UserSuperAdminForm = (props) => {
         visible={isVisible}
         breakpoints={{ "960px": "75vw" }}
         style={{ width: "80vw" }}
-        header="Detalles de la ActividadAsociada"
+        header="Sport Center Form"
         footer={dialogFooter}
         onHide={() => clearSelected()}
       >
@@ -93,7 +93,7 @@ const UserSuperAdminForm = (props) => {
               value={sportCenterData.name}
               onChange={(e) => updateField(e.target.value, "name")}
             />
-            <label>name:</label>
+            <label>Name</label>
           </div>
           <br />
           <div className="p-float-label">
@@ -101,23 +101,21 @@ const UserSuperAdminForm = (props) => {
               value={sportCenterData.address}
               onChange={(e) => updateField(e.target.value, "address")}
             />
-            <label>address:</label>
+            <label>Address</label>
           </div>
           <br />
-          <div className="field col-12 md:col-6 mt-3">
-            <span className="p-float-label">
-              <InputText
-                value={sportCenterData.phone_number}
-                onChange={(e) => updateField(e.target.value, "phone_number")}
-              />
-              <label>phone_number:</label>
-            </span>
+          <div className="p-float-label">
+            <InputText
+              value={sportCenterData.phone_number}
+              onChange={(e) => updateField(e.target.value, "phone_number")}
+            />
+            <label>Phone_number</label>
           </div>
+          <br />
           <div>
             <div>
-              <h2>Upload Sport Center Image</h2>
-              <CloudinaryUploadWidget setImage={setImage} />
-
+              <h4>Sport Center Photo</h4>
+              <CloudinaryUploadWidget setImage={setImage}/>
               {image && (
                 <div>
                   <h3>Uploaded Image:</h3>

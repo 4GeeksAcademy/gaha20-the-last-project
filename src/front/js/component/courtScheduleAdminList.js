@@ -167,24 +167,24 @@ const CourtScheduleAdminList = ({ userPage }) => {
         breakpoint="960px"
       >
         <Column body={actionBodyTemplate}></Column>
-        <Column field="id" header="id" />
+        <Column field="id" header="ID" />
 
-        <Column field="court_id" header="court_id" />
-        <Column field="user_id" header="user_id" />
+        <Column field="court_id" header="COURT" />
+        <Column field="user_id" header="USER" />
 
         <Column
           field="start_date"
-          header="start_date"
+          header="START DATE"
           body={start_date}
           dataType="date"
         />
         <Column
           field="end_date"
-          header="end_date"
+          header="END DATE"
           body={end_date}
           dataType="date"
         />
-        <Column field="status" header="status" />
+        <Column field="status" header="STATUS" />
       </DataTable>
 
       <CourtScheduleAdminForm

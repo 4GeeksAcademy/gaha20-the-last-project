@@ -41,7 +41,7 @@ export const Navbar = () => {
 
     {
       label: "SuperAdmin Page",
-      icon: MdSupervisedUserCircle,
+      icon: MdVerifiedUser,
       to: "superadminpage",
       permissions: ["superadmin"],
     },

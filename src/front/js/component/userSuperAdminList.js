@@ -111,7 +111,7 @@ const UserSuperAdminList = () => {
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
       <h5 className="m-0">SportCenterAdminList</h5>
       <span className="block mt-2 md:mt-0 p-input-icon-left">
-        <i className="pi pi-search" />
+        {/* <i className="pi pi-search" /> */}
         <InputText
           type="search"
           onInput={(e) => setGlobalFilter(e.target.value)}
@@ -150,13 +150,13 @@ const UserSuperAdminList = () => {
         breakpoint="960px"
       >
         <Column body={actionBodyTemplate}></Column>
-        <Column field="id" header="id" />
+        <Column field="id" header="ID" />
 
-        <Column field="email" header="email" />
-        <Column field="first_name" header="first_name" />
-        <Column field="last_name" header="last_name" />
-        <Column field="user_name" header="user_name" />
-        <Column field="user_type" header="user_type" />
+        <Column field="email" header="EMAIL" />
+        <Column field="first_name" header="FIRST NAME" />
+        <Column field="last_name" header="LAST NAME" />
+        <Column field="user_name" header="USERNAME" />
+        <Column field="user_type" header="TYPE" />
       </DataTable>
 
       <UserSuperAdminForm isVisible={isVisible} setIsVisible={setIsVisible} />

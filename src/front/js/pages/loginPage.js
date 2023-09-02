@@ -77,10 +77,10 @@ const LoginPage = () => {
                 className="mb-3"
               />
               <div className="text-900 text-3xl font-medium mb-3">
-                Bienvenido, a la APP Sport Zone Manager!
+                Welcome to Sport Zone Manager!
               </div>
               <span className="text-600 font-medium">
-                Inicie secion para continuar
+                LogIn to book your experience!
               </span>
             </div>
 
@@ -125,11 +125,11 @@ const LoginPage = () => {
                   className="font-medium no-underline ml-2 text-right cursor-pointer"
                   style={{ color: "var(--primary-color)" }}
                 >
-                  Olvido Password?
+                  Forgot Password?
                 </a>
               </div>
               <Button
-                label="Ingresar"
+                label="LogIn"
                 className="w-full p-3 text-xl"
                 onClick={() => 
                   handleLogin()

@@ -53,21 +53,21 @@ export default function CourtUser() {
     setProducts(store.allSportCenter);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const getSeverity = (product) => {
-    switch (product.inventoryStatus) {
-      case "INSTOCK":
-        return "success";
+  // const getSeverity = (product) => {
+  //   switch (product.inventoryStatus) {
+  //     case "INSTOCK":
+  //       return "success";
 
-      case "LOWSTOCK":
-        return "warning";
+  //     case "LOWSTOCK":
+  //       return "warning";
 
-      case "OUTOFSTOCK":
-        return "danger";
+  //     case "OUTOFSTOCK":
+  //       return "danger";
 
-      default:
-        return null;
-    }
-  };
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   const itemTemplate = (data) => {
     return (
@@ -110,12 +110,12 @@ export default function CourtUser() {
     );
   };
 
-  const footer = (
-    <Button
-      type="text"
-      onClick={() => ds.current.load()}
-    ><FaAccessibleIcon/></Button>
-  );
+  // const footer = (
+  //   <Button
+  //     type="text"
+  //     onClick={() => ds.current.load()}
+  //   ><FaAccessibleIcon/></Button>
+  // );
 
   return (
     <div className="card">
@@ -125,8 +125,8 @@ export default function CourtUser() {
         itemTemplate={itemTemplate}
         rows={5}
         loader
-        footer={footer}
-        header="Click Load Button at Footer to Load More"
+        // footer={footer}
+        // header="Click Load Button at Footer to Load More"
       />
     </div>
   );

@@ -82,7 +82,7 @@ const Layout = () => {
             <Route
               element={
                 <ProtectedRoute
-                  redirectTo="/complejos"
+                  redirectTo="/sport_center"
                   isAllowed={!!!userLogged}
                 />
               }

@@ -28,13 +28,8 @@ export const Navbar = () => {
     {
       label: "Sport Center",
       icon: MdVerifiedUser,
-<<<<<<< Updated upstream
-      to: "complejos",
-      permissions: ["user", "admin", "superadmin"],
-=======
       to: "sport_center",
-      permissions: ["user", "superadmin"],
->>>>>>> Stashed changes
+      permissions: ["user", "admin", "superadmin"],
     },
 
     {

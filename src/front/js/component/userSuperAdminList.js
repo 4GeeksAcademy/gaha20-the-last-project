@@ -45,7 +45,6 @@ const UserSuperAdminList = () => {
   };
   const saveUserSuperAdminList = (id) => {
     // findUserSuperAdminList(id);
-    console.log("id", id);
     const userType = "admin";
     const idUser = id;
     actions.editUserPutUserType(idUser, userType);

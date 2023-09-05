@@ -17,9 +17,7 @@ import {
 import moment from "moment";
 
 const CourtScheduleAdminList = ({ userPage }) => {
-  console.log("userPage", userPage);
   const { store, actions } = useContext(Context);
-  console.log("store", store);
   const { userLogged, allCourtSchedule } = store;
 
   const [courtScheduleAdminList, setCourtScheduleAdminList] =

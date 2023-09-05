@@ -82,7 +82,6 @@ const CourtScheduleAdminForm = (props) => {
         user_id: userLogged.user_id,
         status: "reservation",
       };
-      console.log("courtScheduleDataSave", courtScheduleDataSave);
       actions.createCourtSchedule(courtScheduleDataSave);
     } else {
       updateActividadAsociada({
@@ -119,7 +118,6 @@ const CourtScheduleAdminForm = (props) => {
     updateField(e.value.id, "court_id");
   };
   const onSportCenterDropdown = (e) => {
-    console.log("e.value", e.value.court);
     if (e.value) {
       // const courtFilterSoportCenter = allCourt.filter(
       //   (p) => p.sport_center_id?.id === e.value.id

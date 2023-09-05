@@ -216,9 +216,7 @@ class calendaryLibreria extends Component {
   render() {
     const { viewModel, mostrarComponenteExterno, startDate, court } =
       this.state;
-    console.log("mostrarComponenteExterno", mostrarComponenteExterno);
-    console.log("viewModel", viewModel);
-    console.log("startDate", startDate);
+
     return (
       <div>
         <div>

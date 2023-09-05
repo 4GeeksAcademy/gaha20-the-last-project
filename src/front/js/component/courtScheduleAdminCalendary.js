@@ -16,7 +16,6 @@ import { Context } from "../store/appContext";
 const CourtScheduleAdminCalendary = () => {
   const { store, actions } = useContext(Context);
   const { userLogged, allCourtSchedule, allCourt, allUser } = store;
-  console.log("allUser", allUser);
 
   // const { dataPresupuestos } = useContext(DataPresupuestoContext);
   // const { presupuestos } = useContext(PresupuestoContext);
@@ -49,7 +48,6 @@ const CourtScheduleAdminCalendary = () => {
       const user = allUser.find(
         (user) => user.id === allCourtSchedule[prop].user_id
       );
-      console.log("user", user);
       if (allCourtSchedule[prop].court_id === allCourt[prop1].id) {
         const numAleatorio = Math.floor(Math.random() * 5);
 

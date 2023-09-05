@@ -17,9 +17,7 @@ import {
 
 const CourtAdminList = () => {
   const { store, actions } = useContext(Context);
-  console.log("store", store);
   const { userLogged, allCourt } = store;
-  console.log(allCourt);
   const [courtAdminList, setCourtAdminList] = useState(allCourt);
   const [deleteCourtAdminListDialog, setDeleteCourtAdminListDialog] =
     useState(false);

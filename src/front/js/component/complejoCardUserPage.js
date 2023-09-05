@@ -9,8 +9,8 @@ import { MdAdd, MdLocationOn } from "react-icons/md";
 
 export default function ComponenteMiguel() {
   const { store, actions } = useContext(Context);
+
   const { allSportCenter } = store;
-  console.log(allSportCenter);
 
   const [sportCenters, setSportCenters] = useState([]);
   const [layout, setLayout] = useState("grid");
@@ -69,15 +69,14 @@ export default function ComponenteMiguel() {
               </div> */}
             </div>
             <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-              {sportCenter.court.map((court, index) => {
-                return (
+              {[...new Set(sportCenter.court.map((sport) => sport.sport))].map(
+                (uniqueSport, index) => (
                   <span className="px-1" key={index}>
-                    {/* {index !== 0 && "| "} */}
-                    {primeraLetraMayuscula(court.sport)}
-                    {/* {court} */}
+                    {index !== 0 && "| "}
+                    {primeraLetraMayuscula(uniqueSport)}
                   </span>
-                );
-              })}
+                )
+              )}
               <Button
                 className="p-button-success mr-2"
                 onClick={() => setIsVisible(true)}
@@ -138,15 +137,14 @@ export default function ComponenteMiguel() {
               disabled={sportCenter.inventoryStatus === "OUTOFSTOCK"}
             ></Button> */}
             <div className="text-600   font-weight-light text-xl d-flex flex-wrap">
-              {sportCenter.court.map((court, index) => {
-                return (
+              {[...new Set(sportCenter.court.map((sport) => sport.sport))].map(
+                (uniqueSport, index) => (
                   <span className="px-1" key={index}>
                     {index !== 0 && "| "}
-                    {primeraLetraMayuscula(court.sport)}
-                    {/* {court} */}
+                    {primeraLetraMayuscula(uniqueSport)}
                   </span>
-                );
-              })}
+                )
+              )}
             </div>
             <div className="text-600   font-weight-light text-xl d-flex flex-wrap">
               <Button

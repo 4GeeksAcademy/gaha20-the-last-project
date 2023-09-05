@@ -1,53 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { Button } from "primereact/button";
 import { MdLocationOn } from "react-icons/md";
 import { Rating } from "primereact/rating";
+import { Context } from "../store/appContext";
 
 export const ComplejoCardHome = () => {
-  const demo = [
-    {
-      name: "Racket Club Lecherias",
-      address: "Lecherias, Venezuela",
-      phone_number: "+584141234567",
-      sport: ["PADEL", "TENIS DE PLAYA", "TENIS"],
-      imagenUrl:
-        "https://i2-prod.derbytelegraph.co.uk/incoming/article7619017.ece/ALTERNATES/s1200/2_BLR_TEM230922PadelCentrejpeg.jpg",
-    },
-    {
-      name: "Complejo Oliver Nunez",
-      address: "Porlamar, Venezuela",
-      phone_number: "+584141234567",
-      sport: ["BASQUET", "NATACION", "GIMNASIO"],
-      imagenUrl:
-        "https://integralspor.com/uploads/blog/detail/162445d5fbd2b893161.jpg",
-    },
-    {
-      name: "BOX295",
-      address: "Pampatar, Venezuela",
-      phone_number: "+584141234567",
-      sport: ["CROSSFIT", "BOXEO", "KARATE"],
-      imagenUrl:
-        "https://www.sinburpeesenmiwod.com/wp-content/uploads/2016/12/como-montar-box-crossfit.jpg",
-    },
-    {
-      name: "Rocky Balboa Sport Gym",
-      address: "Caracas, Venezuela",
-      phone_number: "+584141234567",
-      sport: ["TAEKWONDO", "JUDO", "BOXEO"],
-      imagenUrl:
-        "https://taekwondoestepona.com/wp-content/uploads/2021/06/InstalacionestaekwondoEstepona.jpg",
-    },
-    {
-      name: "Pool Center Los Ruices",
-      address: "Caracas, Venezuela",
-      phone_number: "+584141234567",
-      sport: ["BILLAR", "BOWLING", "GOLF", "VOLEIBOL"],
-      imagenUrl:
-        "https://sportingclubcasino.es/wp-content/uploads/2020/05/2020-05-08-casino-132.jpg",
-    },
-  ];
+  const { store, actions } = useContext(Context);
+  const { allSportCenter } = store;
+  console.log("allSportCenter", allSportCenter);
 
   const complejosAleatorios = (array) => {
+    if (array.length === 0) {
+      return [];
+    }
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
@@ -55,84 +20,91 @@ export const ComplejoCardHome = () => {
     return array;
   };
 
-  const demoAleatorio = complejosAleatorios([...demo]);
+  const allSportCenterAleatorio = complejosAleatorios([...allSportCenter]);
 
   function primeraLetraMayuscula(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
-  const numAleatorio = Math.floor(Math.random() * 5);
+
   return (
     <div className=" bg-black-alpha-10 w-100">
       <div className="container py-8">
         <h1 className="text-center">More liked Sport Centers</h1>
         <div className="grid">
-          {demoAleatorio.map((item, index) => {
-            if (index < 3) {
-              return (
-                <div className="col-12 lg:col-6 xl:col-4" key={index}>
-                  <div className="card mb-0 border-0 cardAPPS">
-                    <span className="cardImagenAdorno position-relative">
-                      <div
-                        className="card-img-top  d-flex flex-column justify-content-end p-2 align-items-start"
-                        style={{
-                          backgroundImage: `url(${item.imagenUrl})`,
-                          height: "200px",
-                          backgroundSize: "cover",
-                        }}
-                      >
-                        <h1 className=" position-relative"> {item.name}</h1>
-                      </div>
-                    </span>
-                    <div className="card-body ">
-                      <div className="flex justify-content-between mb-3">
-                        <div>
-                          <div className="text-700 font-medium text-xl ">
-                            <Rating
-                              value={numAleatorio}
-                              readOnly
-                              cancel={false}
-                              style={{ color: "#ffc107" }}
-                            ></Rating>
-                            <MdLocationOn className="text-green-400" />
-                            {primeraLetraMayuscula(item.address)}
+          {allSportCenterAleatorio &&
+            allSportCenterAleatorio.map((item, index) => {
+              if (index < 3) {
+                const numAleatorio = Math.floor(Math.random() * 5);
+                return (
+                  <div className="col-12 lg:col-6 xl:col-4" key={index}>
+                    <div className="card mb-0 border-0 cardAPPS">
+                      <span className="cardImagenAdorno position-relative">
+                        <div
+                          className="card-img-top  d-flex flex-column justify-content-end p-2 align-items-start"
+                          style={{
+                            backgroundImage: `url(${item.url_img})`,
+                            height: "200px",
+                            backgroundSize: "cover",
+                          }}
+                        >
+                          <h1 className=" position-relative"> {item.name}</h1>
+                        </div>
+                      </span>
+                      <div className="card-body ">
+                        <div className="flex justify-content-between mb-3">
+                          <div>
+                            <div className="text-700 font-medium text-xl ">
+                              <Rating
+                                value={numAleatorio}
+                                readOnly
+                                cancel={false}
+                                style={{ color: "#ffc107" }}
+                              ></Rating>
+                              <MdLocationOn className="text-green-400" />
+                              {primeraLetraMayuscula(item.address)}
+                            </div>
+                          </div>
+
+                          <div
+                            className="flex align-items-center justify-content-center bg-dark border-round"
+                            style={{ width: "2.5rem", height: "2.5rem" }}
+                          >
+                            <i className="fa-solid fa-book"></i>
                           </div>
                         </div>
-
-                        <div
-                          className="flex align-items-center justify-content-center bg-dark border-round"
-                          style={{ width: "2.5rem", height: "2.5rem" }}
-                        >
-                          <i class="fa-solid fa-book"></i>
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-600   font-weight-light text-xl d-flex flex-wrap">
-                          {item.sport.map((sport, index) => {
-                            return (
+                        <div>
+                          <div className="text-600   font-weight-light text-xl d-flex flex-wrap">
+                            {[
+                              ...new Set(
+                                item.court.map((sport) => sport.sport)
+                              ),
+                            ].map((uniqueSport, index) => (
                               <span className="px-1" key={index}>
                                 {index !== 0 && "| "}
-                                {primeraLetraMayuscula(sport)}
+                                {primeraLetraMayuscula(uniqueSport)}
                               </span>
-                            );
-                          })}
+                            ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="card-footer bg-transparent border-0">
-                      <Button
-                        label="Book"
-                        severity="info"
-                        className="bg-success"
-                        raised
-                        rounded
-                        style={{ width: "75%", borderColor: "rgb(55, 183, 51)" }}
-                      />
+                      <div className="card-footer bg-transparent border-0">
+                        <Button
+                          label="Book"
+                          severity="info"
+                          className="bg-success"
+                          raised
+                          rounded
+                          style={{
+                            width: "75%",
+                            borderColor: "rgb(55, 183, 51)",
+                          }}
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            }
-          })}
+                );
+              }
+            })}
         </div>
       </div>
       <Button
@@ -142,7 +114,7 @@ export const ComplejoCardHome = () => {
         // text
         raised
         rounded
-        style={{ width: "30%", borderColor: "rgb(55, 183, 51)"}}
+        style={{ width: "30%", borderColor: "rgb(55, 183, 51)" }}
       />
     </div>
   );

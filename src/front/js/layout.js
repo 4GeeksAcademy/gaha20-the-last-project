@@ -29,7 +29,6 @@ import AccessDeniedPage from "./pages/accessDeniedPage";
 const Layout = () => {
   const { store, actions } = useContext(Context);
   const { userLogged } = store;
-  console.log("userLogged", userLogged);
 
   const basename = process.env.BASENAME || "";
 

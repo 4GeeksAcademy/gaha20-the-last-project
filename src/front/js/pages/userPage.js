@@ -9,7 +9,7 @@ export const UserPage = () => {
 
   return (
     <div className="text-center mt-5">
-      <h1>SPORT CENTERS</h1>
+      <h1>SPORT CENTERS</h1> 
       <SportCenterUser />
       <CourtScheduleAdminList userPage={true} />
     </div>

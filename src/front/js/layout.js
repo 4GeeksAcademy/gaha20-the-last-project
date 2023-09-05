@@ -18,7 +18,6 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { About } from "./pages/about";
 import { Contact } from "./pages/contact";
-import { CourtPage } from "./pages/canchasPage";
 import { SuperAdminPage } from "./pages/superAdminPage";
 import { Adminpage } from "./pages/adminPage";
 import { UserPage } from "./pages/userPage";
@@ -67,8 +66,6 @@ const Layout = () => {
                   </ProtectedRoute>
                 }
               />
-
-              <Route element={<CourtPage />} path="/court" />
               <Route
                 path="/adminpage"
                 element={

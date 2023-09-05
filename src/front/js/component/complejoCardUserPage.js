@@ -78,6 +78,13 @@ export default function ComponenteMiguel() {
                   </span>
                 );
               })}
+              <Button
+                className="p-button-success mr-2"
+                onClick={() => setIsVisible(true)}
+              >
+                <MdAdd />
+                <span className="p-button-text p-ml-2">Booking</span>
+              </Button>
             </div>
           </div>
         </div>

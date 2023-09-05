@@ -13,6 +13,7 @@ import { addLocale } from "primereact/api";
 import moment from "moment";
 import SchedulerBlock from "./sheduleBlock";
 import { Skeleton } from "primereact/skeleton";
+import { MdOutlineCancel, MdSave } from "react-icons/md";
 
 const CourtScheduleAdminForm = (props) => {
   const initialCourtScheduleAdminForm = {
@@ -22,8 +23,7 @@ const CourtScheduleAdminForm = (props) => {
     status: null,
   };
   const { store, actions } = useContext(Context);
-  console.log("store", store);
-  const { allCourt, userLogged } = store;
+  const { allCourt, userLogged, allSportCenter } = store;
   const { isVisible, setIsVisible, startDate, court } = props;
 
   const [courtScheduleData, setCourtScheduleData] = useState(
@@ -39,7 +39,9 @@ const CourtScheduleAdminForm = (props) => {
   const [dateFinal, setDateFinal] = useState(null);
   const [courtSchedule, setCourtSchedule] = useState(null);
   const [reservationsSave, setReservationsSave] = useState([]);
-  console.log("reservationsSave", reservationsSave);
+  const [sportCenterData, setSportCenterData] = useState(allSportCenter);
+
+  const [sportCenterDataDropdown, setSportCenterDataDropdown] = useState(null);
 
   const toast = useRef(null);
 
@@ -71,7 +73,7 @@ const CourtScheduleAdminForm = (props) => {
     });
   };
 
-  const saveCourt = () => {
+  const saveCourtShedule = () => {
     if (!editCourt) {
       const courtScheduleDataSave = {
         ...courtScheduleData,
@@ -92,12 +94,14 @@ const CourtScheduleAdminForm = (props) => {
 
   const dialogFooter = (
     <div className="ui-dialog-buttonpane p-clearfix">
-      <Button
-        label="Cancel"
-        icon="pi pi-times"
-        onClick={() => clearSelected()}
-      />
-      <Button label="Save" icon="pi pi-check" onClick={() => saveCourt()} />
+      <Button onClick={() => clearSelected()} severity="danger">
+        <MdOutlineCancel size={30} />
+        <label>Cancel</label>
+      </Button>
+      <Button onClick={() => saveCourtShedule()}>
+        <MdSave size={30} />
+        <label>Save</label>
+      </Button>
     </div>
   );
 
@@ -110,11 +114,23 @@ const CourtScheduleAdminForm = (props) => {
     updateField(e.value.sportDropdown, "status");
   };
   const onCourtDropdown = (e) => {
-    console.log("e.value", e.value.id);
-    console.log("e.value", e.value.court_schedule);
     setCourtSchedule(e.value.court_schedule);
     setCourtDataDropdown(e.value);
     updateField(e.value.id, "court_id");
+  };
+  const onSportCenterDropdown = (e) => {
+    console.log("e.value", e.value.court);
+    if (e.value) {
+      // const courtFilterSoportCenter = allCourt.filter(
+      //   (p) => p.sport_center_id?.id === e.value.id
+      // );
+      setSportCenterDataDropdown(e.value);
+      // updateField(e.value.id, "sport_center_id");
+      setCourtData(e.value.court);
+    } else {
+      setCourtData(null);
+      setSportCenterDataDropdown(null);
+    }
   };
   const sportDropdown = [
     { sportDropdown: "FULBOL" },
@@ -155,7 +171,7 @@ const CourtScheduleAdminForm = (props) => {
         visible={isVisible}
         breakpoints={{ "960px": "75vw" }}
         style={{ width: "80vw" }}
-        header="Detalles de la ActividadAsociada"
+        header="Create Court Schedule"
         footer={dialogFooter}
         onHide={() => clearSelected()}
       >
@@ -165,16 +181,31 @@ const CourtScheduleAdminForm = (props) => {
               <div className="field col-12 md:col-12 mt-4">
                 <span className="p-float-label ">
                   <Dropdown
-                    value={courtDataDropdown}
-                    options={courtData}
-                    onChange={onCourtDropdown}
+                    value={sportCenterDataDropdown}
+                    options={sportCenterData}
+                    onChange={onSportCenterDropdown}
                     optionLabel="name"
-                    showClear
+                    // showClear
                     filter
                     filterBy="name"
                     // placeholder="Seleccione unidad"
                   />
                   <label>Sport Center</label>
+                </span>
+              </div>
+              <div className="field col-12 md:col-12 mt-4">
+                <span className="p-float-label ">
+                  <Dropdown
+                    value={courtDataDropdown}
+                    options={courtData}
+                    onChange={onCourtDropdown}
+                    optionLabel="name"
+                    // showClear
+                    filter
+                    filterBy="name"
+                    // placeholder="Seleccione unidad"
+                  />
+                  <label>Cour Schedule</label>
                 </span>
               </div>
               {/* <div className="field col-12 md:col-12 mt-3">

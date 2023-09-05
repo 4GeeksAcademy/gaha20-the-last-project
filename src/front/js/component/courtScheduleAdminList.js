@@ -8,7 +8,12 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import CourtScheduleAdminForm from "./courtScheduleAdminForm";
 import { Context } from "../store/appContext";
-import { MdAdd, MdEdit, MdOutlineDeleteOutline } from "react-icons/md";
+import {
+  MdAdd,
+  MdEdit,
+  MdOutlineDeleteOutline,
+  MdOutlineSearch,
+} from "react-icons/md";
 import moment from "moment";
 
 const CourtScheduleAdminList = ({ userPage }) => {
@@ -47,13 +52,15 @@ const CourtScheduleAdminList = ({ userPage }) => {
     return (
       <React.Fragment>
         <div className="my-2 ">
-          <Button
-            className="p-button-success mr-2"
-            onClick={() => setIsVisible(true)}
-          >
-            <MdAdd />
-            <span className="p-button-text p-ml-2">New Court Schedule</span>
-          </Button>
+          {!userPage && (
+            <Button
+              className="p-button-success mr-2"
+              onClick={() => setIsVisible(true)}
+            >
+              <MdAdd />
+              <span className="p-button-text p-ml-2">New Court Schedule</span>
+            </Button>
+          )}
         </div>
       </React.Fragment>
     );
@@ -121,7 +128,7 @@ const CourtScheduleAdminList = ({ userPage }) => {
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
       <h5 className="m-0">CourtScheduleAdminList</h5>
       <span className="block mt-2 md:mt-0 p-input-icon-left">
-        <i className="pi pi-search" />
+        <MdOutlineSearch size={20} />
         <InputText
           type="search"
           onInput={(e) => setGlobalFilter(e.target.value)}

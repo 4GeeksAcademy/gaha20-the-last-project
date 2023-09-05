@@ -8,13 +8,18 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import CourtAdminForm from "./courtAdminForm";
 import { Context } from "../store/appContext";
-import { MdAdd, MdEdit, MdOutlineDeleteOutline } from "react-icons/md";
+import {
+  MdAdd,
+  MdEdit,
+  MdOutlineDeleteOutline,
+  MdOutlineSearch,
+} from "react-icons/md";
 
 const CourtAdminList = () => {
   const { store, actions } = useContext(Context);
   console.log("store", store);
   const { userLogged, allCourt } = store;
-  console.log(allCourt)
+  console.log(allCourt);
   const [courtAdminList, setCourtAdminList] = useState(allCourt);
   const [deleteCourtAdminListDialog, setDeleteCourtAdminListDialog] =
     useState(false);
@@ -106,9 +111,9 @@ const CourtAdminList = () => {
 
   const header = (
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-      <h5 className="m-0">CourtAdminList</h5>
+      <h5 className="m-0">Court List</h5>
       <span className="block mt-2 md:mt-0 p-input-icon-left">
-        <i className="pi pi-search" />
+        <MdOutlineSearch size={20} />
         <InputText
           type="search"
           onInput={(e) => setGlobalFilter(e.target.value)}

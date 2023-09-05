@@ -53,21 +53,21 @@ export default function CourtUser() {
     setProducts(store.allSportCenter);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const getSeverity = (product) => {
-    switch (product.inventoryStatus) {
-      case "INSTOCK":
-        return "success";
+  // const getSeverity = (product) => {
+  //   switch (product.inventoryStatus) {
+  //     case "INSTOCK":
+  //       return "success";
 
-      case "LOWSTOCK":
-        return "warning";
+  //     case "LOWSTOCK":
+  //       return "warning";
 
-      case "OUTOFSTOCK":
-        return "danger";
+  //     case "OUTOFSTOCK":
+  //       return "danger";
 
-      default:
-        return null;
-    }
-  };
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   const itemTemplate = (data) => {
     return (
@@ -82,7 +82,7 @@ export default function CourtUser() {
             <div className="flex flex-column align-items-center lg:align-items-start gap-3">
               <div className="flex flex-column gap-1">
                 <div className="text-2xl font-bold text-900">{data.name}</div>
-                <div className="text-700">{data.address}</div>
+                <div className="text-700">{data.sport}</div>
               </div>
               <div className="flex flex-column gap-2">
                 {/* <Rating value={data.rating} readOnly cancel={false}></Rating> */}
@@ -110,12 +110,12 @@ export default function CourtUser() {
     );
   };
 
-  const footer = (
-    <Button
-      type="text"
-      onClick={() => ds.current.load()}
-    ><FaAccessibleIcon/></Button>
-  );
+  // const footer = (
+  //   <Button
+  //     type="text"
+  //     onClick={() => ds.current.load()}
+  //   ><FaAccessibleIcon/></Button>
+  // );
 
   return (
     <div className="card">
@@ -125,8 +125,8 @@ export default function CourtUser() {
         itemTemplate={itemTemplate}
         rows={5}
         loader
-        footer={footer}
-        header="Click Load Button at Footer to Load More"
+        // footer={footer}
+        // header="Click Load Button at Footer to Load More"
       />
     </div>
   );

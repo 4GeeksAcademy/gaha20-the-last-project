@@ -12,7 +12,7 @@ export const Adminpage = () => {
 
   return (
     <div className="text-center mt-5">
-      <h1>ADMINPAGE</h1>
+      <h1>ADMIN PAGE</h1>
 
       <ComplejoAdminList />
       <CourtAdminList />

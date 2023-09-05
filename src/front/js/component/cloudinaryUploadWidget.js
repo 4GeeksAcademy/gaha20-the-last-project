@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
 import { Button } from "primereact/button";
+import { FaArrowUpFromBracket } from "react-icons/fa6";
 
 const CloudinaryUploadWidget = ({ setImage }) => {
   const cloudName = "dlt3eax5v"; // Reemplaza con tu cloud name
@@ -24,10 +25,11 @@ const CloudinaryUploadWidget = ({ setImage }) => {
   return (
     <button
       id="upload_widget"
-      className="cloudinary-button"
+      className="cloudinary-button text-dark"
+      style={{background: "#8dd0ff"}}
       onClick={() => myWidget.open()}
     >
-      Uploadd aqui
+      <FaArrowUpFromBracket/>
     </button>
   );
 };

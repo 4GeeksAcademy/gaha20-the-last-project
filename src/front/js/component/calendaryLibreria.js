@@ -163,7 +163,7 @@ class calendaryLibreria extends Component {
         endResizable: false,
         movable: false,
         creatable: true,
-        resourceName: "Canchas",
+        resourceName: "COURTS",
         eventItemPopoverEnabled: true,
         views: [
           // {

@@ -79,7 +79,7 @@ const CourtAdminForm = (props) => {
     updateField(e.value.id, "sport_center_id");
   };
   const sportDropdown = [
-    { sportDropdown: "FULBOL" },
+    { sportDropdown: "FUTBOL" },
     { sportDropdown: "BASQUETBOL" },
     { sportDropdown: "PADEL" },
     { sportDropdown: "VOLEIBOL" },

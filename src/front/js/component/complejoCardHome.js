@@ -6,40 +6,40 @@ import { Rating } from "primereact/rating";
 export const ComplejoCardHome = () => {
   const demo = [
     {
-      name: "Complejo 1",
-      address: "lecheria",
+      name: "Racket Club Lecherias",
+      address: "Lecherias, Venezuela",
       phone_number: "+584141234567",
-      sport: ["PADEL", "FUTBOL", "TENIS"],
+      sport: ["PADEL", "TENIS DE PLAYA", "TENIS"],
       imagenUrl:
         "https://i2-prod.derbytelegraph.co.uk/incoming/article7619017.ece/ALTERNATES/s1200/2_BLR_TEM230922PadelCentrejpeg.jpg",
     },
     {
-      name: "Complejo 2",
-      address: "bacelona",
+      name: "Complejo Oliver Nunez",
+      address: "Porlamar, Venezuela",
       phone_number: "+584141234567",
       sport: ["BASQUET", "NATACION", "GIMNASIO"],
       imagenUrl:
         "https://integralspor.com/uploads/blog/detail/162445d5fbd2b893161.jpg",
     },
     {
-      name: "Complejo 3",
-      address: "puerto la cruz",
+      name: "BOX295",
+      address: "Pampatar, Venezuela",
       phone_number: "+584141234567",
       sport: ["CROSSFIT", "BOXEO", "KARATE"],
       imagenUrl:
         "https://www.sinburpeesenmiwod.com/wp-content/uploads/2016/12/como-montar-box-crossfit.jpg",
     },
     {
-      name: "Complejo 4",
-      address: "piritu",
+      name: "Rocky Balboa Sport Gym",
+      address: "Caracas, Venezuela",
       phone_number: "+584141234567",
-      sport: ["TAEKWONDO", "JUDO", "TENIS DE MESA"],
+      sport: ["TAEKWONDO", "JUDO", "BOXEO"],
       imagenUrl:
         "https://taekwondoestepona.com/wp-content/uploads/2021/06/InstalacionestaekwondoEstepona.jpg",
     },
     {
-      name: "Complejo 5",
-      address: "clarines",
+      name: "Pool Center Los Ruices",
+      address: "Caracas, Venezuela",
       phone_number: "+584141234567",
       sport: ["BILLAR", "BOWLING", "GOLF", "VOLEIBOL"],
       imagenUrl:
@@ -64,7 +64,7 @@ export const ComplejoCardHome = () => {
   return (
     <div className=" bg-black-alpha-10 w-100">
       <div className="container py-8">
-        <h3 className="text-700 text-center mb-5">More liked Sport Centers</h3>
+        <h1 className="text-center">More liked Sport Centers</h1>
         <div className="grid">
           {demoAleatorio.map((item, index) => {
             if (index < 3) {
@@ -99,10 +99,10 @@ export const ComplejoCardHome = () => {
                         </div>
 
                         <div
-                          className="flex align-items-center justify-content-center bg-blue-100 border-round"
+                          className="flex align-items-center justify-content-center bg-dark border-round"
                           style={{ width: "2.5rem", height: "2.5rem" }}
                         >
-                          <i className="pi pi-shopping-cart text-blue-500 text-xl" />
+                          <i class="fa-solid fa-book"></i>
                         </div>
                       </div>
                       <div>
@@ -122,10 +122,10 @@ export const ComplejoCardHome = () => {
                       <Button
                         label="Book"
                         severity="info"
-                        // text
+                        className="bg-success"
                         raised
                         rounded
-                        style={{ width: "75%"}}
+                        style={{ width: "75%", borderColor: "rgb(55, 183, 51)" }}
                       />
                     </div>
                   </div>
@@ -138,10 +138,11 @@ export const ComplejoCardHome = () => {
       <Button
         label="All Sport Centers"
         severity="info"
+        className="bg-success"
         // text
         raised
         rounded
-        style={{ width: "75%" }}
+        style={{ width: "30%", borderColor: "rgb(55, 183, 51)"}}
       />
     </div>
   );

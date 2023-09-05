@@ -26,9 +26,9 @@ export const Navbar = () => {
     { label: "About", icon: MdOutlineInfo, to: "/about" },
     { label: "Contact", icon: MdContactPhone, to: "/contact" },
     {
-      label: "User Page",
+      label: "Sport Center",
       icon: MdVerifiedUser,
-      to: "complejos",
+      to: "sport_center",
       permissions: ["user", "admin", "superadmin"],
     },
 
@@ -41,7 +41,7 @@ export const Navbar = () => {
 
     {
       label: "SuperAdmin Page",
-      icon: MdSupervisedUserCircle,
+      icon: MdVerifiedUser,
       to: "superadminpage",
       permissions: ["superadmin"],
     },

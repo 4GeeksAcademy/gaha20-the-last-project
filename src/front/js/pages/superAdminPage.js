@@ -9,7 +9,7 @@ export const SuperAdminPage = () => {
 
   return (
     <div className="text-center mt-5">
-      <h1>SUPERADMINPAGE</h1>
+      <h1>SUPERADMIN PAGE</h1>
       <UserSuperAdminList />
     </div>
   );

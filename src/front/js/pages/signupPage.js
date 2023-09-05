@@ -70,7 +70,7 @@ const SignupPage = () => {
                 className="mb-3"
               />
               <div className="text-900 text-3xl font-medium mb-3">
-                <h1>Welcome to SportsZone Manager!</h1> Create a User
+                <h1>Welcome to SportsZone Manager!</h1> Create an User
               </div>
               <span className="text-600 font-medium">
                 All inputs are needed

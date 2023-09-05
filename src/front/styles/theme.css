@@ -149,6 +149,7 @@ body {
   --green-700: #125f3b;
   --green-800: #0e4a2e;
   --green-900: #0a3622;
+  --red-400: #ea1b24;
   --yellow-50: #fffcf3;
   --yellow-100: #fff0c3;
   --yellow-200: #ffe494;
@@ -1577,7 +1578,7 @@ body {
 }
 
 .p-rating .p-rating-icon {
-  color: rgba(255, 255, 255, 0.87);
+  color: rgba(46 184 52);
   margin-left: 0.5rem;
   transition: background-color 0.15s, border-color 0.15s, box-shadow 0.15s;
   font-size: 1.143rem;

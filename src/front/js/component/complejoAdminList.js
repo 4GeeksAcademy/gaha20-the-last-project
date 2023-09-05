@@ -8,7 +8,12 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import ComplejoAdminForm from "./complejoAdminForm";
 import { Context } from "../store/appContext";
-import { MdAdd, MdEdit, MdOutlineDeleteOutline } from "react-icons/md";
+import {
+  MdAdd,
+  MdEdit,
+  MdOutlineDeleteOutline,
+  MdOutlineSearch,
+} from "react-icons/md";
 
 const ComplejoAdminList = () => {
   const { store, actions } = useContext(Context);
@@ -105,9 +110,9 @@ const ComplejoAdminList = () => {
 
   const header = (
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-      <h5 className="m-0">SportCenterAdminList</h5>
+      <h5 className="m-0">Sport Center List</h5>
       <span className="block mt-2 md:mt-0 p-input-icon-left">
-        <i className="pi pi-search" />
+        <MdOutlineSearch size={20} />
         <InputText
           type="search"
           onInput={(e) => setGlobalFilter(e.target.value)}
@@ -163,17 +168,13 @@ const ComplejoAdminList = () => {
         responsiveLayout="scroll"
         breakpoint="960px"
       >
-        <Column body={actionBodyTemplate}></Column>
-        <Column field="id" header="ID" />
+        {/* <Column body={actionBodyTemplate}></Column> */}
+        {/* <Column field="id" header="ID" /> */}
 
         <Column field="name" header="NAME" />
         <Column field="address" header="ADDRESS" />
         <Column field="phone_number" header="PHONE NUMBER" />
-        <Column
-          field="url_img"
-          header="PHOTO"
-          body={imageFinalBodyTemplate}
-        />
+        <Column field="url_img" header="PHOTO" body={imageFinalBodyTemplate} />
       </DataTable>
 
       <ComplejoAdminForm isVisible={isVisible} setIsVisible={setIsVisible} />

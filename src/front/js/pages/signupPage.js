@@ -20,7 +20,7 @@ const SignupPage = () => {
   const navigate = useNavigate();
 
   const containerClassName = classNames(
-    "surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden",
+    "surface-ground flex align-items-center justify-content-center  overflow-hidden",
     { "p-input-filled": "filled" === "filled" }
   );
   const handleSignUp = async () => {
@@ -47,7 +47,10 @@ const SignupPage = () => {
     }
   };
   return (
-    <div className={containerClassName}>
+    <div
+      className={containerClassName}
+      style={{ width: "80vw", margin: "auto" }}
+    >
       <Toast ref={toast} />
       <div className="flex flex-column align-items-center justify-content-center">
         <div
@@ -69,7 +72,10 @@ const SignupPage = () => {
                 height="200"
                 className="mb-3"
               />
-              <div className="text-900 text-3xl font-medium mb-3">
+              <div
+                className="text-900 text-3xl font-medium mb-3"
+                style={{ marginTop: "-30px" }}
+              >
                 <h1>Welcome to SportsZone Manager!</h1> Create an User
               </div>
               <span className="text-600 font-medium">
@@ -77,86 +83,92 @@ const SignupPage = () => {
               </span>
             </div>
 
-            <div>
-              <label
-                htmlFor="user_name1"
-                className="block text-900 text-xl font-medium mb-2"
-              >
-                User Name
-              </label>
-              <InputText
-                inputid="user_name1"
-                type="text"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                placeholder="User Name"
-                className="w-full md:w-40rem mb-5"
-                style={{ padding: "1rem" }}
-              />
-
-              <label
-                htmlFor="first_name1"
-                className="block text-900 text-xl font-medium mb-2"
-              >
-                First Name
-              </label>
-              <InputText
-                inputid="first_name1"
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                placeholder="First Name"
-                className="w-full md:w-40rem mb-5"
-                style={{ padding: "1rem" }}
-              />
-
-              <label
-                htmlFor="last_name1"
-                className="block text-900 text-xl font-medium mb-2"
-              >
-                Last Name
-              </label>
-              <InputText
-                inputid="last_name1"
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                placeholder="First Name"
-                className="w-full md:w-40rem mb-5"
-                style={{ padding: "1rem" }}
-              />
-
-              <label
-                htmlFor="email1"
-                className="block text-900 text-xl font-medium mb-2"
-              >
-                Email
-              </label>
-              <InputText
-                inputid="email1"
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email address"
-                className="w-full md:w-40rem mb-5"
-                style={{ padding: "1rem" }}
-              />
-
-              <label
-                htmlFor="password1"
-                className="block text-900 font-medium text-xl mb-2"
-              >
-                Password
-              </label>
-              <Password
-                inputid="password1"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-                toggleMask
-                className="w-full mb-5"
-                inputClassName="w-full p-3 md:w-40rem"
-              ></Password>
+            <div className="formgrid grid">
+              <div className="col-12 md:col-6">
+                <label
+                  htmlFor="user_name1"
+                  className="block text-900 text-xl font-medium "
+                >
+                  User Name
+                </label>
+                <InputText
+                  inputid="user_name1"
+                  type="text"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  placeholder="User Name"
+                  className="w-full md:w-40rem mb-3"
+                  style={{ padding: "1rem" }}
+                />
+              </div>
+              <div className="col-12 md:col-6">
+                <label
+                  htmlFor="first_name1"
+                  className="block text-900 text-xl font-medium"
+                >
+                  First Name
+                </label>
+                <InputText
+                  inputid="first_name1"
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="First Name"
+                  className="w-full md:w-40rem mb-3"
+                  style={{ padding: "1rem" }}
+                />
+              </div>
+              <div className="col-12 md:col-6">
+                <label
+                  htmlFor="last_name1"
+                  className="block text-900 text-xl font-medium"
+                >
+                  Last Name
+                </label>
+                <InputText
+                  inputid="last_name1"
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="First Name"
+                  className="w-full md:w-40rem mb-3"
+                  style={{ padding: "1rem" }}
+                />
+              </div>
+              <div className="col-12 md:col-6">
+                <label
+                  htmlFor="email1"
+                  className="block text-900 text-xl font-medium"
+                >
+                  Email
+                </label>
+                <InputText
+                  inputid="email1"
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email address"
+                  className="w-full md:w-40rem mb-3"
+                  style={{ padding: "1rem" }}
+                />
+              </div>
+              <div className="col-12 md:col-6">
+                <label
+                  htmlFor="password1"
+                  className="block text-900 font-medium text-xl"
+                >
+                  Password
+                </label>
+                <Password
+                  inputid="password1"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Password"
+                  toggleMask
+                  className="w-full mb-5"
+                  inputClassName="w-full p-3 md:w-40rem"
+                ></Password>
+              </div>
 
               <div className="flex align-items-center justify-content-between mb-5 gap-5">
                 <div className="flex align-items-center">

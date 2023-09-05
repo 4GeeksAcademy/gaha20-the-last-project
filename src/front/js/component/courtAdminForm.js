@@ -8,6 +8,7 @@ import { InputNumber } from "primereact/inputnumber";
 import CloudinaryUploadWidget from "./cloudinaryUploadWidget";
 import { Context } from "../store/appContext";
 import { Dropdown } from "primereact/dropdown";
+import { MdOutlineCancel, MdSave } from "react-icons/md";
 
 const CourtAdminForm = (props) => {
   const initialCourtAdminForm = {
@@ -56,25 +57,28 @@ const CourtAdminForm = (props) => {
 
   const dialogFooter = (
     <div className="ui-dialog-buttonpane p-clearfix">
-      <Button
-        label="Cancel"
-        icon="pi pi-times"
-        onClick={() => clearSelected()}
-      />
-      <Button label="Save" icon="pi pi-check" onClick={() => saveCourt()} />
+      <Button onClick={() => clearSelected()} severity="danger">
+        <MdOutlineCancel size={30} />
+        <label>Cancel</label>
+      </Button>
+      <Button onClick={() => saveCourt()}>
+        <MdSave size={30} />
+        <label>Save</label>
+      </Button>
     </div>
   );
 
   const clearSelected = () => {
     setIsVisible(false);
     setCourtData(initialCourtAdminForm);
+    setSportCenterDataDropdown(null);
+    setSportCenterData(null);
   };
   const onSportDropdown = (e) => {
     setSportDataDropdown(e.value);
     updateField(e.value.sportDropdown, "sport");
   };
   const onSportCenterDropdown = (e) => {
-    console.log("e.value", e.value.id);
     setSportCenterDataDropdown(e.value);
     updateField(e.value.id, "sport_center_id");
   };
@@ -117,51 +121,52 @@ const CourtAdminForm = (props) => {
         visible={isVisible}
         breakpoints={{ "960px": "75vw" }}
         style={{ width: "80vw" }}
-        header="Detalles de la ActividadAsociada"
+        header="Create Court"
         footer={dialogFooter}
         onHide={() => clearSelected()}
       >
         <div className="p-grid p-fluid">
-          <div className="field col-12 md:col-6 mt-4">
-            <span className="p-float-label ">
-              <Dropdown
-                value={sportCenterDataDropdown}
-                options={sportCenterData}
-                onChange={onSportCenterDropdown}
-                optionLabel="name"
-                showClear
-                filter
-                filterBy="name"
-                // placeholder="Seleccione unidad"
-              />
-              <label>Sport Center</label>
-            </span>
-          </div>
-          <div className="p-float-label">
-            <InputText
-              value={courtData.name}
-              onChange={(e) => updateField(e.target.value, "name")}
-            />
-            <label>name:</label>
-          </div>
+          <div className="formgrid grid">
+            <div className="field col-12 md:col-6 mt-4">
+              <span className="p-float-label ">
+                <Dropdown
+                  value={sportCenterDataDropdown}
+                  options={sportCenterData}
+                  onChange={onSportCenterDropdown}
+                  optionLabel="name"
+                  showClear
+                  filter
+                  filterBy="name"
+                />
+                <label>Sport Center</label>
+              </span>
+            </div>
+            <div className="field col-12 md:col-6 mt-4">
+              <span className="p-float-label ">
+                <InputText
+                  value={courtData.name}
+                  onChange={(e) => updateField(e.target.value, "name")}
+                />
+                <label>name:</label>
+              </span>
+            </div>
 
-          <div className="field col-12 md:col-6 mt-4">
-            <span className="p-float-label ">
-              <Dropdown
-                value={sportDataDropdown}
-                options={sportDropdown}
-                onChange={onSportDropdown}
-                optionLabel="sportDropdown"
-                showClear
-                filter
-                filterBy="sportDropdown"
-                // placeholder="Seleccione unidad"
-              />
-              <label>Sport</label>{" "}
-            </span>
+            <div className="field col-12 md:col-6 mt-4">
+              <span className="p-float-label ">
+                <Dropdown
+                  value={sportDataDropdown}
+                  options={sportDropdown}
+                  onChange={onSportDropdown}
+                  optionLabel="sportDropdown"
+                  showClear
+                  filter
+                  filterBy="sportDropdown"
+                  // placeholder="Seleccione unidad"
+                />
+                <label>Sport</label>{" "}
+              </span>
+            </div>
           </div>
-
-          <div></div>
         </div>
       </Dialog>
     </div>

@@ -135,6 +135,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             requestConfig
           );
           const data = await response.json();
+          if (data) {
+            getActions().allSportCenterGet();
+          }
           return data;
         } catch (error) {
           console.log("Verify your inputs", error);
@@ -301,6 +304,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             requestConfig
           );
           const data = await response.json();
+          if (data) {
+            getActions().allCourtGet();
+          }
           return data;
         } catch (error) {
           console.log("Verify your inputs", error);
@@ -340,6 +346,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             requestConfig
           );
           const data = await response.json();
+          if (data) {
+            getActions().allCourtScheduleGet();
+          }
           return data;
         } catch (error) {
           console.log("Verify your inputs", error);

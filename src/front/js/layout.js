@@ -56,7 +56,18 @@ const Layout = () => {
 
               <Route path="about" element={<About />} />
               <Route element={<Contact />} path="/contact" />
-              <Route element={<UserPage />} path="/sport_center" />
+              <Route
+                path="/sport_center"
+                element={
+                  <ProtectedRoute
+                    redirectTo="/accessdeniedpage"
+                    isAllowed={!!userLogged}
+                  >
+                    <UserPage />
+                  </ProtectedRoute>
+                }
+              />
+
               <Route element={<CourtPage />} path="/court" />
               <Route
                 path="/adminpage"
@@ -73,23 +84,37 @@ const Layout = () => {
                   </ProtectedRoute>
                 }
               />
-              <Route element={<SuperAdminPage />} path="/superadminpage" />
+              <Route
+                path="/superadminpage"
+                element={
+                  <ProtectedRoute
+                    redirectTo="/accessdeniedpage"
+                    isAllowed={
+                      !!userLogged && userLogged?.user_type === "superadmin"
+                    }
+                  >
+                    <SuperAdminPage />
+                  </ProtectedRoute>
+                }
+              />
+              {/* <Route element={<SuperAdminPage />} path="/superadminpage" /> */}
               <Route element={<AccessDeniedPage />} path="/accessdeniedpage" />
 
               <Route element={<Demo />} path="/demo" />
               <Route element={<Single />} path="/single/:theid" />
+              <Route
+                element={
+                  <ProtectedRoute
+                    redirectTo="/sport_center"
+                    isAllowed={!!!userLogged}
+                  />
+                }
+              >
+                <Route element={<LoginPage />} path="/login" />
+                <Route element={<SignupPage />} path="/signup" />
+              </Route>
             </Route>
-            <Route
-              element={
-                <ProtectedRoute
-                  redirectTo="/sport_center"
-                  isAllowed={!!!userLogged}
-                />
-              }
-            >
-              <Route element={<LoginPage />} path="/login" />
-              <Route element={<SignupPage />} path="/signup" />
-            </Route>
+
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

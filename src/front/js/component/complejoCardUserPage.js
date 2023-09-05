@@ -40,7 +40,7 @@ export default function ComponenteMiguel() {
     const numAleatorio = Math.floor(Math.random() * 5);
     return (
       <div className="col-12">
-        <div className="flex flex-column xl:flex-row xl:align-items-start p-4 gap-4">
+        <div className="flex flex-column xl:flex-row xl:align-items-start p-1 gap-1">
           <img
             className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round"
             src={sportCenter.url_img}

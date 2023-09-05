@@ -8,9 +8,10 @@ export const UserPage = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="text-center mt-5">
-      <h1>SPORT CENTERS</h1> 
+    <div className="text-center">
+      <div className="mt-5 me-4 ms-4">
       <SportCenterUser />
+      </div>
       <CourtScheduleAdminList userPage={true} />
     </div>
   );

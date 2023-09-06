@@ -225,6 +225,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await response.json();
           console.log(data);
           // setStore({ allUser: data });
+          if (data) {
+            getActions().allUserGet();
+          }
           return data;
         } catch (error) {
           console.log("Verify your inputs", error);

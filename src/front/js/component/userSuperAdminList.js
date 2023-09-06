@@ -8,14 +8,22 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import UserSuperAdminForm from "./userSuperAdminForm";
 import { Context } from "../store/appContext";
-import { MdAdd, MdEdit, MdOutlineDeleteOutline } from "react-icons/md";
+import {
+  MdAdd,
+  MdEdit,
+  MdOutlineCancel,
+  MdOutlineDeleteOutline,
+  MdSave,
+} from "react-icons/md";
+import { Dropdown } from "primereact/dropdown";
 
 const UserSuperAdminList = () => {
   const { store, actions } = useContext(Context);
   const { userLogged, allUser } = store;
-  const [complejoAdminList, setUserSuperAdminList] = useState(allUser);
-  const [deleteUserSuperAdminListDialog, setDeleteUserSuperAdminListDialog] =
-    useState(false);
+  const [userSuperAdminList, setUserSuperAdminList] = useState(allUser);
+  const [editTyperUserSuperAdminList, setEditTyperUserSuperAdminList] =
+    useState(allUser);
+  const [editUserTypeDialog, setEditUserTypeDialog] = useState(false);
   const [globalFilter, setGlobalFilter] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -43,17 +51,20 @@ const UserSuperAdminList = () => {
       </React.Fragment>
     );
   };
-  const saveUserSuperAdminList = (id) => {
+  const saveUserSuperAdminList = (user) => {
     // findUserSuperAdminList(id);
-    const userType = "admin";
-    const idUser = id;
+    const userType =
+      user.user_type === "user"
+        ? "admin"
+        : user.user_type === "admin"
+        ? "superadmin"
+        : "user";
+    const idUser = user.id;
     actions.editUserPutUserType(idUser, userType);
-    actions.createCourtSportCenter();
-    setIsVisible(true);
   };
-  const eliminarUserSuperAdminList = () => {
-    deleteUserSuperAdminList(complejoAdminList.id);
-    setDeleteUserSuperAdminListDialog(false);
+  const editTypeUser = () => {
+    saveUserSuperAdminList(editTyperUserSuperAdminList);
+    setEditUserTypeDialog(false);
     toast.current.show({
       severity: "error",
       summary: "Eliminar",
@@ -62,26 +73,26 @@ const UserSuperAdminList = () => {
     });
   };
 
-  const deleteUserSuperAdminListDialogFooter = (
+  const editTypeUserDialogFooter = (
     <>
       <Button
-        label="No"
-        icon="pi pi-times"
         className="p-button-text"
-        onClick={() => setDeleteUserSuperAdminListDialog(false)}
-      />
-      <Button
-        label="Yes"
-        icon="pi pi-check"
-        className="p-button-text"
-        onClick={() => eliminarUserSuperAdminList()}
-      />
+        severity="danger"
+        onClick={() => setEditUserTypeDialog(false)}
+      >
+        <MdOutlineCancel size={30} />
+        <label>Cancel</label>
+      </Button>
+      <Button className="p-button-text" onClick={() => editTypeUser()}>
+        <MdSave size={30} />
+        <label>Save</label>
+      </Button>
     </>
   );
 
-  const confirmDeleteUserSuperAdminList = (complejoAdminLists) => {
-    setUserSuperAdminList(complejoAdminLists);
-    setDeleteUserSuperAdminListDialog(true);
+  const confirmEditTypeUser = (rowData) => {
+    setEditTyperUserSuperAdminList(rowData);
+    setEditUserTypeDialog(true);
   };
 
   const actionBodyTemplate = (rowData) => {
@@ -89,26 +100,17 @@ const UserSuperAdminList = () => {
       <div className="actions">
         <Button
           className="p-button-rounded p-button-success mr-2"
-          onClick={() => saveUserSuperAdminList(rowData.id)}
+          onClick={() => confirmEditTypeUser(rowData)}
         >
           <MdEdit />
         </Button>
-
-        {userLogged.user_type === "SUPERADMIN" && (
-          <Button
-            className="p-button-rounded  p-button-danger"
-            onClick={() => confirmDeleteUserSuperAdminList(rowData)}
-          >
-            <MdOutlineDeleteOutline />
-          </Button>
-        )}
       </div>
     );
   };
 
   const header = (
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-      <h5 className="m-0">SportCenterAdminList</h5>
+      <h5 className="m-0">User list</h5>
       <span className="block mt-2 md:mt-0 p-input-icon-left">
         {/* <i className="pi pi-search" /> */}
         <InputText
@@ -120,17 +122,16 @@ const UserSuperAdminList = () => {
     </div>
   );
   const clearSelected = () => {
-    setDeleteUserSuperAdminListDialog(false);
+    setEditUserTypeDialog(false);
   };
 
   return (
     <div className="m-4 p-3 card">
       <Toast ref={toast} />
-      <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
 
       <DataTable
         ref={dt}
-        value={complejoAdminList}
+        value={userSuperAdminList}
         dataKey="id"
         paginator
         rows={10}
@@ -161,11 +162,11 @@ const UserSuperAdminList = () => {
       <UserSuperAdminForm isVisible={isVisible} setIsVisible={setIsVisible} />
 
       <Dialog
-        visible={deleteUserSuperAdminListDialog}
+        visible={editUserTypeDialog}
         style={{ width: "450px" }}
         header="Confirm"
         modal
-        footer={deleteUserSuperAdminListDialogFooter}
+        footer={editTypeUserDialogFooter}
         onHide={() => clearSelected()}
       >
         <div className="flex align-items-center justify-content-center">
@@ -173,10 +174,17 @@ const UserSuperAdminList = () => {
             className="pi pi-exclamation-triangle mr-3"
             style={{ fontSize: "2rem" }}
           />
-          {complejoAdminList && (
+          {editTyperUserSuperAdminList && (
             <span>
-              Are you sure about delete SportCenterAdminList?{" "}
-              <b>{complejoAdminList.nombreUserSuperAdminList}</b>?
+              Are you sure to assign the role{" "}
+              <b>
+                {editTyperUserSuperAdminList.user_type === "user"
+                  ? "admin"
+                  : editTyperUserSuperAdminList.user_type === "admin"
+                  ? "superadmin"
+                  : "user"}
+              </b>{" "}
+              to the user <b>{editTyperUserSuperAdminList.email}</b>?
             </span>
           )}
         </div>

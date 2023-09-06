@@ -38,7 +38,7 @@ export const About = () => {
             src={require(`../../img/${admins[0]}`).default}
             alt={`Imagen ${admins[0]}`}
             className="img-fluid about-image rounded opacity-75"
-            style={{maxWidth: "600px"}}
+            style={{maxWidth: "450px"}}
           />
         </div>
         <div className="col-lg-6 p-6">
@@ -128,11 +128,11 @@ export const About = () => {
             src={require(`../../img/${admins[3]}`).default}
             alt={`Imagen ${admins[3]}`}
             className="img-fluid about-image rounded opacity-75"
-            style={{maxHeight: "600px"}}
+            style={{maxHeight: "450px"}}
           />
         </div>
       </div>
-      <div className="row">
+      <div className="row pt-8">
         <div className="col-lg-6">
           <img
             src={require(`../../img/${images[0]}`).default}

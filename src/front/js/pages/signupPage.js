@@ -49,7 +49,7 @@ const SignupPage = () => {
   return (
     <div
       className={containerClassName}
-      style={{ width: "80vw", margin: "auto" }}
+      style={{ width: "60vw", margin: "auto" }}
     >
       <Toast ref={toast} />
       <div className="flex flex-column align-items-center justify-content-center">

@@ -129,7 +129,7 @@ const LoginPage = () => {
                 </a>
               </div>
               <Button
-                label="LogIn"
+                label="Log In"
                 className="w-full p-3 text-xl"
                 onClick={() => 
                   handleLogin()

@@ -7,7 +7,7 @@ export const Contact = () => {
   // const { store, actions } = useContext(Context);
 
   return (
-    <section className="ftco-section">
+    <section className="ftco-section p-5">
 		<div className="container">
 			<div className="row justify-content-center">
 			</div>
@@ -49,7 +49,7 @@ export const Contact = () => {
 												</div>
 											</div>
 											<div className="col-md-12">
-												<div className="form-group">
+												<div className="form-group p-4">
 													<input type="submit" value="Send Message" className="btn btn-primary"/>
 													<div className="submitting"></div>
 												</div>

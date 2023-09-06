@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
 import imagenSvg from "../../img/asset-access.svg";
+import { MdReportGmailerrorred } from "react-icons/md";
 
 const AccessDeniedPage = () => {
   return (
@@ -17,7 +18,7 @@ const AccessDeniedPage = () => {
             borderRadius: "56px",
             padding: "0.3rem",
             background:
-              "linear-gradient(180deg, rgba(247, 149, 48, 0.4) 10%, rgba(247, 149, 48, 0) 30%)",
+              "linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%)",
           }}
         >
           <div
@@ -25,24 +26,17 @@ const AccessDeniedPage = () => {
             style={{ borderRadius: "53px" }}
           >
             <div
-              className="flex justify-content-center align-items-center bg-pink-500 border-circle"
-              style={{ height: "3.2rem", width: "3.2rem" }}
+              className="flex justify-content-center align-items-center bg-transparent border-circle"
+              style={{ height: "3.2rem", width: "3.2rem", fontSize: "2rem", color: "red" }}
             >
-              <i className="pi pi-fw pi-exclamation-circle text-2xl text-white"></i>
+              <MdReportGmailerrorred />
             </div>
             <h1 className="text-900 font-bold text-5xl mb-2">Access Denied</h1>
             <div className="text-600 mb-5">
               You do not have the necessary permisions.
             </div>
-            <img
-              //   src="/demo/images/access/asset-access.svg"
-              src={imagenSvg}
-              alt="Error"
-              className="mb-5"
-              width="80%"
-            />
             <Link to="/">
-              <Button icon="pi pi-arrow-left" label="Go to Home" text />
+              <Button label="Go to Home" text />
             </Link>
           </div>
         </div>

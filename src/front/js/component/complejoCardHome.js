@@ -7,7 +7,7 @@ import { Context } from "../store/appContext";
 export const ComplejoCardHome = () => {
   const { store, actions } = useContext(Context);
   const { allSportCenter } = store;
-  console.log("allSportCenter", allSportCenter);
+  console.log("allSportCenter", store);
 
   const complejosAleatorios = (array) => {
     if (array.length === 0) {
@@ -27,8 +27,8 @@ export const ComplejoCardHome = () => {
   }
 
   return (
-    <div className=" bg-black-alpha-10 w-100">
-      <div className="container py-8">
+    <div className="  w-100" style={{ background: "black" }}>
+      <div className="container ">
         <h1 className="text-center">More liked Sport Centers</h1>
         <div className="grid">
           {allSportCenterAleatorio &&

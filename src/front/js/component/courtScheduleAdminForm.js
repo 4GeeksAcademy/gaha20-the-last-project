@@ -40,7 +40,7 @@ const CourtScheduleAdminForm = (props) => {
   const [courtSchedule, setCourtSchedule] = useState(null);
   const [reservationsSave, setReservationsSave] = useState([]);
   const [sportCenterData, setSportCenterData] = useState(allSportCenter);
-
+  const [schedulePayment, setSchedulePayment] = useState(false);
   const [sportCenterDataDropdown, setSportCenterDataDropdown] = useState(null);
 
   const toast = useRef(null);
@@ -73,14 +73,14 @@ const CourtScheduleAdminForm = (props) => {
     });
   };
 
-  const saveCourtShedule = () => {
+  const saveCourtShedule = (status) => {
     if (!editCourt) {
       const courtScheduleDataSave = {
         ...courtScheduleData,
         start_date: reservationsSave[0].start_date,
         end_date: reservationsSave[0].end_date,
         user_id: userLogged.user_id,
-        status: "reservation",
+        status: status,
       };
       actions.createCourtSchedule(courtScheduleDataSave);
     } else {
@@ -97,7 +97,7 @@ const CourtScheduleAdminForm = (props) => {
         <MdOutlineCancel size={30} />
         <label>Cancel</label>
       </Button>
-      <Button onClick={() => saveCourtShedule()}>
+      <Button onClick={() => setSchedulePayment(true)}>
         <MdSave size={30} />
         <label>Save</label>
       </Button>
@@ -162,9 +162,51 @@ const CourtScheduleAdminForm = (props) => {
     { sportDropdown: "HANDBALL" },
     { sportDropdown: "RUGBY" },
   ];
+  const schedulePaymentDialogFooter = (
+    <>
+      <Button
+        className="p-button-text"
+        severity="danger"
+        onClick={() => saveCourtShedule("reservation")}
+      >
+        <MdOutlineCancel size={30} />
+        <label>no pagar online</label>
+      </Button>
+      <Button
+        className="p-button-text"
+        onClick={() => saveCourtShedule("pagado")}
+      >
+        <MdSave size={30} />
+        <label>pagar online</label>
+      </Button>
+    </>
+  );
+  const clearSelectedShedule = () => {
+    setSchedulePayment(false);
+  };
   return (
     <div className="dialog-demo">
       <Toast ref={toast} />
+      <Dialog
+        visible={schedulePayment}
+        style={{ width: "450px" }}
+        header="Confirm"
+        modal
+        footer={schedulePaymentDialogFooter}
+        onHide={() => clearSelectedShedule()}
+      >
+        <div className="flex align-items-center justify-content-center">
+          <i
+            className="pi pi-exclamation-triangle mr-3"
+            style={{ fontSize: "2rem" }}
+          />
+
+          <span>
+            relizar el pago en la cancha seleccionada o pago online aqui poner
+            referencia de pago o algo asi
+          </span>
+        </div>
+      </Dialog>
       <Dialog
         visible={isVisible}
         breakpoints={{ "960px": "75vw" }}

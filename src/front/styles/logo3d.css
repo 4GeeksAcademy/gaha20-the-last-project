@@ -1,0 +1,27 @@
+.container-logo3d {
+  font-family: sans-serif;
+  text-align: center;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0);
+}
+
+.atropos {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+img.leon {
+  width: 100%;
+  object-fit: cover;
+}
+
+img.text {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  filter: drop-shadow(2px 4px 0px #494848) drop-shadow(0 0 9px #622d3d);
+}

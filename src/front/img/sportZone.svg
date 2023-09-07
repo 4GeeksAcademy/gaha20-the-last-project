@@ -1,0 +1,17 @@
+<svg width="166.5187255859375px" height="180.22501220703126px" xmlns="http://www.w3.org/2000/svg" viewBox="166.74063720703126 -15.112506103515628 166.5187255859375 180.22501220703126" style="background: rgba(0, 0, 0, 0);" preserveAspectRatio="xMidYMid">
+  <defs>
+    <filter id="editing-hole" x="-100%" y="-100%" width="300%" height="300%">
+      <feFlood flood-color="#000000" result="black"></feFlood>
+      <feMorphology operator="dilate" radius="2" in="SourceGraphic" result="erode"></feMorphology>
+      <feGaussianBlur in="erode" stdDeviation="4" result="blur"></feGaussianBlur>
+      <feOffset in="blur" dx="2" dy="2" result="offset"></feOffset>
+      <feComposite operator="atop" in="offset" in2="black" result="merge"></feComposite>
+      <feComposite operator="in" in="merge" in2="SourceGraphic" result="inner-shadow"></feComposite>
+    </filter>
+  </defs>
+  <g filter="url(#editing-hole)">
+    <g transform="translate(199.14656189084053, 99.01500129699707)">
+      <text x="50" y="-40" fill="#ffffff" font-size="14" font-family="Arial Black" text-anchor="middle" dominant-baseline="central">SPORTS ZONE</text>
+    </g>
+  </g>
+</svg>

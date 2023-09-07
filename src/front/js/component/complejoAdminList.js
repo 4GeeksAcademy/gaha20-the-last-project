@@ -14,6 +14,7 @@ import {
   MdOutlineDeleteOutline,
   MdOutlineSearch,
 } from "react-icons/md";
+import CourtAdminForm from "./courtAdminForm";
 
 const ComplejoAdminList = () => {
   const { store, actions } = useContext(Context);
@@ -22,8 +23,10 @@ const ComplejoAdminList = () => {
   const [complejoAdminList, setComplejoAdminList] = useState(allSportCenter);
   const [deleteComplejoAdminListDialog, setDeleteComplejoAdminListDialog] =
     useState(false);
+  const [expandedRows, setExpandedRows] = useState(null);
   const [globalFilter, setGlobalFilter] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isVisibleCourt, setIsVisibleCourt] = useState(false);
   const [loading, setLoading] = useState(true);
   const dt = useRef(null);
   const toast = useRef(null);
@@ -33,6 +36,12 @@ const ComplejoAdminList = () => {
       setLoading(false);
     }
   }, [store.allSportCenter]);
+  useEffect(() => {
+    const complejoFilter = complejoAdminList.filter(
+      (p) => p.user_id === userLogged.user_id
+    );
+    setComplejoAdminList(complejoFilter);
+  }, []);
 
   const leftToolbarTemplate = () => {
     return (
@@ -107,7 +116,66 @@ const ComplejoAdminList = () => {
       </div>
     );
   };
+  const onRowExpand = (event) => {
+    toast.current.show({
+      severity: "info",
+      summary: "Court Expanded",
+      detail: event.data.name,
+      life: 3000,
+    });
+  };
 
+  const onRowCollapse = (event) => {
+    toast.current.show({
+      severity: "success",
+      summary: "Court Collapsed",
+      detail: event.data.name,
+      life: 3000,
+    });
+  };
+  const leftToolbarTemplate2 = () => {
+    return (
+      <React.Fragment>
+        <div className="my-2 ">
+          <Button
+            className="p-button-success mr-2"
+            onClick={() => setIsVisibleCourt(true)}
+          >
+            <MdAdd />
+            <span className="p-button-text p-ml-2">New Court</span>
+          </Button>
+        </div>
+      </React.Fragment>
+    );
+  };
+  const rowExpansionTemplate = (data) => {
+    return (
+      <div className="p-3">
+        <div className="d-flex justify-content-between">
+          {" "}
+          <h5>
+            Courts for {data.first_name} {data.last_name}
+          </h5>{" "}
+          <Button
+            className="p-button-success mr-2"
+            onClick={() => setIsVisibleCourt(true)}
+          >
+            <MdAdd />
+            <span className="p-button-text p-ml-2">New Court</span>
+          </Button>{" "}
+        </div>
+        <DataTable value={data.court}>
+          {/* <Column field="id" header="ID" /> */}
+
+          <Column field="name" header="NAME" />
+          <Column field="sport" header="SPORT" />
+        </DataTable>
+      </div>
+    );
+  };
+  const allowExpansion = (rowData) => {
+    return rowData.court.length > 0;
+  };
   const header = (
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
       <h5 className="m-0">Sport Center List</h5>
@@ -147,18 +215,16 @@ const ComplejoAdminList = () => {
     <div className="m-4 p-3 card">
       <Toast ref={toast} />
       <Toolbar className="mb-4" left={leftToolbarTemplate}></Toolbar>
-
+      <CourtAdminForm
+        isVisible={isVisibleCourt}
+        setIsVisible={setIsVisibleCourt}
+      />
       <DataTable
         ref={dt}
         value={complejoAdminList}
         dataKey="id"
-        paginator
-        rows={10}
-        rowsPerPageOptions={[5, 10, 25]}
         className="datatable-responsive"
-        selectionMode="single"
-        paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-        currentPageReportTemplate="View {first} a {last} de {totalRecords} SportCenter"
+        // selectionMode="single"
         globalFilter={globalFilter}
         emptyMessage="No SportCenterAdminList."
         header={header}
@@ -167,9 +233,15 @@ const ComplejoAdminList = () => {
         loading={loading}
         responsiveLayout="scroll"
         breakpoint="960px"
+        expandedRows={expandedRows}
+        onRowToggle={(e) => setExpandedRows(e.data)}
+        onRowExpand={onRowExpand}
+        onRowCollapse={onRowCollapse}
+        rowExpansionTemplate={rowExpansionTemplate}
       >
         {/* <Column body={actionBodyTemplate}></Column> */}
         {/* <Column field="id" header="ID" /> */}
+        <Column expander={allowExpansion} style={{ width: "5rem" }} />
 
         <Column field="name" header="NAME" />
         <Column field="address" header="ADDRESS" />

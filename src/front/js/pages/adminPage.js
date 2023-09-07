@@ -16,7 +16,7 @@ export const Adminpage = () => {
 
       <CourtScheduleAdminCalendary />
       <ComplejoAdminList />
-      <CourtAdminList />
+      {/* <CourtAdminList /> */}
       <CourtScheduleAdminList />
     </div>
   );

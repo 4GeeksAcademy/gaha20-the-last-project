@@ -13,7 +13,12 @@ import { addLocale } from "primereact/api";
 import moment from "moment";
 import SchedulerBlock from "./sheduleBlock";
 import { Skeleton } from "primereact/skeleton";
-import { MdOutlineCancel, MdSave, MdCalendarMonth, MdPayment } from "react-icons/md";
+import {
+  MdOutlineCancel,
+  MdSave,
+  MdCalendarMonth,
+  MdPayment,
+} from "react-icons/md";
 import PaymentForm from "./paymentForm";
 
 const CourtScheduleAdminForm = (props) => {
@@ -25,13 +30,14 @@ const CourtScheduleAdminForm = (props) => {
   };
   const { store, actions } = useContext(Context);
   const { allCourt, userLogged, allSportCenter } = store;
-  const { isVisible, setIsVisible, startDate, court } = props;
+  const { isVisible, setIsVisible, startDate, court, adminPage } = props;
 
   const [courtScheduleData, setCourtScheduleData] = useState(
     initialCourtScheduleAdminForm
   );
 
   const [courtData, setCourtData] = useState(allCourt);
+  const [paidValid, setPaidValid] = useState(true);
   const [image, setImage] = useState(null);
   const [editCourt, setEditCourt] = useState(null);
   const [sportDataDropdown, setSportDataDropdown] = useState(null);
@@ -54,6 +60,14 @@ const CourtScheduleAdminForm = (props) => {
       });
     }
   }, [editCourt]);
+  useEffect(() => {
+    if (adminPage) {
+      const complejoFilter = sportCenterData?.filter(
+        (p) => p.user_id === userLogged?.user_id
+      );
+      setSportCenterData(complejoFilter);
+    }
+  }, [isVisible]);
   useEffect(() => {
     if (startDate) {
       const endDate = moment(startDate).add(1, "hours");
@@ -131,38 +145,7 @@ const CourtScheduleAdminForm = (props) => {
       setSportCenterDataDropdown(null);
     }
   };
-  const sportDropdown = [
-    { sportDropdown: "FULBOL" },
-    { sportDropdown: "BASQUETBOL" },
-    { sportDropdown: "PADEL" },
-    { sportDropdown: "VOLEIBOL" },
-    { sportDropdown: "TENIS" },
-    { sportDropdown: "NATACION" },
-    { sportDropdown: "GIMNASIO" },
-    { sportDropdown: "CROSSFIT" },
-    { sportDropdown: "BOX" },
-    { sportDropdown: "ZUMBA" },
-    { sportDropdown: "AEROBICS" },
-    { sportDropdown: "CICLISMO" },
-    { sportDropdown: "GOLF" },
-    { sportDropdown: "ESGRIMA" },
-    { sportDropdown: "TAEKWONDO" },
-    { sportDropdown: "KARATE" },
-    { sportDropdown: "JUDO" },
-    { sportDropdown: "BOX" },
-    { sportDropdown: "MMA" },
-    { sportDropdown: "TENIS DE MESA" },
-    { sportDropdown: "BILLAR" },
-    { sportDropdown: "BOLICHE" },
-    { sportDropdown: "DARDOS" },
-    { sportDropdown: "FUTBOLITO" },
-    { sportDropdown: "FUTBOL AMERICANO" },
-    { sportDropdown: "FUTBOL RAPIDO" },
-    { sportDropdown: "BEISBOL" },
-    { sportDropdown: "SOFTBOL" },
-    { sportDropdown: "HANDBALL" },
-    { sportDropdown: "RUGBY" },
-  ];
+
   const schedulePaymentDialogFooter = (
     <>
       <Button
@@ -171,14 +154,15 @@ const CourtScheduleAdminForm = (props) => {
         onClick={() => saveCourtShedule("Reserved")}
       >
         <MdCalendarMonth size={30} />
-        <label>no pagar online</label>
+        <label>Booked</label>
       </Button>
       <Button
         className="p-button-text"
         onClick={() => saveCourtShedule("Paid")}
+        disabled={paidValid}
       >
         <MdPayment size={30} />
-        <label>pagar online</label>
+        <label>Online Payment</label>
       </Button>
     </>
   );
@@ -197,8 +181,7 @@ const CourtScheduleAdminForm = (props) => {
         onHide={() => clearSelectedShedule()}
       >
         <div className="flex align-items-center justify-content-center">
-
-          <PaymentForm/>
+          <PaymentForm paidValid={paidValid} setPaidValid={setPaidValid} />
 
           {/* <span>
             relizar el pago en la cancha seleccionada o pago online aqui poner

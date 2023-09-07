@@ -309,6 +309,8 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await response.json();
           if (data) {
             getActions().allCourtGet();
+
+            getActions().allSportCenterGet();
           }
           return data;
         } catch (error) {
@@ -349,6 +351,31 @@ const getState = ({ getStore, getActions, setStore }) => {
             requestConfig
           );
           const data = await response.json();
+          if (data) {
+            getActions().allCourtScheduleGet();
+          }
+          return data;
+        } catch (error) {
+          console.log("Verify your inputs", error);
+        }
+      },
+      deteleCourtSchudele: async (id) => {
+        console.log("id", id);
+        try {
+          const requestConfig = {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(),
+          };
+          const response = await fetch(
+            process.env.BACKEND_URL + "/api/court_schedule/" + id,
+            requestConfig
+          );
+          const data = await response.json();
+          console.log(data);
+          // setStore({ allUser: data });
           if (data) {
             getActions().allCourtScheduleGet();
           }

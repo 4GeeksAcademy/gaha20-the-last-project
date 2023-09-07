@@ -412,7 +412,6 @@ def delete_schedule(id):
         return jsonify({
             "message": "schedule does not exist"
         }), 400
-    schedule = Court_schedule.query.filter_by(id = Court_schedule.id).first()
     try:
         db.session.delete(schedule)
         db.session.commit()

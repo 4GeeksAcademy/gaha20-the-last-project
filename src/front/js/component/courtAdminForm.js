@@ -17,7 +17,7 @@ const CourtAdminForm = (props) => {
     sport: "",
   };
   const { store, actions } = useContext(Context);
-  const { allSportCenter } = store;
+  const { allSportCenter, userLogged } = store;
   const { isVisible, setIsVisible } = props;
   const [courtData, setCourtData] = useState(initialCourtAdminForm);
   const [sportCenterData, setSportCenterData] = useState(allSportCenter);
@@ -36,6 +36,12 @@ const CourtAdminForm = (props) => {
       });
     }
   }, [editCourt]);
+  useEffect(() => {
+    const complejoFilter = sportCenterData?.filter(
+      (p) => p.user_id === userLogged?.user_id
+    );
+    setSportCenterData(complejoFilter);
+  }, [isVisible]);
 
   const updateField = (data, field) => {
     setCourtData({
@@ -72,7 +78,7 @@ const CourtAdminForm = (props) => {
     setIsVisible(false);
     setCourtData(initialCourtAdminForm);
     setSportCenterDataDropdown(null);
-    setSportCenterData(null);
+    setSportCenterData(allSportCenter);
   };
   const onSportDropdown = (e) => {
     setSportDataDropdown(e.value);
@@ -86,6 +92,7 @@ const CourtAdminForm = (props) => {
     { sportDropdown: "FUTBOL" },
     { sportDropdown: "BASQUETBOL" },
     { sportDropdown: "PADEL" },
+    { sportDropdown: "BEACH TENNIS" },
     { sportDropdown: "VOLEIBOL" },
     { sportDropdown: "TENIS" },
     { sportDropdown: "NATACION" },

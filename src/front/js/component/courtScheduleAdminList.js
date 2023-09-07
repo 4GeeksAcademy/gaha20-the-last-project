@@ -10,18 +10,23 @@ import CourtScheduleAdminForm from "./courtScheduleAdminForm";
 import { Context } from "../store/appContext";
 import {
   MdAdd,
+  MdDeleteOutline,
   MdEdit,
+  MdOutlineCancel,
   MdOutlineDeleteOutline,
   MdOutlineSearch,
+  MdReportGmailerrorred,
+  MdSave,
 } from "react-icons/md";
 import moment from "moment";
 
-const CourtScheduleAdminList = ({ userPage }) => {
+const CourtScheduleAdminList = ({ userPage, adminPage }) => {
   const { store, actions } = useContext(Context);
   const { userLogged, allCourtSchedule } = store;
 
   const [courtScheduleAdminList, setCourtScheduleAdminList] =
     useState(allCourtSchedule);
+  const [courtScheduleDelet, setCourtScheduleDelet] = useState(null);
   const [
     deleteCourtScheduleAdminListDialog,
     setDeleteCourtScheduleAdminListDialog,
@@ -68,12 +73,13 @@ const CourtScheduleAdminList = ({ userPage }) => {
     setIsVisible(true);
   };
   const eliminarCourtScheduleAdminList = () => {
-    deleteCourtScheduleAdminList(courtScheduleAdminList.id);
+    console.log(courtScheduleDelet.id);
+    actions.deteleCourtSchudele(courtScheduleDelet.id);
     setDeleteCourtScheduleAdminListDialog(false);
     toast.current.show({
       severity: "error",
-      summary: "Eliminar",
-      detail: "CourtScheduleAdminList Eliminado",
+      summary: "Deteted",
+      detail: "Court Schedule Deleted",
       life: 3000,
     });
   };
@@ -81,43 +87,44 @@ const CourtScheduleAdminList = ({ userPage }) => {
   const deleteCourtScheduleAdminListDialogFooter = (
     <>
       <Button
-        label="No"
-        icon="pi pi-times"
         className="p-button-text"
+        severity="danger"
         onClick={() => setDeleteCourtScheduleAdminListDialog(false)}
-      />
+      >
+        <MdOutlineCancel size={30} />
+        <label>Cancel</label>
+      </Button>
       <Button
-        label="Yes"
-        icon="pi pi-check"
         className="p-button-text"
         onClick={() => eliminarCourtScheduleAdminList()}
-      />
+      >
+        <MdDeleteOutline size={30} />
+        <label>Delete</label>
+      </Button>
     </>
   );
 
-  const confirmDeleteCourtScheduleAdminList = (courtScheduleAdminLists) => {
-    setCourtScheduleAdminList(courtScheduleAdminLists);
+  const confirmDeleteCourtScheduleAdminList = (rowData) => {
+    setCourtScheduleDelet(rowData);
     setDeleteCourtScheduleAdminListDialog(true);
   };
 
   const actionBodyTemplate = (rowData) => {
     return (
       <div className="actions">
-        <Button
+        {/* <Button
           className="p-button-rounded p-button-success mr-2"
           onClick={() => saveCourtScheduleAdminList(rowData.id)}
         >
           <MdEdit />
-        </Button>
+        </Button> */}
 
-        {userLogged.user_type === "SUPERADMIN" && (
-          <Button
-            className="p-button-rounded  p-button-danger"
-            onClick={() => confirmDeleteCourtScheduleAdminList(rowData)}
-          >
-            <MdOutlineDeleteOutline />
-          </Button>
-        )}
+        <Button
+          className="p-button-rounded  p-button-danger"
+          onClick={() => confirmDeleteCourtScheduleAdminList(rowData)}
+        >
+          <MdOutlineDeleteOutline />
+        </Button>
       </div>
     );
   };
@@ -195,6 +202,7 @@ const CourtScheduleAdminList = ({ userPage }) => {
       <CourtScheduleAdminForm
         isVisible={isVisible}
         setIsVisible={setIsVisible}
+        adminPage={true}
       />
 
       <Dialog
@@ -206,15 +214,10 @@ const CourtScheduleAdminList = ({ userPage }) => {
         onHide={() => clearSelected()}
       >
         <div className="flex align-items-center justify-content-center">
-          <i
-            className="pi pi-exclamation-triangle mr-3"
-            style={{ fontSize: "2rem" }}
-          />
-          {courtScheduleAdminList && (
-            <span>
-              Are you sure about delete CourtScheduleAdminList?{" "}
-              <b>{courtScheduleAdminList.nombreCourtScheduleAdminList}</b>?
-            </span>
+          <MdReportGmailerrorred size={40} />
+
+          {courtScheduleDelet && (
+            <span>Are you sure about delete Court Schedule? </span>
           )}
         </div>
       </Dialog>

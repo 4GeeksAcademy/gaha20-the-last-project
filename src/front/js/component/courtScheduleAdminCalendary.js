@@ -54,12 +54,18 @@ const CourtScheduleAdminCalendary = () => {
         auxCronograma.push({
           id: allCourtSchedule[prop].id,
           // title: allCourtSchedule[prop].user_id,
-          title: user?.first_name + " " + user?.last_name,
+          title:
+            user?.first_name +
+            " " +
+            user?.last_name +
+            " // " +
+            allCourtSchedule[prop].status,
           start: allCourtSchedule[prop].start_date,
           end: allCourtSchedule[prop].end_date,
           resourceId: `r${prop1}`,
           movable: false,
-          bgColor: colores[numAleatorio],
+          bgColor:
+            allCourtSchedule[prop].status === "Paid" ? "#08afff" : "#dc3545",
         });
       }
     }

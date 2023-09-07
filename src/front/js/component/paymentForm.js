@@ -13,7 +13,7 @@ const PaymentForm = () => {
                     <div class="checkbox pull-right">
                         <label>
                             <input type="checkbox" />
-                            Remember
+                            <span className="pl-1">Remember</span>
                         </label>
                     </div>
                 </div>
@@ -21,7 +21,7 @@ const PaymentForm = () => {
                     <form role="form">
                     <div class="form-group">
                         <label for="cardNumber">
-                            CARD NUMBER</label>
+                            Card Number</label>
                         <div class="input-group">
                             <input type="text" class="form-control" id="cardNumber" placeholder="Valid Card Number"
                                 required autofocus />
@@ -32,7 +32,7 @@ const PaymentForm = () => {
                         <div class="col-xs-7 col-md-7">
                             <div class="form-group">
                                 <label for="expityMonth">
-                                    EXPIRY DATE</label>
+                                    Expire Date</label>
                                 <div class="col-xs-6 col-lg-6 pl-ziro">
                                     <input type="text" class="form-control" id="expityMonth" placeholder="MM/YY" required />
                                 </div>
@@ -41,8 +41,8 @@ const PaymentForm = () => {
                         <div class="col-xs-5 col-md-5 pull-right">
                             <div class="form-group">
                                 <label for="cvCode">
-                                    CV CODE</label>
-                                <input type="password" class="form-control" id="cvCode" placeholder="CV" required />
+                                    CVC</label>
+                                <input type="password" class="form-control" id="cvCode" placeholder="cvc" required />
                             </div>
                         </div>
                     </div>

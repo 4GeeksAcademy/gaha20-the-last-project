@@ -14,6 +14,7 @@ import {
   MdOutlineCancel,
   MdOutlineDeleteOutline,
   MdSave,
+  MdReportGmailerrorred,
 } from "react-icons/md";
 import { Dropdown } from "primereact/dropdown";
 
@@ -170,12 +171,11 @@ const UserSuperAdminList = () => {
         onHide={() => clearSelected()}
       >
         <div className="flex align-items-center justify-content-center">
-          <i
-            className="pi pi-exclamation-triangle mr-3"
-            style={{ fontSize: "2rem" }}
-          />
+          <div style={{fontSize: "3rem", color: "white", opacity: "80%"}}>
+          <MdReportGmailerrorred />
+          </div>
           {editTyperUserSuperAdminList && (
-            <span>
+            <span className="pl-3">
               Are you sure to assign the role{" "}
               <b>
                 {editTyperUserSuperAdminList.user_type === "user"
@@ -184,11 +184,11 @@ const UserSuperAdminList = () => {
                   ? "superadmin"
                   : "user"}
               </b>{" "}
-              to the user <b>{editTyperUserSuperAdminList.email}</b>?
+              to the user: <b>{editTyperUserSuperAdminList.email}</b>?
             </span>
           )}
         </div>
-      </Dialog>
+      </Dialog> 
     </div>
   );
 };

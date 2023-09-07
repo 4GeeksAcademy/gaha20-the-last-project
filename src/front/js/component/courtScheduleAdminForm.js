@@ -13,7 +13,7 @@ import { addLocale } from "primereact/api";
 import moment from "moment";
 import SchedulerBlock from "./sheduleBlock";
 import { Skeleton } from "primereact/skeleton";
-import { MdOutlineCancel, MdSave } from "react-icons/md";
+import { MdOutlineCancel, MdSave, MdCalendarMonth, MdPayment } from "react-icons/md";
 import PaymentForm from "./paymentForm";
 
 const CourtScheduleAdminForm = (props) => {
@@ -167,17 +167,17 @@ const CourtScheduleAdminForm = (props) => {
     <>
       <Button
         className="p-button-text"
-        severity="danger"
+        severity="success"
         onClick={() => saveCourtShedule("Reserved")}
       >
-        <MdOutlineCancel size={30} />
+        <MdCalendarMonth size={30} />
         <label>no pagar online</label>
       </Button>
       <Button
         className="p-button-text"
         onClick={() => saveCourtShedule("Paid")}
       >
-        <MdSave size={30} />
+        <MdPayment size={30} />
         <label>pagar online</label>
       </Button>
     </>

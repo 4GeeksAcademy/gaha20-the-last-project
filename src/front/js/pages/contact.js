@@ -17,10 +17,10 @@ export const Contact = () => {
 						<div className="row no-gutters">
 							<div className="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
 								<div className="contact-wrap w-100 p-md-5 p-4">
-									<h3 className="mb-4">Get in touch</h3>
+									<h3 className="mb-4">Contact Form</h3>
 									<div id="form-message-warning" className="mb-4"></div> 
 				      		<div id="form-message-success" className="mb-4">
-				            Your message was sent, thank you!
+				            Our team will be in touch!
 				      		</div>
 									<form method="POST" id="contactForm" name="contactForm" className="contactForm">
 										<div className="row">
@@ -75,7 +75,7 @@ export const Contact = () => {
 				        			<span className="fa fa-phone"></span>
 				        		</div>
 				        		<div className="text pl-3">
-					            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
+					            <p><span>Phone:</span> <a href="tel://1234567920">+1(786)485-5098</a></p>
 					          </div>
 				          </div>
 				        	<div className="dbox w-100 d-flex align-items-center">
@@ -83,7 +83,7 @@ export const Contact = () => {
 				        			<span className="fa fa-paper-plane"></span>
 				        		</div>
 				        		<div className="text pl-3">
-					            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
+					            <p><span>Email:</span> <a href="mailto:info@yoursite.com">contact@sportzonemanager.com</a></p>
 					          </div>
 				          </div>
 				        	<div className="dbox w-100 d-flex align-items-center">
@@ -91,7 +91,7 @@ export const Contact = () => {
 				        			<span className="fa fa-globe"></span>
 				        		</div>
 				        		<div className="text pl-3">
-					            <p><span>Website</span> <a href="#">yoursite.com</a></p>
+					            <p><span>Instagram:</span> <a href="#">SportZoneMng</a></p>
 					          </div>
 				          </div>
 			          </div>

@@ -32,7 +32,7 @@ const UserSuperAdminList = () => {
   const toast = useRef(null);
 
   useEffect(() => {
-    if (store.allSportCenter && store.allSportCenter.length > 0) {
+    if (store.allUser.length > 0) {
       setLoading(false);
     }
   }, [store.allSportCenter]);
@@ -67,9 +67,9 @@ const UserSuperAdminList = () => {
     saveUserSuperAdminList(editTyperUserSuperAdminList);
     setEditUserTypeDialog(false);
     toast.current.show({
-      severity: "error",
-      summary: "Eliminar",
-      detail: "UserSuperAdminList Eliminado",
+      severity: "success",
+      summary: "Edit",
+      detail: "User Edited",
       life: 3000,
     });
   };
@@ -171,8 +171,8 @@ const UserSuperAdminList = () => {
         onHide={() => clearSelected()}
       >
         <div className="flex align-items-center justify-content-center">
-          <div style={{fontSize: "3rem", color: "white", opacity: "80%"}}>
-          <MdReportGmailerrorred />
+          <div style={{ fontSize: "3rem", color: "white", opacity: "80%" }}>
+            <MdReportGmailerrorred />
           </div>
           {editTyperUserSuperAdminList && (
             <span className="pl-3">
@@ -188,7 +188,7 @@ const UserSuperAdminList = () => {
             </span>
           )}
         </div>
-      </Dialog> 
+      </Dialog>
     </div>
   );
 };

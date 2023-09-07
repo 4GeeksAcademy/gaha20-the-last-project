@@ -19,6 +19,7 @@ const CourtScheduleAdminCalendary = () => {
     store;
   const [sportCenterData, setSportCenterData] = useState(allSportCenter);
   const [courtData, setCourtData] = useState([]);
+  console.log(courtData);
   useEffect(() => {
     const complejoFilter = sportCenterData?.filter(
       (p) => p.user_id === userLogged?.user_id
@@ -62,7 +63,7 @@ const CourtScheduleAdminCalendary = () => {
   // eslint-disable-next-line no-unused-vars
   for (let prop1 in courtData) {
     resources.push({
-      id: `r${prop1}`,
+      id: `r${courtData[prop1].id - 1}`,
       name: courtData[prop1].name,
     });
     for (let prop in allCourtSchedule) {
@@ -70,8 +71,6 @@ const CourtScheduleAdminCalendary = () => {
         (user) => user.id === allCourtSchedule[prop].user_id
       );
       if (allCourtSchedule[prop]?.court_id === allCourt[prop1]?.id) {
-        const numAleatorio = Math.floor(Math.random() * 5);
-
         auxCronograma.push({
           id: allCourtSchedule[prop].id,
           // title: allCourtSchedule[prop].user_id,
@@ -91,7 +90,8 @@ const CourtScheduleAdminCalendary = () => {
       }
     }
   }
-
+  console.log(auxCronograma);
+  console.log(resources);
   return (
     <div>
       {auxCronograma.length === 0 ? (

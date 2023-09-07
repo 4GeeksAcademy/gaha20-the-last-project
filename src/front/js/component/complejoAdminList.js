@@ -174,7 +174,7 @@ const ComplejoAdminList = () => {
     );
   };
   const allowExpansion = (rowData) => {
-    return rowData.court.length > 0;
+    return rowData.court.length >= 0;
   };
   const header = (
     <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">

@@ -11,7 +11,6 @@ export const Home = () => {
 
   return (
     <div className="text-center mt-5 bg-dark">
-      <PaymentForm />
       <div
         className="d-flex justify-content-around"
         style={{ background: "black" }}

@@ -19,6 +19,7 @@ class User(db.Model):
 
     def serialize(self):
         sport_center = [center.serialize() for center in self.sport_center]
+        court_schedule = [schedule.serialize() for schedule in self.court_schedule]
         return {
             "id": self.id,
             "user_name": self.user_name,
@@ -26,7 +27,8 @@ class User(db.Model):
             "last_name": self.last_name,
             "email": self.email,
             "user_type": self.user_type,
-            "sport_center": sport_center
+            "sport_center": sport_center,
+            "court_schedule": court_schedule
             # do not serialize the password, its a security breach
         }
 

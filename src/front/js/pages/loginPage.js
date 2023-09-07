@@ -23,13 +23,10 @@ const LoginPage = () => {
     { "p-input-filled": "filled" === "filled" }
   );
 
-  
   const handleLogin = async () => {
     try {
       const loginVerificado = await actions.login(email, password);
       if (loginVerificado.token) {
-        console.log("hola");
-
         // navigate("/userPage");
       } else {
         toast.current.show({
@@ -131,9 +128,7 @@ const LoginPage = () => {
               <Button
                 label="Log In"
                 className="w-full p-3 text-xl"
-                onClick={() => 
-                  handleLogin()
-                 }
+                onClick={() => handleLogin()}
               ></Button>
             </div>
           </div>

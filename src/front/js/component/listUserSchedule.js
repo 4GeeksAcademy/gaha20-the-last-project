@@ -11,7 +11,6 @@ import moment from "moment";
 export default function ListUserSchedule() {
   const { store, actions } = useContext(Context);
   const { allUser } = store;
-  console.log("allUser", allUser);
   const [products, setProducts] = useState([]);
   const [expandedRows, setExpandedRows] = useState(null);
   const toast = useRef(null);

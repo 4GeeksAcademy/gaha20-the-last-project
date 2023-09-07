@@ -5,9 +5,7 @@ import { Chart } from "primereact/chart";
 export const ChartSheduleSportCenter = () => {
   const { store, actions } = useContext(Context);
   const { allCourt, allCourtSchedule, allSportCenter } = store;
-  console.log(allCourtSchedule, allCourt, allSportCenter);
   const [chartData, setChartData] = useState({});
-  console.log(chartData);
   const [chartOptions, setChartOptions] = useState({});
   const scheduleCountBySportCenter = {};
 
@@ -46,8 +44,6 @@ export const ChartSheduleSportCenter = () => {
       //   borderColor: documentStyle.getPropertyValue("--blue-500"),
     });
     setChartData({ ...chartData, labels: labels, datasets: data });
-    console.log("Labels:", labels);
-    console.log("Data:", data);
   };
   // Resultado: labels contiene los nombres de Sport Centers y data contiene la cantidad de programaciones por Sport Center
 
@@ -135,7 +131,6 @@ export const ChartSheduleSportCenter = () => {
     datos();
   }, []);
   // Resultado: scheduleCountBySportCenter contiene el número de programaciones por Sport Center
-  console.log(scheduleCountBySportCenter);
   return (
     <div className="container card">
       <h1>Chart Shedule Sport Center</h1>

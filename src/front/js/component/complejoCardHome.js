@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 export const ComplejoCardHome = () => {
   const { store, actions } = useContext(Context);
   const { allSportCenter, userLogged } = store;
-  console.log("allSportCenter", store);
 
   const complejosAleatorios = (array) => {
     if (array.length === 0) {

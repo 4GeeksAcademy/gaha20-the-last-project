@@ -1,7 +1,7 @@
 /* eslint-disable multiline-ternary */
 /* eslint-disable indent */
 /* eslint-disable prefer-const */
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../styles/calendary.css";
 
 import { Skeleton } from "primereact/skeleton";
@@ -15,7 +15,28 @@ import { Context } from "../store/appContext";
 
 const CourtScheduleAdminCalendary = () => {
   const { store, actions } = useContext(Context);
-  const { userLogged, allCourtSchedule, allCourt, allUser } = store;
+  const { userLogged, allCourtSchedule, allCourt, allUser, allSportCenter } =
+    store;
+  const [sportCenterData, setSportCenterData] = useState(allSportCenter);
+  const [courtData, setCourtData] = useState([]);
+  useEffect(() => {
+    const complejoFilter = sportCenterData?.filter(
+      (p) => p.user_id === userLogged?.user_id
+    );
+    setSportCenterData(complejoFilter);
+    // sportCenterData.map((item, index) => {
+    //   setCourtData([...courtData, item.court]);
+    // });
+
+    const allCourts = [];
+
+    complejoFilter.forEach((sportCenter) => {
+      allCourts.push(...sportCenter.court);
+    });
+
+    setCourtData(allCourts);
+  }, []);
+  useEffect(() => {}, [sportCenterData]);
 
   // const { dataPresupuestos } = useContext(DataPresupuestoContext);
   // const { presupuestos } = useContext(PresupuestoContext);
@@ -39,16 +60,16 @@ const CourtScheduleAdminCalendary = () => {
   const colores = ["#0d6efd", "#08afff", "#dc3545", "#f759ab", "#797d82"];
   const resources = [];
   // eslint-disable-next-line no-unused-vars
-  for (let prop1 in allCourt) {
+  for (let prop1 in courtData) {
     resources.push({
       id: `r${prop1}`,
-      name: allCourt[prop1].name,
+      name: courtData[prop1].name,
     });
     for (let prop in allCourtSchedule) {
       const user = allUser.find(
         (user) => user.id === allCourtSchedule[prop].user_id
       );
-      if (allCourtSchedule[prop].court_id === allCourt[prop1].id) {
+      if (allCourtSchedule[prop]?.court_id === allCourt[prop1]?.id) {
         const numAleatorio = Math.floor(Math.random() * 5);
 
         auxCronograma.push({

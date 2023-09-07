@@ -4,15 +4,11 @@ const PaymentForm = ({ paidValid, setPaidValid }) => {
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
   const [cvCode, setCvCode] = useState("");
-  console.log(cardNumber);
-  console.log(expiryDate);
-  console.log(cvCode);
+
   useEffect(() => {
     if (cardNumber.length > 0 && expiryDate.length > 0 && cvCode.length > 0) {
-      console.log("valid");
       setPaidValid(false);
     } else {
-      console.log("invalid");
       setPaidValid(true);
     }
   }, [cardNumber, expiryDate, cvCode]);

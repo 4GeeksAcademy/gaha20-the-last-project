@@ -14,6 +14,7 @@ import moment from "moment";
 import SchedulerBlock from "./sheduleBlock";
 import { Skeleton } from "primereact/skeleton";
 import { MdOutlineCancel, MdSave } from "react-icons/md";
+import PaymentForm from "./paymentForm";
 
 const CourtScheduleAdminForm = (props) => {
   const initialCourtScheduleAdminForm = {
@@ -167,14 +168,14 @@ const CourtScheduleAdminForm = (props) => {
       <Button
         className="p-button-text"
         severity="danger"
-        onClick={() => saveCourtShedule("reservation")}
+        onClick={() => saveCourtShedule("Reserved")}
       >
         <MdOutlineCancel size={30} />
         <label>no pagar online</label>
       </Button>
       <Button
         className="p-button-text"
-        onClick={() => saveCourtShedule("pagado")}
+        onClick={() => saveCourtShedule("Paid")}
       >
         <MdSave size={30} />
         <label>pagar online</label>
@@ -196,15 +197,13 @@ const CourtScheduleAdminForm = (props) => {
         onHide={() => clearSelectedShedule()}
       >
         <div className="flex align-items-center justify-content-center">
-          <i
-            className="pi pi-exclamation-triangle mr-3"
-            style={{ fontSize: "2rem" }}
-          />
 
-          <span>
+          <PaymentForm/>
+
+          {/* <span>
             relizar el pago en la cancha seleccionada o pago online aqui poner
             referencia de pago o algo asi
-          </span>
+          </span> */}
         </div>
       </Dialog>
       <Dialog

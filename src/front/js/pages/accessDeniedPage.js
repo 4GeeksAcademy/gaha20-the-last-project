@@ -2,17 +2,14 @@ import React from "react";
 import { Button } from "primereact/button";
 import { Link } from "react-router-dom";
 import imagenSvg from "../../img/asset-access.svg";
+import Logo3d from "../component/logo3d";
 import { MdReportGmailerrorred } from "react-icons/md";
 
 const AccessDeniedPage = () => {
   return (
     <div className="surface-ground flex align-items-center justify-content-center min-h-screen min-w-screen overflow-hidden">
       <div className="flex flex-column align-items-center justify-content-center">
-        <img
-          src="https://res.cloudinary.com/ddvp1aeiw/image/upload/v1692660499/Copy_of_Sports_Zone_Logo_Sin_Fondo_g2uuwl.png"
-          alt="sport Center"
-          className=" w-19rem flex-shrink-0"
-        />
+      <Logo3d />
         <div
           style={{
             borderRadius: "56px",

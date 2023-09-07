@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 
 import "../../styles/superAdminPage.css";
 import UserSuperAdminList from "../component/userSuperAdminList";
+import ListUserSchedule from "../component/listUserSchedule";
 
 export const SuperAdminPage = () => {
   const { store, actions } = useContext(Context);
@@ -11,6 +12,7 @@ export const SuperAdminPage = () => {
     <div className="text-center mt-5">
       <h1>SUPERADMIN PAGE</h1>
       <UserSuperAdminList />
+      <ListUserSchedule />
     </div>
   );
 };

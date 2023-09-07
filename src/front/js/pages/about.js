@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 
 import "../../styles/about.css";
+import Logo3d from "../component/logo3d";
 
 export const About = () => {
   const { store, actions } = useContext(Context);
@@ -12,55 +13,16 @@ export const About = () => {
     "Logo_Sin_Fondo_3.png",
     "Logo_Sin_Fondo_4.png",
     "Logo_Sin_Fondo_5.png",
-    "Logo_Sin_Fondo_6.png"
+    "Logo_Sin_Fondo_6.png",
   ];
 
-  const admins = [
-    "admin1.jpeg",
-    "admin2.jpeg",
-    "admin3.jpeg",
-    "admin4.jpeg",
-  ];
+  const admins = ["admin1.jpeg", "admin2.jpeg", "admin3.jpeg", "admin4.jpeg"];
 
   return (
     <section
       id="about"
       className="about-section container-fluid p-0 text-center"
     >
-      <div className="row pt-8">
-        <div className="col-lg-6">
-          <img
-            src={require(`../../img/${images[0]}`).default}
-            alt={`Imagen ${images[0]}`}
-            className="img-fluid about-image rounded"
-            style={{maxHeight: "500px"}}
-          />
-        </div>
-        <div className="col-lg-6">
-          <div className="about-content">
-            <h2 className="about-heading">
-              Tecnologías usadas en SportsZone Manager
-            </h2>
-            <p className="about-description">
-              En <span className="emphasis">SportsZone Manager</span>,
-              utilizamos los siguientes lenguajes:
-              <ul className="text-start mx-auto" style={{ width: "350px" }}>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>Bootstrap</li>
-                <li>Javascript</li>
-                <li>React</li>
-                <li>Python</li>
-                <li>PostgreSQL</li>
-                <li>Flask</li>
-                <ul>
-                  <li>SQL Alchemy</li>
-                </ul>
-              </ul>
-            </p>
-          </div>
-        </div>
-      </div>
       <div className="row">
         <div className="col-lg-6">
           <div className="about-content" style={{ padding: "100px" }}>
@@ -93,22 +55,12 @@ export const About = () => {
           </div>
         </div>
         <div className="col-lg-6">
-          <img
-            src={require(`../../img/${images[1]}`).default}
-            alt={`Imagen ${images[1]}`}
-            className="img-fluid about-image rounded"
-            style={{maxHeight: "500px"}}
-          />
+          <Logo3d About={true} />
         </div>
       </div>
       <div className="row">
         <div className="col-lg-6">
-          <img
-            src={require(`../../img/${images[2]}`).default}
-            alt={`Imagen ${images[2]}`}
-            className="img-fluid about-image rounded"
-            style={{maxHeight: "500px"}}
-          />
+          <Logo3d About={true} />
         </div>
         <div className="col-lg-6">
           <div className="about-content" style={{ padding: "100px" }}>
@@ -161,15 +113,39 @@ export const About = () => {
           </div>
         </div>
         <div className="col-lg-6">
-          <img
-            src={require(`../../img/${images[3]}`).default}
-            alt={`Imagen ${images[3]}`}
-            className="img-fluid about-image rounded"
-            style={{maxHeight: "500px"}}
-          />
+          <Logo3d About={true} />
         </div>
       </div>
-      <div className="row">
+      <div className="row pt-8">
+        <div className="col-lg-6">
+          <Logo3d About={true} />
+        </div>
+        <div className="col-lg-6">
+          <div className="about-content">
+            <h2 className="about-heading">
+              Tecnologías usadas en SportsZone Manager
+            </h2>
+            <p className="about-description">
+              En <span className="emphasis">SportsZone Manager</span>,
+              utilizamos los siguientes lenguajes:
+              <ul className="text-start mx-auto" style={{ width: "350px" }}>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Bootstrap</li>
+                <li>Javascript</li>
+                <li>React</li>
+                <li>Python</li>
+                <li>PostgreSQL</li>
+                <li>Flask</li>
+                <ul>
+                  <li>SQL Alchemy</li>
+                </ul>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+      {/* <div className="row">
         <div className="col-lg-6">
           <img
             src={require(`../../img/${images[4]}`).default}
@@ -206,8 +182,8 @@ export const About = () => {
             </p>
           </div>
         </div>
-      </div>
-      <div className="row">
+      </div> */}
+      {/* <div className="row">
         <div className="col-lg-6">
           <div className="about-content" style={{ padding: "100px" }}>
             <h2 className="about-heading">
@@ -235,13 +211,22 @@ export const About = () => {
             src={require(`../../img/${images[5]}`).default}
             alt={`Imagen ${images[5]}`}
             className="img-fluid about-image rounded"
-            style={{maxHeight: "500px"}}
+            style={{ maxHeight: "500px" }}
           />
         </div>
-      </div>
+      </div> */}
       <div className="row justify-content-center">
         <div className="col-lg-6">
-          <h1 className="emphasis" style={{lineHeight: "200px", fontSize: "5em", fontFamily: "Archivo"}}>NUESTRO EQUIPO</h1>
+          <h1
+            className="emphasis"
+            style={{
+              lineHeight: "200px",
+              fontSize: "5em",
+              fontFamily: "Archivo",
+            }}
+          >
+            NUESTRO EQUIPO
+          </h1>
         </div>
       </div>
       <div className="row">
@@ -250,20 +235,29 @@ export const About = () => {
             src={require(`../../img/${admins[0]}`).default}
             alt={`Imagen ${admins[0]}`}
             className="img-fluid about-image rounded opacity-75"
-            style={{maxWidth: "450px"}}
+            style={{ maxWidth: "450px" }}
           />
         </div>
         <div className="col-lg-6 p-6">
           <div className="about-content">
-            <h2 className="about-heading">
-              Alfredo Castillo
-            </h2>
+            <h2 className="about-heading">Alfredo Castillo</h2>
             <p className="about-description">
               <ul className="text-start mx-auto">
-                <li>Edad: <span className="emphasis">30</span></li>
-                <li><span className="emphasis">Lugar de nacimiento:</span> Barcelona, Estado Anzoategui.</li>
-                <li>Profesión: <span className="emphasis">Ingeniero en Sistemas.</span></li>
-                <li><span className="emphasis">Hobbie:</span> resolver problemas lógicos y de Automatizacion.</li>
+                <li>
+                  Edad: <span className="emphasis">30</span>
+                </li>
+                <li>
+                  <span className="emphasis">Lugar de nacimiento:</span>{" "}
+                  Barcelona, Estado Anzoategui.
+                </li>
+                <li>
+                  Profesión:{" "}
+                  <span className="emphasis">Ingeniero en Sistemas.</span>
+                </li>
+                <li>
+                  <span className="emphasis">Hobbie:</span> resolver problemas
+                  lógicos y de Automatizacion.
+                </li>
               </ul>
             </p>
           </div>
@@ -272,15 +266,23 @@ export const About = () => {
       <div className="row">
         <div className="col-lg-6 p-6">
           <div className="about-content">
-          <h2 className="about-heading">
-              Guillermo Herrera
-            </h2>
+            <h2 className="about-heading">Guillermo Herrera</h2>
             <p className="about-description">
               <ul className="text-start mx-auto">
-                <li>Edad: <span className="emphasis">32</span></li>
-                <li><span className="emphasis">Lugar de nacimiento:</span> Caracas, Distrito Capital.</li>
-                <li>Profesión: <span className="emphasis">Administrador.</span></li>
-                <li><span className="emphasis">Hobbie:</span> jugar Tenis de Playa.</li>
+                <li>
+                  Edad: <span className="emphasis">32</span>
+                </li>
+                <li>
+                  <span className="emphasis">Lugar de nacimiento:</span>{" "}
+                  Caracas, Distrito Capital.
+                </li>
+                <li>
+                  Profesión: <span className="emphasis">Administrador.</span>
+                </li>
+                <li>
+                  <span className="emphasis">Hobbie:</span> jugar Tenis de
+                  Playa.
+                </li>
               </ul>
             </p>
           </div>
@@ -290,7 +292,7 @@ export const About = () => {
             src={require(`../../img/${admins[1]}`).default}
             alt={`Imagen ${admins[1]}`}
             className="img-fluid about-image rounded opacity-75"
-            style={{maxHeight: "600px"}}
+            style={{ maxHeight: "600px" }}
           />
         </div>
       </div>
@@ -300,20 +302,28 @@ export const About = () => {
             src={require(`../../img/${admins[2]}`).default}
             alt={`Imagen ${admins[2]}`}
             className="img-fluid about-image rounded opacity-75"
-            style={{maxHeight: "600px"}}
+            style={{ maxHeight: "600px" }}
           />
         </div>
         <div className="col-lg-6 p-6">
           <div className="about-content">
-          <h2 className="about-heading">
-              Jesús Barrios
-            </h2>
+            <h2 className="about-heading">Jesús Barrios</h2>
             <p className="about-description">
               <ul className="text-start mx-auto">
-                <li>Edad: <span className="emphasis">29</span></li>
-                <li><span className="emphasis">Ciudad Natal:</span> Caracas, Distrito Capital.</li>
-                <li>Profesión: <span className="emphasis">Diseñador 3D</span></li>
-                <li><span className="emphasis">Hobbie:</span> diseñar y jugar videojuegos.</li>
+                <li>
+                  Edad: <span className="emphasis">29</span>
+                </li>
+                <li>
+                  <span className="emphasis">Ciudad Natal:</span> Caracas,
+                  Distrito Capital.
+                </li>
+                <li>
+                  Profesión: <span className="emphasis">Diseñador 3D</span>
+                </li>
+                <li>
+                  <span className="emphasis">Hobbie:</span> diseñar y jugar
+                  videojuegos.
+                </li>
               </ul>
             </p>
           </div>
@@ -322,15 +332,24 @@ export const About = () => {
       <div className="row">
         <div className="col-lg-6 p-6">
           <div className="about-content">
-          <h2 className="about-heading">
-              Miguel Gil
-            </h2>
+            <h2 className="about-heading">Miguel Gil</h2>
             <p className="about-description">
               <ul className="text-start mx-auto">
-                <li>Edad: <span className="emphasis">37</span></li>
-                <li><span className="emphasis">Ciudad Natal:</span> Caracas, Distrito Capital.</li>
-                <li>Profesión: <span className="emphasis">Diseñador Gráfico.</span></li>
-                <li><span className="emphasis">Hobbie:</span> hacer ejercicio con peso libre y el senderismo.</li>
+                <li>
+                  Edad: <span className="emphasis">37</span>
+                </li>
+                <li>
+                  <span className="emphasis">Ciudad Natal:</span> Caracas,
+                  Distrito Capital.
+                </li>
+                <li>
+                  Profesión:{" "}
+                  <span className="emphasis">Diseñador Gráfico.</span>
+                </li>
+                <li>
+                  <span className="emphasis">Hobbie:</span> hacer ejercicio con
+                  peso libre y el senderismo.
+                </li>
               </ul>
             </p>
           </div>
@@ -340,7 +359,7 @@ export const About = () => {
             src={require(`../../img/${admins[3]}`).default}
             alt={`Imagen ${admins[3]}`}
             className="img-fluid about-image rounded opacity-75"
-            style={{maxHeight: "450px"}}
+            style={{ maxHeight: "450px" }}
           />
         </div>
       </div>

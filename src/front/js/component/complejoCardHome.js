@@ -3,10 +3,11 @@ import { Button } from "primereact/button";
 import { MdLocationOn } from "react-icons/md";
 import { Rating } from "primereact/rating";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 
 export const ComplejoCardHome = () => {
   const { store, actions } = useContext(Context);
-  const { allSportCenter } = store;
+  const { allSportCenter, userLogged } = store;
   console.log("allSportCenter", store);
 
   const complejosAleatorios = (array) => {
@@ -88,17 +89,20 @@ export const ComplejoCardHome = () => {
                         </div>
                       </div>
                       <div className="card-footer bg-transparent border-0">
-                        <Button
-                          label="Book"
-                          severity="info"
-                          className="bg-success"
-                          raised
-                          rounded
-                          style={{
-                            width: "75%",
-                            borderColor: "rgb(55, 183, 51)",
-                          }}
-                        />
+                        <Link to={userLogged ? "/sport_center" : "/login"}>
+                          {" "}
+                          <Button
+                            label="Book"
+                            severity="info"
+                            className="bg-success"
+                            raised
+                            rounded
+                            style={{
+                              width: "75%",
+                              borderColor: "rgb(55, 183, 51)",
+                            }}
+                          />{" "}
+                        </Link>
                       </div>
                     </div>
                   </div>
@@ -107,15 +111,16 @@ export const ComplejoCardHome = () => {
             })}
         </div>
       </div>
-      <Button
-        label="All Sport Centers"
-        severity="info"
-        className="bg-success"
-        // text
-        raised
-        rounded
-        style={{ width: "30%", borderColor: "rgb(55, 183, 51)" }}
-      />
+      <Link to={userLogged ? "/sport_center" : "/login"}>
+        <Button
+          className="bg-success"
+          label="All Sport Centers"
+          severity="info"
+          raised
+          rounded
+          style={{ width: "30%", borderColor: "rgb(55, 183, 51)" }}
+        ></Button>
+      </Link>
     </div>
   );
 };

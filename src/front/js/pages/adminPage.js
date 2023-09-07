@@ -14,10 +14,10 @@ export const Adminpage = () => {
     <div className="text-center mt-5">
       <h1>ADMIN PAGE</h1>
 
+      <CourtScheduleAdminCalendary />
       <ComplejoAdminList />
       <CourtAdminList />
       <CourtScheduleAdminList />
-      <CourtScheduleAdminCalendary />
     </div>
   );
 };

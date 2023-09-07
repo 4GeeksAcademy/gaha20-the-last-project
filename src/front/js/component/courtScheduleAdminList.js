@@ -48,6 +48,11 @@ const CourtScheduleAdminList = ({ userPage, adminPage }) => {
         (p) => p.user_id === userLogged.user_id
       );
       setCourtScheduleAdminList(courtFilter);
+    } else {
+      const courtFilter = courtScheduleAdminList.filter(
+        (p) => p.user_id === userLogged.user_id
+      );
+      setCourtScheduleAdminList(courtFilter);
     }
   }, [userPage]);
 

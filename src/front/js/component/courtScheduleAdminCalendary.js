@@ -70,7 +70,7 @@ const CourtScheduleAdminCalendary = () => {
       const user = allUser.find(
         (user) => user.id === allCourtSchedule[prop].user_id
       );
-      if (allCourtSchedule[prop]?.court_id === allCourt[prop1]?.id) {
+      if (allCourtSchedule[prop]?.court_id === courtData[prop1]?.id) {
         auxCronograma.push({
           id: allCourtSchedule[prop].id,
           // title: allCourtSchedule[prop].user_id,
@@ -82,7 +82,7 @@ const CourtScheduleAdminCalendary = () => {
             allCourtSchedule[prop].status,
           start: allCourtSchedule[prop].start_date,
           end: allCourtSchedule[prop].end_date,
-          resourceId: `r${prop1}`,
+          resourceId: `r${courtData[prop1].id - 1}`,
           movable: false,
           bgColor:
             allCourtSchedule[prop].status === "Paid" ? "#08afff" : "#dc3545",
